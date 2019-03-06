@@ -1,3 +1,4 @@
+const twitterData =
 {
   "statuses":[
      {
@@ -22008,3 +22009,5 @@
      "since_id_str":"0"
   }
 }
+
+export default twitterData
