@@ -5,3 +5,8 @@
 .App-header {
   margin:20px;
 }
+
+.navbar a {
+  text-decoration:none;
+  color: white;
+}

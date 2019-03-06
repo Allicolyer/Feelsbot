@@ -1,67 +1,41 @@
 import React, { Component } from 'react';
 import '../styles/App.css';
-import Map from './Map'
-import cities from './cityData'
+import Home from './Home'
+import About from './About';
+import { Router, Link } from "@reach/router";
 import {
-  Button,
-} from 'rebass'
+  Box,
+} from 'rebass';
+
 
 class App extends Component {
-  constructor() {
-    super();
-    // Define the initial state:
-    this.state = {
-      city: "default",
-      center: {lat: 40.7127, lng: -74.0059},
-      zoom: 13
-    };
-  }
-
-  renderCity = (e) =>{
-    e.preventDefault();
-    let city = e.target.textContent;
-    let cityData = cities[e.target.dataset.index];
-    this.setState({
-      city: city,
-      center:{lat: cityData.lat, lng: cityData.lng},
-      zoom:cityData.zoom
-    })
-  }
-
   render() {
-    console.log("state", this.state.center);
     return (
-      <div className="App">
-        <header className="App-header">
-          <CityList renderCity={this.renderCity}/>
-        </header>
-        <div id="map">
-          <Map
-            city = {this.state.city}
-            center = {this.state.center}
-            zoom = {this.state.zoom}
-          />
-        </div>
-      </div>
+    <Navigation />
     );
   }
 }
 
-const CityButton = (props) => {
+const Navigation = () => {
   return (
-    <Button
-      data-index = {props.index}
-      onClick={props.renderCity}
-      color='white'
-      bg='#282c34'
-      mx={.5}>
-      {props.name}
-    </Button>
-  )
-};
+  <div>
+    <nav class="navbar">
+      <Box
+        bg='#282c34'
+        color='white'
+        p={3}
+         >
+        <Link to="/">Home</Link>{" "}
+        <Link to="About">About</Link>
+      </Box>
+    </nav>
 
-const CityList = (props) => {
-  return cities.map((city, index) => <CityButton name={city.name} index={index} renderCity={props.renderCity}/>)
+      <Router>
+        <Home path="/" />
+        <About path="/About" />
+    </Router>
+</div>
+  )
 }
 
-export default App
+export default App;

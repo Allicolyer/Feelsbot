@@ -3,8 +3,8 @@ import { Map, GoogleApiWrapper, InfoWindow, Marker } from 'google-maps-react';
 import twitterData from './twitterData'
 
 const mapStyles = {
-  width: '80%',
-  height: '100%'
+  width: '100%',
+  height: '80%'
 };
 
 export class MapContainer extends Component {
@@ -73,5 +73,5 @@ getMarkers(){
 }
 
 export default GoogleApiWrapper({
-  apiKey: 'AIzaSyD-uS3jtZAosd0XdO5RWHSDW1L_r7fIZVk'
+  apiKey: ''
 })(MapContainer);
