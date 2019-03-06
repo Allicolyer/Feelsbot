@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
 import { Map, GoogleApiWrapper, InfoWindow, Marker } from 'google-maps-react';
+import twitterData from './twitterData'
 
 const mapStyles = {
-  width: '100%',
+  width: '80%',
   height: '100%'
 };
 
@@ -31,12 +32,14 @@ onClose = props => {
 
 getMarkers(){
   return (
-    mapData.map(place => {
+    twitterData.statuses.map(object => {
       return (
         <Marker
           onClick={this.onMarkerClick}
-          name={place.name}
-          position={{lat: place.lat, lng: place.lng }}
+          name={object.user.name}
+          position={
+            {lat: (40.7127 + .1*(Math.random()-.5)),
+              lng: (-74.0059 + .1*(Math.random()-.5))}}
         />
       )
     })
@@ -47,12 +50,12 @@ getMarkers(){
     return (
     <Map
         google={this.props.google}
-        zoom={14}
+        zoom={this.props.zoom}
         style={mapStyles}
-        initialCenter={{ lat: -1.2884, lng: 36.8233 }}
+        center={this.props.center}
       >
 
-        {this.getMarkers()}
+        {/* {this.getMarkers()} */}
 
         <InfoWindow
           marker={this.state.activeMarker}
@@ -69,14 +72,6 @@ getMarkers(){
   }
 }
 
-const mapData= [{lat: -1.2895, lng: 36.8253, name:"Appliance Store"},
-                    {lat: -1.2875, lng: 36.8253, name:"Laundry Mat"},
-                    {lat: -1.2900, lng: 36.8240, name:"Recycling Facility"},
-                    {lat: -1.2888, lng: 36.8288, name:"Boomers"},
-                    {lat: -1.2888, lng: 36.8330, name:"Taco Truck"}]
-
-
 export default GoogleApiWrapper({
   apiKey: 'AIzaSyD-uS3jtZAosd0XdO5RWHSDW1L_r7fIZVk'
 })(MapContainer);
-
