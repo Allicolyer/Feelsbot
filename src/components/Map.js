@@ -73,5 +73,5 @@ getMarkers(){
 }
 
 export default GoogleApiWrapper({
-  apiKey: ''
+  apiKey: process.env.REACT_APP_MAPS_KEY
 })(MapContainer);
