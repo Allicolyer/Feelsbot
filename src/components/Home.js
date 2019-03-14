@@ -3,8 +3,8 @@ import '../styles/App.css';
 import Map from './Map';
 import cities from './cityData';
 import { Button } from 'rebass';
-const uri =
-	'https://wt-6233a9ed12487194abb064da22ff3e86-0.sandbox.auth0-extend.com/twitter-api?q=graphql';
+const uri = process.env.REACT_APP_TWITTER_URI
+
 class Home extends Component {
 	constructor() {
 		super();
@@ -17,17 +17,6 @@ class Home extends Component {
 		};
 	}
 
-	componentDidMount() {
-		return fetch(uri)
-			.then((res) => res.json())
-			.then((r) => {
-				console.log('res', r);
-				return this.setState({
-					tweets: r.statuses
-				});
-			})
-			.catch((err) => console.error(err));
-	}
 	renderCity = (e) => {
 		e.preventDefault();
 		let city = e.target.textContent;
@@ -37,7 +26,24 @@ class Home extends Component {
 			center: { lat: cityData.lat, lng: cityData.lng },
 			zoom: cityData.zoom
 		});
+		this.grabTweets(cityData.lat,cityData.lng,cityData.miles)
 	};
+
+	grabTweets = (lat, lng, m) => {
+		return fetch(`${uri}&geocode=${lat},${lng},${m}mi`)
+			.then((res) => res.json())
+			.then((r) => {
+				console.log('res', r);
+				let tweets = JSON.stringify(r.statuses.map(status => status.user.name))
+				document.getElementById("tweets").innerHTML = `${tweets}`
+
+				return this.setState({
+					tweets: r.statuses
+				});
+			})
+			.catch((err) => console.error(err));
+	}
+
 
 	render() {
 		const { tweets } = this.state;
@@ -48,11 +54,7 @@ class Home extends Component {
 					<h1> Pick a City</h1>
 					<CityList renderCity={this.renderCity} />
 				</header>
-				{tweets && (
-					<pre>
-						<code>{JSON.stringify(tweets)}</code>
-					</pre>
-				)}
+				<div id="tweets"></div>
 				<div id="map">
 					<Map
 						city={this.state.city}
