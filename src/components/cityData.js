@@ -75,6 +75,20 @@ const cities = [
     lng: -0.1275,
     miles: 10,
     zoom: 11
+  },
+  {
+    name: "Irvine",
+    lat: 33.6846,
+    lng: -117.8265,
+    miles: 10,
+    zoom: 13
+  },
+  {
+    name: "Toronto",
+    lat: 43.6532,
+    lng: -79.3832,
+    miles: 10,
+    zoom: 13
   }
 ]
 
