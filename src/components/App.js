@@ -19,7 +19,7 @@ class App extends Component {
 const Navigation = () => {
   return (
   <div>
-    <nav class="navbar">
+    <nav className="navbar">
       <Box
         bg='#282c34'
         color='white'
