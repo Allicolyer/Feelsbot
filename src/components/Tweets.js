@@ -3,11 +3,11 @@ import gql from "graphql-tag";
 import Emotion from "./Emotion";
 import { Query } from "react-apollo";
 
-const Posts = props => (
+const Tweets = props => (
   <Query
     query={gql`
       {
-        posts(lat: ${props.lat}, lng: ${props.lng}, m: ${props.m}) {
+        tweets(lat: ${props.lat}, lng: ${props.lng}, m: ${props.m}) {
           text
           created_at
           user {
@@ -29,20 +29,30 @@ const Posts = props => (
               <th>Name</th>
               <th>Location</th>
               <th>Text</th>
-              <th>Joy, Sadness</th>
+              <th>Emotions</th>
             </tr>
           </thead>
           <tbody>
-            {data.posts.map(post => (
+            {data.tweets.map(tweet => (
               <tr>
-                <td>{post.user.name}</td>
-                <td>{post.user.location}</td>
-                <td>{post.text}</td>
+                <td>{tweet.user.name}</td>
+                <td>{tweet.user.location}</td>
+                <td>{tweet.text}</td>
+                {console.groupCollapsed()}
+                {console.log("before", tweet.text)}
+                {console.log(
+                  "after",
+                  tweet.text
+                    .replace(/(\r\n|\n|\r)/gm, " ")
+                    .replace(/['"]+/g, "")
+                )}
+                {console.groupEnd()}
                 <td>
                   <Emotion
-                    text={`"${post.text.replace(/(\r\n|\n|\r)/gm, " ")}"`}
+                    text={`"${tweet.text
+                      .replace(/(\r\n|\n|\r)/gm, " ")
+                      .replace(/['"]+/g, "")}"`}
                   />
-                  {console.log(post.text)}
                 </td>
               </tr>
             ))}
@@ -53,4 +63,4 @@ const Posts = props => (
   </Query>
 );
 
-export default Posts;
+export default Tweets;

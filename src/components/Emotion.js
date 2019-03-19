@@ -9,6 +9,7 @@ const Emotion = props => (
         emotion(text: ${props.text}){
           joy
           sadness
+          anger
       }
     }
     `}
@@ -20,7 +21,13 @@ const Emotion = props => (
         <div>
           {data.emotion.map(post => (
             <div>
-              {post.joy},{post.sadness}
+              <strong>Joy:</strong>
+              {post.joy} <br />
+              <strong>Sadness:</strong>
+              {post.sadness}
+              <br />
+              <strong>Anger:</strong>
+              {post.anger}
             </div>
           ))}
         </div>

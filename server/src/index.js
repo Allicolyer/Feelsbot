@@ -1,6 +1,5 @@
 const { ApolloServer } = require("apollo-server");
 const fetch = require("node-fetch");
-
 const { importSchema } = require("graphql-import");
 const typeDefs = importSchema("./src/schema.graphql");
 
@@ -9,7 +8,7 @@ const imbUrl = ``;
 
 const resolvers = {
   Query: {
-    posts: (parent, args) => {
+    tweets: (parent, args) => {
       const { lat, lng, m } = args;
       return fetch(`${twitterURL}&geocode=${lat},${lng},${m}mi`)
         .then(res => res.json())

@@ -1,21 +1,22 @@
 type Query {
-  posts(lat: Float!, lng: Float!, m: Int!): [Post!]!
+  tweets(lat: Float!, lng: Float!, m: Int!): [Tweet!]!
   emotion(text: String!): [Emotion!]
 }
 
-type Post {
+type Tweet {
   id: ID!
   text: String!
   created_at: String!
   coordinates: String
   user: User!
+  emotion: [Emotion]
 }
 
 type User {
   name: String!
   screen_name: String!
   location: String!
-  posts: [Post]
+  tweets: [Tweet]
 }
 
 type Emotion {

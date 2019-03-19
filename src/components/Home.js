@@ -3,7 +3,7 @@ import "../styles/App.css";
 import Map from "./Map";
 import cities from "./cityData";
 import { Button } from "rebass";
-import Posts from "./Posts";
+import Tweets from "./Tweets";
 
 class Home extends Component {
   constructor() {
@@ -37,7 +37,7 @@ class Home extends Component {
         <header className="App-header">
           <h1> Pick a City</h1>
           <CityList renderCity={this.renderCity} />
-          <Posts
+          <Tweets
             lat={this.state.center.lat}
             lng={this.state.center.lng}
             m={this.state.miles}
