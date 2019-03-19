@@ -18,7 +18,7 @@ class Home extends Component {
     };
   }
 
-  //renders the maps for the city that wsa clicked on. Triggers the function that
+  //renders the maps for the city that was clicked on.
   renderCity = e => {
     e.preventDefault();
     let city = e.target.textContent;

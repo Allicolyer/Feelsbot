@@ -39,7 +39,10 @@ const Posts = props => (
                 <td>{post.user.location}</td>
                 <td>{post.text}</td>
                 <td>
-                  <Emotion text={`"${post.text}"`} />
+                  <Emotion
+                    text={`"${post.text.replace(/(\r\n|\n|\r)/gm, " ")}"`}
+                  />
+                  {console.log(post.text)}
                 </td>
               </tr>
             ))}
