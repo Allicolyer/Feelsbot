@@ -3,7 +3,9 @@ import '../styles/App.css';
 import Map from './Map';
 import cities from './cityData';
 import { Button } from 'rebass';
-const uri = process.env.REACT_APP_TWITTER_URI
+import ibmRequest from './ibm-request';
+
+const twitterURL = process.env.REACT_APP_TWITTER_URI
 
 class Home extends Component {
 	constructor() {
@@ -17,6 +19,8 @@ class Home extends Component {
 		};
 	}
 
+	//renders the maps for the city that wsa clicked on. Triggers the function that
+	// grabs the tweets from the twitter API with that city's data
 	renderCity = (e) => {
 		e.preventDefault();
 		let city = e.target.textContent;
@@ -29,24 +33,33 @@ class Home extends Component {
 		this.grabTweets(cityData.lat,cityData.lng,cityData.miles)
 	};
 
+	//function that returns the city's tweets
 	grabTweets = (lat, lng, m) => {
-		return fetch(`${uri}&geocode=${lat},${lng},${m}mi`)
+		return fetch(`${twitterURL}&geocode=${lat},${lng},${m}mi`)
 			.then((res) => res.json())
-			.then((r) => {
-				console.log('res', r);
-				let tweets = JSON.stringify(r.statuses.map(status => status.user.name))
-				document.getElementById("tweets").innerHTML = `${tweets}`
-
-				return this.setState({
-					tweets: r.statuses
-				});
-			})
+				.then((r) => {
+					console.log('res', r);
+					let tweets = JSON.stringify(r.statuses.map(status => `<tr><td>${status.user.name}</td><td>${status.text}</td></tr>`))
+					document.getElementById("tweets").innerHTML = `<table>${tweets}</table>`
+						// if the tweet is long enough, detect the emotion in it
+						if (r.statuses[0].text.length > 100) {
+							this.detectEmotion(r.statuses[0].text);
+							console.log(r.statuses[0].text);
+						};
+					return this.setState({
+						tweets: r.statuses
+					});
+				})
 			.catch((err) => console.error(err));
 	}
 
+	//uses the IBM Natural Language Understanding API to detect emotion behind tweets
+	detectEmotion = async (text) => {
+		let ibmresponse = await ibmRequest(`${text}`);
+		console.log(ibmresponse.emotion.document.emotion);
+	 };
 
 	render() {
-		const { tweets } = this.state;
 		console.log('state', this.state.center);
 		return (
 			<div className="App">
