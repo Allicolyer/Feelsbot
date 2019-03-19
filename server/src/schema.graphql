@@ -19,9 +19,9 @@ type User {
 }
 
 type Emotion {
-  anger: String
-  disgust: String
-  fear: String
-  joy: String
-  sadness: String
+  anger: Float
+  disgust: Float
+  fear: Float
+  joy: Float
+  sadness: Float
 }

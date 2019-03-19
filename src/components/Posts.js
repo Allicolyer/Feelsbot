@@ -25,21 +25,25 @@ const Posts = props => (
       return (
         <table>
           <thead>
-            <td>Name</td>
-            <td>Location</td>
-            <td>Text</td>
-            <td>Joy, Sadness</td>
-          </thead>
-          {data.posts.map(post => (
             <tr>
-              <td>{post.user.name}</td>
-              <td>{post.user.location}</td>
-              <td>{post.text}</td>
-              <td>
-                <Emotion text={`"${post.text}"`} />
-              </td>
+              <th>Name</th>
+              <th>Location</th>
+              <th>Text</th>
+              <th>Joy, Sadness</th>
             </tr>
-          ))}
+          </thead>
+          <tbody>
+            {data.posts.map(post => (
+              <tr>
+                <td>{post.user.name}</td>
+                <td>{post.user.location}</td>
+                <td>{post.text}</td>
+                <td>
+                  <Emotion text={`"${post.text}"`} />
+                </td>
+              </tr>
+            ))}
+          </tbody>
         </table>
       );
     }}
