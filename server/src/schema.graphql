@@ -1,0 +1,27 @@
+type Query {
+  posts(lat: Float!, lng: Float!, m: Int!): [Post!]!
+  emotion(text: String!): [Emotion!]
+}
+
+type Post {
+  id: ID!
+  text: String!
+  created_at: String!
+  coordinates: String
+  user: User!
+}
+
+type User {
+  name: String!
+  screen_name: String!
+  location: String!
+  posts: [Post]
+}
+
+type Emotion {
+  anger: String
+  disgust: String
+  fear: String
+  joy: String
+  sadness: String
+}

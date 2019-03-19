@@ -1,77 +1,77 @@
 const cities = [
   {
     name: "New York",
-    lat:40.7127,
+    lat: 40.7127,
     lng: -74.0059,
     miles: 12,
     zoom: 11
   },
   {
     name: "Philadelphia",
-    lat:39.9500,
+    lat: 39.95,
     lng: -75.1667,
     miles: 8,
     zoom: 12
   },
   {
     name: "Montreal",
-    lat:45.5017,
+    lat: 45.5017,
     lng: -73.5673,
     miles: 10,
     zoom: 11
   },
   {
     name: "Miami",
-    lat:25.7753,
+    lat: 25.7753,
     lng: -80.2089,
     miles: 10,
     zoom: 11
   },
   {
     name: "Honolulu",
-    lat:21.3000,
+    lat: 21.3,
     lng: -157.8167,
     miles: 6,
     zoom: 13
   },
   {
     name: "Los Angeles",
-    lat:34.0500,
-    lng: -118.2500,
+    lat: 34.05,
+    lng: -118.25,
     miles: 18,
     zoom: 11
   },
   {
     name: "San Francisco",
-    lat:37.7833,
+    lat: 37.7833,
     lng: -122.4167,
     miles: 10,
     zoom: 11
   },
   {
     name: "Portland",
-    lat:45.5200,
+    lat: 45.52,
     lng: -122.6819,
     miles: 10,
     zoom: 11
   },
   {
     name: "Denver",
-    lat:39.7392,
+    lat: 39.7392,
     lng: -104.9903,
     miles: 8,
     zoom: 12
   },
   {
     name: "Vancouver",
-    lat:49.2827,
+    lat: 49.2827,
     lng: -123.1207,
     miles: 10,
     zoom: 11
   },
   {
     name: "London",
-    lat:51.5072,
+    lat: 51.5072,
     lng: -0.1275,
     miles: 10,
     zoom: 11
@@ -90,6 +90,6 @@ const cities = [
     miles: 10,
     zoom: 13
   }
-]
+];
 
-export default cities
+export default cities;
