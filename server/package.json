@@ -1,0 +1,19 @@
+{
+  "name": "graphql-rest-wrapper",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "node src/index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "apollo-server": "^2.4.8",
+    "graphql": "^14.1.1",
+    "graphql-import": "^0.7.1",
+    "node-fetch": "^2.0.0"
+  }
+}

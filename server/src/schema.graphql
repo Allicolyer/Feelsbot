@@ -1,0 +1,28 @@
+type Query {
+  tweets(lat: Float!, lng: Float!, m: Int!): [Tweet!]!
+  emotion(text: String!): [Emotion!]
+}
+
+type Tweet {
+  id: ID!
+  text: String!
+  created_at: String!
+  coordinates: String
+  user: User!
+  emotion: [Emotion]
+}
+
+type User {
+  name: String!
+  screen_name: String!
+  location: String!
+  tweets: [Tweet]
+}
+
+type Emotion {
+  anger: Float
+  disgust: Float
+  fear: Float
+  joy: Float
+  sadness: Float
+}

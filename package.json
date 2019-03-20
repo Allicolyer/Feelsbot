@@ -4,9 +4,13 @@
 	"private": true,
 	"dependencies": {
 		"@reach/router": "^1.2.1",
+		"apollo-boost": "^0.3.1",
 		"google-maps-react": "^2.0.2",
+		"graphql": "^14.1.1",
+		"graphql-tag": "^2.10.1",
 		"qs": "^6.6.0",
 		"react": "^16.8.3",
+		"react-apollo": "^2.5.2",
 		"react-dom": "^16.8.3",
 		"react-scripts": "2.1.5",
 		"rebass": "^3.0.1",
