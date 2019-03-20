@@ -6,6 +6,10 @@ const typeDefs = importSchema("./src/schema.graphql");
 const twitterURL = ``;
 const imbUrl = ``;
 
+cleanedText = text => {
+  return text.replace(/(\r\n|\n|\r)/gm, " ").replace(/['"]+/g, "");
+};
+
 const resolvers = {
   Query: {
     tweets: (parent, args) => {
@@ -16,6 +20,20 @@ const resolvers = {
     },
     emotion: (parent, args) => {
       const { text } = args;
+      return fetch(`${imbUrl}`, {
+        body: `{"text":"${cleanedText(text)}","features":{"emotion":{}}}`,
+        headers: {
+          "Content-Type": "application/json"
+        },
+        method: "POST"
+      })
+        .then(res => res.json())
+        .then(r => [r.emotion.document.emotion]);
+    }
+  },
+  Tweet: {
+    emotion: parent => {
+      const text = cleanedText(parent.text);
       return fetch(`${imbUrl}`, {
         body: `{"text":"${text}","features":{"emotion":{}}}`,
         headers: {

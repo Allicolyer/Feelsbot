@@ -1,6 +1,5 @@
 import React from "react";
 import gql from "graphql-tag";
-import Emotion from "./Emotion";
 import { Query } from "react-apollo";
 
 const Tweets = props => (
@@ -13,6 +12,13 @@ const Tweets = props => (
           user {
             name
             location
+          }
+          emotion {
+            joy
+            sadness
+            anger
+            fear
+            disgust
           }
         }
       }
@@ -29,7 +35,11 @@ const Tweets = props => (
               <th>Name</th>
               <th>Location</th>
               <th>Text</th>
-              <th>Emotions</th>
+              <th>Joy</th>
+              <th>Sadness</th>
+              <th>Anger</th>
+              <th>Fear</th>
+              <th>Disgust</th>
             </tr>
           </thead>
           <tbody>
@@ -38,22 +48,11 @@ const Tweets = props => (
                 <td>{tweet.user.name}</td>
                 <td>{tweet.user.location}</td>
                 <td>{tweet.text}</td>
-                {console.groupCollapsed()}
-                {console.log("before", tweet.text)}
-                {console.log(
-                  "after",
-                  tweet.text
-                    .replace(/(\r\n|\n|\r)/gm, " ")
-                    .replace(/['"]+/g, "")
-                )}
-                {console.groupEnd()}
-                <td>
-                  <Emotion
-                    text={`"${tweet.text
-                      .replace(/(\r\n|\n|\r)/gm, " ")
-                      .replace(/['"]+/g, "")}"`}
-                  />
-                </td>
+                <td>{tweet.emotion[0].joy}</td>
+                <td>{tweet.emotion[0].sadness}</td>
+                <td>{tweet.emotion[0].anger}</td>
+                <td>{tweet.emotion[0].fear}</td>
+                <td>{tweet.emotion[0].disgust}</td>
               </tr>
             ))}
           </tbody>
