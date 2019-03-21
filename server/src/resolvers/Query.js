@@ -1,6 +1,7 @@
 const cleanedText = require("./cleanedText");
 const fetch = require("node-fetch");
 const urls = require("./urls");
+const cities = require("./cityData.js");
 
 const Query = {
   tweets: (parent, args) => {
@@ -20,7 +21,9 @@ const Query = {
     })
       .then(res => res.json())
       .then(r => [r.emotion.document.emotion]);
-  }
+  },
+  cities: () => cities,
+  findCity: (parent, args) => cities.filter(city => city.name === args.name)
 };
 
 module.exports = Query;
