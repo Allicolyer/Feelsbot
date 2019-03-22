@@ -1,27 +1,10 @@
-const cleanedText = require("./cleanedText");
-const fetch = require("node-fetch");
-const urls = require("./urls");
 const cities = require("./cityData.js");
+const { tweets } = require("./api-calls");
+const { emotion } = require("./api-calls");
 
 const Query = {
-  tweets: (parent, args) => {
-    const { lat, lng, m } = args;
-    return fetch(`${urls.twitter}&geocode=${lat},${lng},${m}mi`)
-      .then(res => res.json())
-      .then(r => r.statuses);
-  },
-  emotion: (parent, args) => {
-    const { text } = args;
-    return fetch(`${urls.ibm}`, {
-      body: `{"text":"${cleanedText(text)}","features":{"emotion":{}}}`,
-      headers: {
-        "Content-Type": "application/json"
-      },
-      method: "POST"
-    })
-      .then(res => res.json())
-      .then(r => [r.emotion.document.emotion]);
-  },
+  tweets: (parent, args) => tweets(args.lat, args.lng, args.m),
+  emotion: (parent, args) => emotion(args.text),
   cities: () => cities,
   findCity: (parent, args) => cities.filter(city => city.name === args.name)
 };

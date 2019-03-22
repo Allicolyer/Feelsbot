@@ -1,14 +1,7 @@
-const fetch = require("node-fetch");
-const urls = require("./urls");
+const { tweets } = require("./api-calls");
 
 const City = {
-  tweets: parent => {
-    return fetch(
-      `${urls.twitter}&geocode=${parent.lat},${parent.lng},${parent.miles}mi`
-    )
-      .then(res => res.json())
-      .then(r => r.statuses);
-  }
+  tweets: parent => tweets(parent.lat, parent.lng, parent.miles)
 };
 
 module.exports = City;
