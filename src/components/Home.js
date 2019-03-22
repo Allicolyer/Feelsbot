@@ -43,7 +43,6 @@ class Home extends Component {
             m={this.state.miles}
           />
         </header>
-        <div id="tweets" />
         <div id="map">
           <Map
             city={this.state.city}
