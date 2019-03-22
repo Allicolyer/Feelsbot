@@ -20,7 +20,19 @@ emotion = text => {
     method: "POST"
   })
     .then(res => res.json())
-    .then(r => r.emotion.document.emotion);
+    .then(r => {
+      if (r.error) {
+        return {
+          joy: 0,
+          sadness: 0,
+          anger: 0,
+          fear: 0,
+          disgust: 0
+        };
+      } else {
+        return r.emotion.document.emotion;
+      }
+    });
 };
 
 module.exports = {

@@ -27,6 +27,9 @@ const Tweets = props => (
     {({ loading, error, data }) => {
       if (loading) return "Loading...";
       if (error) return `Error! ${error.message}`;
+      let emotions = [];
+      data.tweets.map(tweet => emotions.push(tweet.emotion));
+      let rating = averages(emotions);
 
       return (
         <table>
@@ -55,11 +58,36 @@ const Tweets = props => (
                 <td>{tweet.emotion.disgust}</td>
               </tr>
             ))}
+            <tr>
+              <td />
+              <td />
+              <td> Averages: </td>
+              <td>{rating.joy}</td>
+              <td>{rating.sadness}</td>
+              <td>{rating.anger}</td>
+              <td>{rating.fear}</td>
+              <td>{rating.disgust}</td>
+            </tr>
           </tbody>
         </table>
       );
     }}
   </Query>
 );
+
+function averages(input) {
+  let rating = {};
+  let keys = Object.keys(input[0]);
+  //removes any entries that are 0
+  let emotions = input.filter(a => a.joy);
+  //for each emotion find the average and add it to the rating object
+  keys.forEach(key => {
+    let average =
+      emotions.map(emotion => emotion[key]).reduce((a, b) => a + b) /
+      emotions.length;
+    rating[key] = average;
+  });
+  return rating;
+}
 
 export default Tweets;

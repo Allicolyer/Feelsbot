@@ -2,7 +2,7 @@ type Query {
   cities: [City!]
   findCity(name: String!): [City!]
   tweets(lat: Float!, lng: Float!, m: Int!): [Tweet!]!
-  emotion(text: String!): [Emotion!]
+  emotion(text: String!): Emotion!
 }
 
 type City {
