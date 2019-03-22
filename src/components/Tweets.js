@@ -48,11 +48,11 @@ const Tweets = props => (
                 <td>{tweet.user.name}</td>
                 <td>{tweet.user.location}</td>
                 <td>{tweet.text}</td>
-                <td>{tweet.emotion[0].joy}</td>
-                <td>{tweet.emotion[0].sadness}</td>
-                <td>{tweet.emotion[0].anger}</td>
-                <td>{tweet.emotion[0].fear}</td>
-                <td>{tweet.emotion[0].disgust}</td>
+                <td>{tweet.emotion.joy}</td>
+                <td>{tweet.emotion.sadness}</td>
+                <td>{tweet.emotion.anger}</td>
+                <td>{tweet.emotion.fear}</td>
+                <td>{tweet.emotion.disgust}</td>
               </tr>
             ))}
           </tbody>
