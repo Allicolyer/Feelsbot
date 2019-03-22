@@ -20,7 +20,7 @@ emotion = text => {
     method: "POST"
   })
     .then(res => res.json())
-    .then(r => [r.emotion.document.emotion]);
+    .then(r => r.emotion.document.emotion);
 };
 
 module.exports = {
