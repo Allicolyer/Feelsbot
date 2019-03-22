@@ -1,6 +1,17 @@
 type Query {
+  cities: [City!]
+  findCity(name: String!): [City!]
   tweets(lat: Float!, lng: Float!, m: Int!): [Tweet!]!
   emotion(text: String!): [Emotion!]
+}
+
+type City {
+  name: String!
+  lat: Float!
+  lng: Float!
+  miles: Int!
+  zoom: Int!
+  tweets: [Tweet!]
 }
 
 type Tweet {
@@ -9,14 +20,7 @@ type Tweet {
   created_at: String!
   coordinates: String
   user: User!
-  emotion: [Emotion]
-}
-
-type User {
-  name: String!
-  screen_name: String!
-  location: String!
-  tweets: [Tweet]
+  emotion: Emotion
 }
 
 type Emotion {
@@ -25,4 +29,11 @@ type Emotion {
   fear: Float
   joy: Float
   sadness: Float
+}
+
+type User {
+  name: String!
+  screen_name: String!
+  location: String!
+  tweets: [Tweet]
 }
