@@ -14,7 +14,7 @@ class Home extends Component {
       center: { lat: 40.7127, lng: -74.0059 },
       miles: 11,
       zoom: 13,
-      tweets: null
+      rating: null
     };
   }
 

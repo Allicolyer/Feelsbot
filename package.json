@@ -12,7 +12,8 @@
 		"react": "^16.8.3",
 		"react-apollo": "^2.5.2",
 		"react-dom": "^16.8.3",
-		"react-scripts": "2.1.5",
+		"react-scripts": "^2.1.8",
+		"react-step-progress-bar": "^1.0.3",
 		"rebass": "^3.0.1",
 		"styled-components": "^4.1.3"
 	},
