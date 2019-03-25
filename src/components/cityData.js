@@ -89,6 +89,20 @@ const cities = [
     lng: -79.3832,
     miles: 10,
     zoom: 13
+  },
+  {
+    name: "Delhi",
+    lat: 28.6304,
+    lng: 77.2177,
+    miles: 10,
+    zoom: 13
+  },
+  {
+    name: "Copenhagen",
+    lat: 55.6761,
+    lng: 12.5683,
+    miles: 10,
+    zoom: 13
   }
 ];
 
