@@ -20,15 +20,17 @@ type Tweet {
   created_at: String!
   coordinates: String
   user: User!
+  url: String
   emotion: Emotion
 }
 
 type Emotion {
-  anger: Float
-  disgust: Float
-  fear: Float
-  joy: Float
-  sadness: Float
+  anger: Float!
+  disgust: Float!
+  fear: Float!
+  joy: Float!
+  sadness: Float!
+  category: [String]
 }
 
 type User {
