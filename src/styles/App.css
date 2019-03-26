@@ -12,3 +12,24 @@
   text-decoration: none;
   color: white;
 }
+
+#root,
+#app,
+#map {
+  height: 100%;
+}
+
+#map-tweet-wrapper {
+  display: flex;
+}
+
+#map {
+  height: 600px;
+  width: 48%;
+  padding: 10px;
+}
+
+#tweet-wrapper {
+  padding: 10px;
+  width: 48%;
+}

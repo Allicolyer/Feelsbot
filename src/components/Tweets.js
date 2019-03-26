@@ -33,7 +33,7 @@ const Tweets = props => (
   >
     {({ loading, error, data }) => {
       // if (loading) return "Loading...";
-      if (error) return `Error! ${error.message}`;
+      if (error) return `Search for a place!`;
 
       let tweets = [];
       let rating = {
@@ -59,7 +59,7 @@ const Tweets = props => (
       }
 
       return (
-        <div>
+        <div id="tweet-wrapper">
           <div id="meter">
             <h3> Joy Meter: {percentage}% </h3>
             <HappyMeter className="meter" percent={percentage} />
