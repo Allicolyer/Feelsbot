@@ -22,6 +22,7 @@ server/node_modules
 test.http
 /server/src/resolvers/urls.js
 webtask-snippet.js
+sample.json
 
 npm-debug.log*
 yarn-debug.log*
