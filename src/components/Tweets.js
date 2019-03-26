@@ -2,7 +2,8 @@ import React from "react";
 import gql from "graphql-tag";
 import { Query } from "react-apollo";
 import HappyMeter from "./HappyMeter";
-import TweetTable from "./TweetTable";
+import { Accordion } from "react-light-accordion";
+import TweetAccordion from "./TweetAccordion";
 
 const GET_TWEETS = gql`
   query($lat: Float!, $lng: Float!, $m: Int!) {
@@ -48,28 +49,46 @@ const Tweets = props => (
         tweets = data.tweets;
         rating = sorter(tweets);
         percentage = Math.floor(
-          (rating.joy.num / (rating.joy.num + rating.sadness.num)) * 100
+          (rating.joy.num /
+            (rating.joy.num +
+              rating.sadness.num +
+              rating.fear.num +
+              rating.disgust.num)) *
+            100
         );
       }
 
       return (
         <div>
-          <ul>
-            <li>{rating.total} </li>
-            <li>{rating.joy.num}</li>
-            <li>{rating.sadness.num}</li>
-            <li>{rating.anger.num}</li>
-            <li>{rating.fear.num}</li>
-            <li>{rating.disgust.num}</li>
-          </ul>
           <div id="meter">
             <h3> Joy Meter: {percentage}% </h3>
             <HappyMeter className="meter" percent={percentage} />
+            <br />
+            <br />
           </div>
           <div>
-            <TweetTable tweets={rating.joy.tweets} title={"Happy Tweets"} />
-            <TweetTable tweets={rating.sadness.tweets} title={"Sad Tweets"} />
-            <TweetTable tweets={rating.sadness.tweets} title={"Angry Tweets"} />
+            <Accordion atomic={true}>
+              <TweetAccordion
+                title={`${rating.joy.num} Happy Tweets`}
+                rating={rating.joy}
+              />
+              <TweetAccordion
+                title={`${rating.sadness.num} Sad Tweets`}
+                rating={rating.sadness}
+              />
+              <TweetAccordion
+                title={`${rating.anger.num} Angry Tweets`}
+                rating={rating.anger}
+              />
+              <TweetAccordion
+                title={`${rating.fear.num} Fearful Tweets`}
+                rating={rating.fear}
+              />
+              <TweetAccordion
+                title={`${rating.disgust.num} Disgusted Tweets`}
+                rating={rating.disgust}
+              />
+            </Accordion>
           </div>
         </div>
       );
@@ -85,8 +104,7 @@ function sorter(input) {
 
   //creates a new array that sorts each tweet by it's category
   keys.forEach(key => {
-    let filter = input.filter(a => a.emotion[key] > 0.6);
-
+    let filter = input.filter(a => a.emotion[key] > 0.65);
     rating[key] = {
       num: filter.length,
       tweets: filter
