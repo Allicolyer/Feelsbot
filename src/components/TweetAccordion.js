@@ -8,10 +8,10 @@ const TweetAccordion = props => {
       <AccordionItem title={props.title}>
         {props.rating.tweets.map(tweet => (
           <div>
-            <Heading as="h5">
+            <Heading as="h6">
               <a href={tweet.url}>{tweet.user.screen_name}</a>
             </Heading>
-            <Text fontSize={0}>{tweet.text}</Text>
+            <Text fontSize={3}>{tweet.text}</Text>
           </div>
         ))}
       </AccordionItem>
