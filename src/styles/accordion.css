@@ -44,7 +44,7 @@
   content: "\2796";
 }
 .accordion .accordion-item.active .panel {
-  max-height: 500px;
+  max-height: 250px;
   -webkit-transition: max-height 0.25s ease-in;
   -o-transition: max-height 0.25s ease-in;
   transition: max-height 0.25s ease-in;
