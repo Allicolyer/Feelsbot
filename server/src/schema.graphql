@@ -15,7 +15,7 @@ type City {
 }
 
 type Tweet {
-  id: ID!
+  id_str: ID!
   text: String!
   created_at: String!
   coordinates: String
