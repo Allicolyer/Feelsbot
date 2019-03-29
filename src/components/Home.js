@@ -1,17 +1,16 @@
 import React, { Component } from "react";
 import "../styles/App.css";
 import Map from "./Map";
+import { Heading } from "rebass";
 
 class Home extends Component {
   render() {
     return (
       <div className="App">
-        <header className="App-header">
-          <h1> Search for a Place</h1>
+        <header>
+          <Heading> Helen the Emotional Bot</Heading>
         </header>
-        <div id="wrapper">
-          <Map />
-        </div>
+        <Map />
       </div>
     );
   }

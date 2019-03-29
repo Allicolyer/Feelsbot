@@ -3,7 +3,7 @@ import "../styles/App.css";
 import Home from "./Home";
 import About from "./About";
 import { Router, Link } from "@reach/router";
-import { Box } from "rebass";
+import { Button } from "rebass";
 
 class App extends Component {
   render() {
@@ -15,9 +15,12 @@ const Navigation = () => {
   return (
     <div>
       <nav className="navbar">
-        <Box bg="#282c34" color="white" p={3}>
-          <Link to="/">Home</Link> <Link to="About">About</Link>
-        </Box>
+        <Button m={1} bg="black">
+          <Link to="/">Home</Link>
+        </Button>
+        <Button m={1} bg="black">
+          <Link to="About">About</Link>
+        </Button>
       </nav>
 
       <Router>

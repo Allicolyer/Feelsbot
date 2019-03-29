@@ -33,7 +33,7 @@ const Tweets = props => (
   >
     {({ loading, error, data }) => {
       // if (loading) return "Loading...";
-      if (error) return `Search for a place!`;
+      if (error) return `Search for an address and Helen will assses the mood.`;
 
       let tweets = [];
       let rating = {
@@ -56,6 +56,7 @@ const Tweets = props => (
               rating.disgust.num)) *
             100
         );
+        // console.log(data);
       }
 
       return (

@@ -8,9 +8,19 @@
   margin: 20px;
 }
 
+.navbar {
+  background: gray;
+  width: 100%;
+  text-align: center;
+  display: flex;
+  justify-content: left;
+  padding: 5px;
+}
+
 .navbar a {
   text-decoration: none;
   color: white;
+  display: inline;
 }
 
 #root,
@@ -19,8 +29,13 @@
   height: 100%;
 }
 
-#map-tweet-wrapper {
+#map-wrapper {
   display: flex;
+  flex-direction: column;
+}
+#tweet-map-wrapper {
+  display: flex;
+  flex-direction: row;
 }
 
 #map {
@@ -32,4 +47,19 @@
 #tweet-wrapper {
   padding: 10px;
   width: 48%;
+}
+
+#pac-container {
+  padding: 10px;
+}
+
+#pac-input {
+  width: 60%;
+  font-size: 1.5rem;
+  margin: 5px;
+}
+#miles-input {
+  width: 5%;
+  font-size: 1.5rem;
+  margin: 5px;
 }
