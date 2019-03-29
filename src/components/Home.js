@@ -1,14 +1,15 @@
 import React, { Component } from "react";
 import "../styles/App.css";
 import Map from "./Map";
-import { Heading } from "rebass";
+import { Text, Heading } from "rebass";
 
 class Home extends Component {
   render() {
     return (
       <div className="App">
         <header>
-          <Heading> Helen the Emotional Bot</Heading>
+          <Heading> Jackson the Emotional Bot</Heading>
+          <Text> What does a robot think of human's tweets? </Text>
         </header>
         <Map />
       </div>

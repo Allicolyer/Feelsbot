@@ -5,7 +5,7 @@ export default class Map extends React.Component {
   constructor() {
     super();
     this.state = {
-      zoom: 11,
+      zoom: 13,
       maptype: "roadmap",
       place: {
         place_formatted: "",
@@ -14,7 +14,7 @@ export default class Map extends React.Component {
         viewport: ""
       },
       center: { lat: 34.0522, lng: -118.2437 },
-      miles: 0.5
+      miles: 2
     };
   }
   componentDidMount() {
@@ -111,8 +111,9 @@ export default class Map extends React.Component {
     let milesinput = document.getElementById("miles-input");
     milesinput.addEventListener("change", () => {
       this.setState({
-        miles: parseInt(milesinput.value, 10)
+        miles: parseFloat(milesinput.value)
       });
+      // reset map with new search parameters
       updateMap(this.state.place, this.state.miles, this.state.center);
     });
   }
@@ -125,9 +126,6 @@ export default class Map extends React.Component {
           <input id="pac-input" type="text" placeholder="Search for a place" />
           <label for="miles-input">Miles</label>
           <input id="miles-input" type="text" />
-          <button id="submi" type="submit">
-            Submit
-          </button>
         </div>
         <div id="tweet-map-wrapper">
           <div id="map" />
