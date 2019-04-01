@@ -7,7 +7,7 @@ import ApolloClient from "apollo-boost";
 import { ApolloProvider } from "react-apollo";
 
 const client = new ApolloClient({
-  uri: "http://localhost:4000/"
+  uri: process.env.REACT_APP_SERVER_URI
 });
 
 ReactDOM.render(
