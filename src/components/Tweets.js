@@ -8,6 +8,7 @@ import TweetAccordion from "./TweetAccordion";
 const GET_TWEETS = gql`
   query($lat: Float!, $lng: Float!, $m: Int!) {
     tweets(lat: $lat, lng: $lng, m: $m) {
+      id_str
       text
       url
       user {
