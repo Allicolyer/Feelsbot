@@ -11,6 +11,12 @@ tweets = (lat, lng, miles) => {
     .then(r => r.statuses);
 };
 
+user = screen_name => {
+  return fetch(`${urls.twitterTimeline}?screen_name=${screen_name}`).then(res =>
+    res.json()
+  );
+};
+
 emotion = text => {
   return fetch(`${urls.ibm}`, {
     body: `{"text":"${cleanedText(text)}","features":{"emotion":{}}}`,
@@ -37,5 +43,6 @@ emotion = text => {
 
 module.exports = {
   tweets,
-  emotion
+  emotion,
+  user
 };
