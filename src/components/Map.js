@@ -32,7 +32,6 @@ export default class Map extends React.Component {
       this.setState({
         zoom: map.getZoom()
       });
-      console.log(this.state.zoom);
     });
 
     map.addListener("maptypeid_changed", () => {
@@ -122,9 +121,9 @@ export default class Map extends React.Component {
     return (
       <div id="map-wrapper">
         <div id="pac-container">
-          <label for="pac-input">Location:</label>
+          <label>Location:</label>
           <input id="pac-input" type="text" placeholder="Search for a place" />
-          <label for="miles-input">Miles</label>
+          <label>Miles</label>
           <input id="miles-input" type="text" />
         </div>
         <div id="tweet-map-wrapper">

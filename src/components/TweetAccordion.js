@@ -7,7 +7,7 @@ const TweetAccordion = props => {
     return (
       <AccordionItem title={props.title}>
         {props.rating.tweets.map(tweet => (
-          <div class="tweet">
+          <div className="tweet">
             <TwitterTweetEmbed
               tweetId={`${tweet.id_str}`}
               options={{ cards: "hidden" }}
