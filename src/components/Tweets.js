@@ -1,31 +1,10 @@
 import React from "react";
-import gql from "graphql-tag";
 import { Query } from "react-apollo";
+import { GET_TWEETS } from "./Queries";
+import { GET_TIMELINE } from "./Queries";
 import HappyMeter from "./HappyMeter";
 import { Accordion } from "react-light-accordion";
 import TweetAccordion from "./TweetAccordion";
-
-const GET_TWEETS = gql`
-  query($lat: Float!, $lng: Float!, $m: Int!) {
-    tweets(lat: $lat, lng: $lng, m: $m) {
-      id_str
-      text
-      url
-      user {
-        name
-        location
-        screen_name
-      }
-      emotion {
-        joy
-        sadness
-        anger
-        fear
-        disgust
-      }
-    }
-  }
-`;
 
 const Tweets = props => (
   <Query
@@ -34,7 +13,8 @@ const Tweets = props => (
   >
     {({ loading, error, data }) => {
       // if (loading) return "Loading...";
-      if (error) return `Search for an address and Helen will assses the mood.`;
+      if (error)
+        return `Error - Arnold has been overwhelmed with emotion. Please try again.`;
 
       let tweets = [];
       let rating = {
@@ -49,54 +29,66 @@ const Tweets = props => (
       if (!loading) {
         tweets = data.tweets;
         rating = sorter(tweets);
-        percentage = Math.floor(
-          (rating.joy.num /
-            (rating.joy.num +
-              rating.sadness.num +
-              rating.fear.num +
-              rating.disgust.num)) *
-            100
-        );
-        // console.log(data);
+        percentage = percent(rating);
       }
 
       return (
-        <div id="tweet-wrapper">
-          <div id="meter">
-            <h3> Joy Meter: {percentage}% </h3>
-            <HappyMeter className="meter" percent={percentage} />
-            <br />
-            <br />
-          </div>
-          <div>
-            <Accordion atomic={true}>
-              <TweetAccordion
-                title={`${rating.joy.num} Happy Tweets`}
-                rating={rating.joy}
-              />
-              <TweetAccordion
-                title={`${rating.sadness.num} Sad Tweets`}
-                rating={rating.sadness}
-              />
-              <TweetAccordion
-                title={`${rating.anger.num} Angry Tweets`}
-                rating={rating.anger}
-              />
-              <TweetAccordion
-                title={`${rating.fear.num} Fearful Tweets`}
-                rating={rating.fear}
-              />
-              <TweetAccordion
-                title={`${rating.disgust.num} Disgusted Tweets`}
-                rating={rating.disgust}
-              />
-            </Accordion>
-          </div>
-        </div>
+        <TweetWrapper
+          rating={rating}
+          percentage={percentage}
+          id={"tweet_wrapper"}
+        />
       );
     }}
   </Query>
 );
+
+const TweetTimeline = props => (
+  <Query query={GET_TIMELINE} variables={{ screen_name: props.screen_name }}>
+    {({ loading, error, data }) => {
+      // if (loading) return "Loading...";
+      if (error) return `Hold on a sec`;
+
+      let tweets = [];
+      let rating = {
+        total: "-",
+        joy: { num: "-", tweets: [] },
+        anger: { num: "-", tweets: [] },
+        sadness: { num: "-", tweets: [] },
+        fear: { num: "-", tweets: [] },
+        disgust: { num: "-", tweets: [] }
+      };
+      let percentage = "-";
+      if (!loading) {
+        tweets = data.user;
+        rating = sorter(tweets);
+        percentage = percent(rating);
+      }
+
+      return (
+        <TweetWrapper
+          rating={rating}
+          percentage={percentage}
+          id={"timeline_wrapper"}
+        />
+      );
+    }}
+  </Query>
+);
+
+function percent(input) {
+  let percentage = 0;
+  percentage = Math.floor(
+    (input.joy.num /
+      (input.joy.num +
+        input.anger.num +
+        input.sadness.num +
+        input.fear.num +
+        input.disgust.num)) *
+      100
+  );
+  return percentage;
+}
 
 function sorter(input) {
   let rating = {};
@@ -106,7 +98,7 @@ function sorter(input) {
 
   //creates a new array that sorts each tweet by it's category
   keys.forEach(key => {
-    let filter = input.filter(a => a.emotion[key] > 0.65);
+    let filter = input.filter(a => a.emotion[key] > 0.6);
     rating[key] = {
       num: filter.length,
       tweets: filter
@@ -116,4 +108,41 @@ function sorter(input) {
   return rating;
 }
 
-export default Tweets;
+const TweetWrapper = props => {
+  return (
+    <div id={props.id}>
+      <div id="meter">
+        <h3> Joy Meter: {props.percentage}% </h3>
+        <HappyMeter className="meter" percent={props.percentage} />
+        <br />
+        <br />
+      </div>
+      <div>
+        <Accordion atomic={true}>
+          <TweetAccordion
+            title={`${props.rating.joy.num} Happy Tweets`}
+            rating={props.rating.joy}
+          />
+          <TweetAccordion
+            title={`${props.rating.sadness.num} Sad Tweets`}
+            rating={props.rating.sadness}
+          />
+          <TweetAccordion
+            title={`${props.rating.anger.num} Angry Tweets`}
+            rating={props.rating.anger}
+          />
+          <TweetAccordion
+            title={`${props.rating.fear.num} Fearful Tweets`}
+            rating={props.rating.fear}
+          />
+          <TweetAccordion
+            title={`${props.rating.disgust.num} Disgusted Tweets`}
+            rating={props.rating.disgust}
+          />
+        </Accordion>
+      </div>
+    </div>
+  );
+};
+
+export { Tweets, TweetTimeline };

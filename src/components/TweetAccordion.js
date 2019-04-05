@@ -10,7 +10,7 @@ const TweetAccordion = props => {
           <div className="tweet">
             <TwitterTweetEmbed
               tweetId={`${tweet.id_str}`}
-              options={{ cards: "hidden" }}
+              // options={{ cards: "hidden" }}
             />
           </div>
         ))}
