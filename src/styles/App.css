@@ -4,8 +4,10 @@
   text-align: center;
 }
 
-.App-header {
-  margin: 20px;
+header {
+  margin: 0 auto;
+  width: 75%;
+  padding: 5px;
 }
 
 .navbar {
@@ -44,19 +46,26 @@
   padding: 10px;
 }
 
-#tweet-wrapper {
+#tweet_wrapper {
   padding: 10px;
   width: 48%;
+}
+
+#timeline_tweet_wrapper {
+  display: flex;
+  flex-direction: column;
+  width: 60%;
+  margin: 0 auto;
 }
 
 #pac-container {
   padding: 10px;
 }
 
-#pac-input {
-  width: 60%;
+.long-input {
+  width: 50%;
   font-size: 1.5rem;
-  margin: 5px;
+  margin: 0 auto;
 }
 #miles-input {
   width: 5%;
