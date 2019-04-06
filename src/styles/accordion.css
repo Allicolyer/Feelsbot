@@ -50,6 +50,10 @@
   transition: max-height 0.25s ease-in;
 }
 
+.accordion .accordion-item.active .panel .timeline {
+  max-height: 700px;
+}
+
 .title {
   font-size: 20px;
 }

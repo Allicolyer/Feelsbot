@@ -1,7 +1,7 @@
 import React from "react";
-import Tweets from "./Tweets";
+import { Tweets } from "./Tweets";
 
-export default class Map extends React.Component {
+class Map extends React.Component {
   constructor() {
     super();
     this.state = {
@@ -14,7 +14,8 @@ export default class Map extends React.Component {
         viewport: ""
       },
       center: { lat: 34.0522, lng: -118.2437 },
-      miles: 2
+      miles: 2,
+      renderTweets: false
     };
   }
   componentDidMount() {
@@ -75,6 +76,7 @@ export default class Map extends React.Component {
 
     // initialize the autocomplete functionality using the #pac-input input box
     let inputNode = document.getElementById("pac-input");
+    inputNode.value = "Los Angeles, CA, USA";
     let autoComplete = new window.google.maps.places.Autocomplete(inputNode);
 
     autoComplete.addListener("place_changed", () => {
@@ -100,7 +102,8 @@ export default class Map extends React.Component {
           viewport: place.geometry.viewport,
           place_location: location.toString()
         },
-        center: { lat: parseFloat(coords[0]), lng: parseFloat(coords[1]) }
+        center: { lat: parseFloat(coords[0]), lng: parseFloat(coords[1]) },
+        renderTweets: true
       });
 
       // bring the selected place in view on the map
@@ -108,6 +111,7 @@ export default class Map extends React.Component {
     });
 
     let milesinput = document.getElementById("miles-input");
+    milesinput.value = "2";
     milesinput.addEventListener("change", () => {
       this.setState({
         miles: parseFloat(milesinput.value)
@@ -119,22 +123,41 @@ export default class Map extends React.Component {
 
   render() {
     return (
-      <div id="map-wrapper">
-        <div id="pac-container">
-          <label>Location:</label>
-          <input id="pac-input" type="text" placeholder="Search for a place" />
-          <label>Miles</label>
-          <input id="miles-input" type="text" />
-        </div>
-        <div id="tweet-map-wrapper">
-          <div id="map" />
-          <Tweets
-            lat={this.state.center.lat}
-            lng={this.state.center.lng}
-            m={this.state.miles}
-          />
+      <div>
+        <div id="map-wrapper">
+          <div id="pac-container">
+            <label>Location:</label>
+            <input
+              className="long-input"
+              id="pac-input"
+              type="text"
+              placeholder="Search for a place"
+            />
+            <label>Miles</label>
+            <input id="miles-input" type="text" />
+          </div>
+          <div id="tweet-map-wrapper">
+            <div id="map" />
+            <TweetsRender
+              render={this.state.renderTweets}
+              lat={this.state.center.lat}
+              lng={this.state.center.lng}
+              m={this.state.miles}
+            />
+          </div>
         </div>
       </div>
     );
   }
 }
+
+const TweetsRender = props => {
+  console.log(props.render);
+  if (props.render) {
+    return <Tweets lat={props.lat} lng={props.lng} m={props.m} />;
+  } else {
+    return <div>Enter a Location so that Arnold can assess the mood.</div>;
+  }
+};
+
+export default Map;
