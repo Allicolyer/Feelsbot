@@ -25,7 +25,7 @@ const Tweets = props => (
         fear: { num: "-", tweets: [] },
         disgust: { num: "-", tweets: [] }
       };
-      let percentage = "-";
+      let percentage = 0;
       if (!loading) {
         tweets = data.tweets;
         rating = sorter(tweets);
@@ -58,7 +58,7 @@ const TweetTimeline = props => (
         fear: { num: "-", tweets: [] },
         disgust: { num: "-", tweets: [] }
       };
-      let percentage = "-";
+      let percentage = 0;
       if (!loading) {
         tweets = data.user;
         rating = sorter(tweets);
