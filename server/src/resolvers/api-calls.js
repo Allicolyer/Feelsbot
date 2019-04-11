@@ -1,48 +1,53 @@
-const fetch = require("node-fetch");
-const urls = require("./urls");
+const {search, userTimeline, searchAutocomplete} = require("./twitterEndpoint")
+const {analyze, blank} = require("./ibmEndpoint")
 
 cleanedText = text => {
   return text.replace(/(\r\n|\n|\r)/gm, " ").replace(/['"]+/g, "");
 };
 
-tweets = (lat, lng, miles) => {
-  return fetch(`${urls.twitter}&geocode=${lat},${lng},${miles}mi`)
-    .then(res => res.json())
-    .then(r => r.statuses);
+ tweets = async(lat, lng, miles) => {
+  try {
+   const result = await search({q:" ", geocode:`${lat},${lng},${miles}mi`})
+   return JSON.parse(result).statuses;
+  } catch(err){
+    console.error(err);
+    throw new Error(err);
+  }
+ };
+
+user = async(screen_name) => {
+  try {
+    const result = await userTimeline({screen_name})
+    return JSON.parse(result);
+  }catch(err){
+    console.error(err);
+    throw new Error(err);
+  }
 };
 
-user = screen_name => {
-  return fetch(`${urls.twitterTimeline}?screen_name=${screen_name}`).then(res =>
-    res.json()
-  );
-};
+emotion = async(text) => {
+  try {
+    const result = await analyze(cleanedText(text))
+    return result
+  } catch(err){
+    console.error(err);
+    return blank
+  }
+}
 
-emotion = text => {
-  return fetch(`${urls.ibm}`, {
-    body: `{"text":"${cleanedText(text)}","features":{"emotion":{}}}`,
-    headers: {
-      "Content-Type": "application/json"
-    },
-    method: "POST"
-  })
-    .then(res => res.json())
-    .then(r => {
-      if (r.error) {
-        return {
-          joy: 0,
-          sadness: 0,
-          anger: 0,
-          fear: 0,
-          disgust: 0
-        };
-      } else {
-        return r.emotion.document.emotion;
-      }
-    });
-};
+autocomplete = async(text) => {
+  try {
+    const result = await searchAutocomplete(text);
+    console.log(result);
+  } catch(err){
+    console.error(err);
+    return;
+  }
+}
 
 module.exports = {
   tweets,
   emotion,
-  user
+  user,
+  autocomplete
 };

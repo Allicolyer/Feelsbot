@@ -14,6 +14,9 @@ const resolvers = {
 const server = new ApolloServer({
   typeDefs,
   resolvers
+  // cors: {
+  //   origin: "https://nervous-davinci-bad38b.netlify.com"
+  // }
 });
 
 server.listen().then(({ url }) => {
