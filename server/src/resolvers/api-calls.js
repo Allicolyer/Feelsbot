@@ -1,4 +1,4 @@
-const {search, userTimeline} = require("./twitterEndpoint")
+const {search, userTimeline, searchAutocomplete} = require("./twitterEndpoint")
 const {analyze, blank} = require("./ibmEndpoint")
 
 cleanedText = text => {
@@ -16,7 +16,7 @@ cleanedText = text => {
  };
 
 user = async(screen_name) => {
-  try{
+  try {
     const result = await userTimeline({screen_name})
     return JSON.parse(result);
   }catch(err){
@@ -26,7 +26,7 @@ user = async(screen_name) => {
 };
 
 emotion = async(text) => {
-  try{
+  try {
     const result = await analyze(cleanedText(text))
     return result
   } catch(err){
@@ -35,8 +35,19 @@ emotion = async(text) => {
   }
 }
 
+autocomplete = async(text) => {
+  try {
+    const result = await searchAutocomplete(text);
+    console.log(result);
+  } catch(err){
+    console.error(err);
+    return;
+  }
+}
+
 module.exports = {
   tweets,
   emotion,
-  user
+  user,
+  autocomplete
 };

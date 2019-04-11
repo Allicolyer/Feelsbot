@@ -30,5 +30,15 @@ function search({ q, geocode }, cb) {
   });
 }
 
-module.exports = {search, userTimeline};
+function searchAutocomplete(q, cb) {
+  return new Promise((resolve, reject) => {
+    return twitter.getCustomApiCall('/users/search.json',
+      { q, count: 5 } ,
+      (error) => reject(error),
+      (res) => resolve(res)
+    )
+  });
+}
+
+module.exports = {search, userTimeline, searchAutocomplete };
 

@@ -4,6 +4,7 @@ type Query {
   tweets(lat: Float!, lng: Float!, m: Int!): [Tweet!]!
   user(screen_name: String!): [Tweet!]!
   emotion(text: String!): Emotion!
+  autocomplete(text: String!): [String]
 }
 
 type City {
