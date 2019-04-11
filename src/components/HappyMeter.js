@@ -26,7 +26,7 @@ const HappyMeter = props => {
             className={`transitionStep ${accomplished ? "accomplished" : null}`}
             style={{ filter: `grayscale(${accomplished ? 0 : 80}%)` }}
           >
-            <h1>😭</h1>
+            <span class="emoji">😭</span>
           </div>
         )}
       </Step>
@@ -37,7 +37,7 @@ const HappyMeter = props => {
             className={`transitionStep ${accomplished ? "accomplished" : null}`}
             style={{ filter: `grayscale(${accomplished ? 0 : 80}%)` }}
           >
-            <h1>🙁</h1>
+             <span class="emoji">🙁</span>
           </div>
         )}
       </Step>
@@ -47,7 +47,7 @@ const HappyMeter = props => {
             className={`transitionStep ${accomplished ? "accomplished" : null}`}
             style={{ filter: `grayscale(${accomplished ? 0 : 80}%)` }}
           >
-            <h1>😐</h1>
+             <span class="emoji">😐</span>
           </div>
         )}
       </Step>
@@ -57,7 +57,7 @@ const HappyMeter = props => {
             className={`transitionStep ${accomplished ? "accomplished" : null}`}
             style={{ filter: `grayscale(${accomplished ? 0 : 80}%)` }}
           >
-            <h1>🙂</h1>{" "}
+            <span class="emoji">🙂</span>
           </div>
         )}
       </Step>
@@ -67,7 +67,7 @@ const HappyMeter = props => {
             className={`transitionStep ${accomplished ? "accomplished" : null}`}
             style={{ filter: `grayscale(${accomplished ? 0 : 80}%)` }}
           >
-            <h1>🤩</h1>{" "}
+            <span class="emoji">🤩</span>
           </div>
         )}
       </Step>
