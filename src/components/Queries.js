@@ -38,4 +38,15 @@ const GET_TIMELINE = gql`
   }
 `;
 
-export { GET_TWEETS, GET_TIMELINE };
+const AUTOCOMPLETE = gql`
+  query($text: String!) {
+    autocomplete(text: $text) {
+      name
+      screen_name
+      profile_image_url
+      description
+    }
+  }
+`;
+
+export { GET_TWEETS, GET_TIMELINE, AUTOCOMPLETE };

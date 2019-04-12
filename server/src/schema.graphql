@@ -4,7 +4,7 @@ type Query {
   tweets(lat: Float!, lng: Float!, m: Int!): [Tweet!]!
   user(screen_name: String!): [Tweet!]!
   emotion(text: String!): Emotion!
-  autocomplete(text: String!): [String]
+  autocomplete(text: String!): [User]
 }
 
 type City {
@@ -39,5 +39,7 @@ type User {
   name: String!
   screen_name: String!
   location: String!
+  profile_image_url: String!
+  description: String!
   tweets: [Tweet]
 }

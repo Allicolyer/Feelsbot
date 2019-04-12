@@ -1,18 +1,43 @@
 import React from "react";
 import { TweetTimeline } from "./Tweets";
 import { Text, Heading } from "rebass";
+import Dropdown from "./Dropdown";
 
 class Timeline extends React.Component {
   constructor() {
     super();
     this.state = {
       screen_name: "",
-      render: false
+      render: false,
+      autocompleteText: "",
+      search: false,
+      selectedOption: null
     };
   }
+  handleChange = selectedOption => {
+    this.setState({
+      selectedOption: selectedOption,
+      screen_name: selectedOption.value,
+      render: true
+    });
+    console.log(`Option selected:`, selectedOption);
+  };
   componentDidMount() {
-    let input = document.getElementById("screen_name-input");
+    let input = document.getElementById("react-select-2-input");
+    input.addEventListener("keyup", e => {
+      this.setState({
+        autocompleteText: input.value,
+        search: true,
+        render: false
+      });
+      if (13 == e.keyCode) {
+        this.setState({
+          render: true
+        });
+      }
+    });
     input.addEventListener("change", () => {
+      console.log(input.value);
       this.setState({
         screen_name: input.value,
         render: true
@@ -31,11 +56,10 @@ class Timeline extends React.Component {
           </Text>
         </header>
         <div id="timeline_tweet_wrapper" className="timeline">
-          <input
-            className="long-input"
-            id="screen_name-input"
-            type="text"
-            placeholder="Enter your Twitter handle"
+          <Dropdown
+            autocompleteText={this.state.autocompleteText}
+            handleChange={this.handleChange}
+            selectedOption={this.state.selectedOption}
           />
           <TweetTimelineRender
             render={this.state.render}
