@@ -39,5 +39,7 @@ type User {
   name: String!
   screen_name: String!
   location: String!
+  profile_image_url: String!
+  description: String!
   tweets: [Tweet]
 }

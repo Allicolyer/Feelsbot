@@ -24,17 +24,23 @@ class Timeline extends React.Component {
   };
   componentDidMount() {
     let input = document.getElementById("react-select-2-input");
-    input.addEventListener("change", () => {
-      this.setState({
-        screen_name: input.value,
-        render: true
-      });
-    });
-    input.addEventListener("keyup", () => {
+    input.addEventListener("keyup", e => {
       this.setState({
         autocompleteText: input.value,
         search: true,
         render: false
+      });
+      if (13 == e.keyCode) {
+        this.setState({
+          render: true
+        });
+      }
+    });
+    input.addEventListener("change", () => {
+      console.log(input.value);
+      this.setState({
+        screen_name: input.value,
+        render: true
       });
     });
   }

@@ -43,6 +43,8 @@ const AUTOCOMPLETE = gql`
     autocomplete(text: $text) {
       name
       screen_name
+      profile_image_url
+      description
     }
   }
 `;
