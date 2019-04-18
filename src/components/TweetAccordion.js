@@ -6,14 +6,16 @@ const TweetAccordion = props => {
   if (!!props.rating.num) {
     return (
       <AccordionItem title={props.title}>
-        {props.rating.tweets.map(tweet => (
-          <div className="tweet">
-            <TwitterTweetEmbed
-              tweetId={`${tweet.id_str}`}
-              // options={{ cards: "hidden" }}
-            />
-          </div>
-        ))}
+        <div className="tweet-flex-wraper">
+          {props.rating.tweets.map(tweet => (
+            <div className="tweet">
+              <TwitterTweetEmbed
+                tweetId={`${tweet.id_str}`}
+                // options={{ cards: "hidden" }}
+              />
+            </div>
+          ))}
+        </div>
       </AccordionItem>
     );
   } else {

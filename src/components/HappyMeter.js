@@ -16,62 +16,76 @@ const HappyMeter = props => {
   }
 
   return (
-    <ProgressBar
-      percent={props.percent}
-      filledBackground={`linear-gradient(to left, ${colors[0]}, ${colors[1]})`}
-    >
-      <Step transition="scale">
-        {({ accomplished }) => (
-          <div
-            className={`transitionStep ${accomplished ? "accomplished" : null}`}
-            style={{ filter: `grayscale(${accomplished ? 0 : 80}%)` }}
-          >
-            <span class="emoji">😭</span>
-          </div>
-        )}
-      </Step>
+    <div id="joyMeter">
+      <ProgressBar
+        percent={props.percent}
+        filledBackground={`linear-gradient(to left, ${colors[0]}, ${
+          colors[1]
+        })`}
+      >
+        <Step transition="scale">
+          {({ accomplished }) => (
+            <div
+              className={`transitionStep ${
+                accomplished ? "accomplished" : null
+              }`}
+              style={{ filter: `grayscale(${accomplished ? 0 : 80}%)` }}
+            >
+              <span class="emoji">😭</span>
+            </div>
+          )}
+        </Step>
 
-      <Step transition="scale">
-        {({ accomplished }) => (
-          <div
-            className={`transitionStep ${accomplished ? "accomplished" : null}`}
-            style={{ filter: `grayscale(${accomplished ? 0 : 80}%)` }}
-          >
-             <span class="emoji">🙁</span>
-          </div>
-        )}
-      </Step>
-      <Step transition="scale">
-        {({ accomplished }) => (
-          <div
-            className={`transitionStep ${accomplished ? "accomplished" : null}`}
-            style={{ filter: `grayscale(${accomplished ? 0 : 80}%)` }}
-          >
-             <span class="emoji">😐</span>
-          </div>
-        )}
-      </Step>
-      <Step transition="scale" position={90}>
-        {({ accomplished }) => (
-          <div
-            className={`transitionStep ${accomplished ? "accomplished" : null}`}
-            style={{ filter: `grayscale(${accomplished ? 0 : 80}%)` }}
-          >
-            <span class="emoji">🙂</span>
-          </div>
-        )}
-      </Step>
-      <Step transition="scale" position={90}>
-        {({ accomplished }) => (
-          <div
-            className={`transitionStep ${accomplished ? "accomplished" : null}`}
-            style={{ filter: `grayscale(${accomplished ? 0 : 80}%)` }}
-          >
-            <span class="emoji">🤩</span>
-          </div>
-        )}
-      </Step>
-    </ProgressBar>
+        <Step transition="scale">
+          {({ accomplished }) => (
+            <div
+              className={`transitionStep ${
+                accomplished ? "accomplished" : null
+              }`}
+              style={{ filter: `grayscale(${accomplished ? 0 : 80}%)` }}
+            >
+              <span class="emoji">🙁</span>
+            </div>
+          )}
+        </Step>
+        <Step transition="scale">
+          {({ accomplished }) => (
+            <div
+              className={`transitionStep ${
+                accomplished ? "accomplished" : null
+              }`}
+              style={{ filter: `grayscale(${accomplished ? 0 : 80}%)` }}
+            >
+              <span class="emoji">😐</span>
+            </div>
+          )}
+        </Step>
+        <Step transition="scale" position={90}>
+          {({ accomplished }) => (
+            <div
+              className={`transitionStep ${
+                accomplished ? "accomplished" : null
+              }`}
+              style={{ filter: `grayscale(${accomplished ? 0 : 80}%)` }}
+            >
+              <span class="emoji">🙂</span>
+            </div>
+          )}
+        </Step>
+        <Step transition="scale" position={90}>
+          {({ accomplished }) => (
+            <div
+              className={`transitionStep ${
+                accomplished ? "accomplished" : null
+              }`}
+              style={{ filter: `grayscale(${accomplished ? 0 : 80}%)` }}
+            >
+              <span class="emoji">🤩</span>
+            </div>
+          )}
+        </Step>
+      </ProgressBar>
+    </div>
   );
 };
 

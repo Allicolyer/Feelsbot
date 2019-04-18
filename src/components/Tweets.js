@@ -5,6 +5,7 @@ import { GET_TIMELINE } from "./Queries";
 import HappyMeter from "./HappyMeter";
 import { Accordion } from "react-light-accordion";
 import TweetAccordion from "./TweetAccordion";
+import { Text, Heading } from "rebass";
 
 const Tweets = props => (
   <Query
@@ -112,7 +113,7 @@ const TweetWrapper = props => {
   return (
     <div id={props.id}>
       <div id="meter">
-        <h3> Joy Meter: {props.percentage}% </h3>
+        <Heading as="h3"> Joy Meter: {props.percentage}% </Heading>
         <HappyMeter className="meter" percent={props.percentage} />
         <br />
         <br />

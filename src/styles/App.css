@@ -37,18 +37,19 @@ header {
 }
 #tweet-map-wrapper {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
+  align-items: center;
 }
 
 #map {
-  height: 600px;
-  width: 48%;
-  padding: 10px;
+  height: 350px;
+  width: 100%;
+  padding: 25px;
 }
 
 #tweet_wrapper {
   padding: 10px;
-  width: 48%;
+  width: 80%;
 }
 
 #timeline_tweet_wrapper {
@@ -56,6 +57,19 @@ header {
   flex-direction: column;
   width: 60%;
   margin: 0 auto;
+}
+
+.tweet-flex-wraper {
+  display: flex;
+  justify-content: center;
+}
+
+.tweet {
+  padding: 10px;
+}
+
+#joyMeter {
+  padding: 20px;
 }
 
 #pac-container {
