@@ -30,7 +30,7 @@ class Timeline extends React.Component {
         search: true,
         render: false
       });
-      if (13 == e.keyCode) {
+      if (13 === e.keyCode) {
         this.setState({
           render: true
         });
@@ -55,12 +55,14 @@ class Timeline extends React.Component {
             me read your tweets and I'll tell you how you are feeling.
           </Text>
         </header>
-        <div id="timeline_tweet_wrapper" className="timeline">
-          <Dropdown
-            autocompleteText={this.state.autocompleteText}
-            handleChange={this.handleChange}
-            selectedOption={this.state.selectedOption}
-          />
+        <div id="timeline_tweet_wrapper">
+          <div id="timeline-input">
+            <Dropdown
+              autocompleteText={this.state.autocompleteText}
+              handleChange={this.handleChange}
+              selectedOption={this.state.selectedOption}
+            />
+          </div>
           <TweetTimelineRender
             render={this.state.render}
             screen_name={this.state.screen_name}

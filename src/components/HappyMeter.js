@@ -31,7 +31,9 @@ const HappyMeter = props => {
               }`}
               style={{ filter: `grayscale(${accomplished ? 0 : 80}%)` }}
             >
-              <span class="emoji">😭</span>
+              <span role="img" aria-label="Sobbing" className="emoji">
+                😭
+              </span>
             </div>
           )}
         </Step>
@@ -44,7 +46,9 @@ const HappyMeter = props => {
               }`}
               style={{ filter: `grayscale(${accomplished ? 0 : 80}%)` }}
             >
-              <span class="emoji">🙁</span>
+              <span role="img" aria-label="Sad" className="emoji">
+                🙁
+              </span>
             </div>
           )}
         </Step>
@@ -56,7 +60,9 @@ const HappyMeter = props => {
               }`}
               style={{ filter: `grayscale(${accomplished ? 0 : 80}%)` }}
             >
-              <span class="emoji">😐</span>
+              <span role="img" aria-label="Neutral" className="emoji">
+                😐
+              </span>
             </div>
           )}
         </Step>
@@ -68,7 +74,9 @@ const HappyMeter = props => {
               }`}
               style={{ filter: `grayscale(${accomplished ? 0 : 80}%)` }}
             >
-              <span class="emoji">🙂</span>
+              <span role="img" aria-label="Happy" className="emoji">
+                🙂
+              </span>
             </div>
           )}
         </Step>
@@ -80,7 +88,9 @@ const HappyMeter = props => {
               }`}
               style={{ filter: `grayscale(${accomplished ? 0 : 80}%)` }}
             >
-              <span class="emoji">🤩</span>
+              <span role="img" aria-label="Extremely Happy" className="emoji">
+                🤩
+              </span>
             </div>
           )}
         </Step>

@@ -2,7 +2,7 @@ import React from "react";
 import Select from "react-select";
 import { AUTOCOMPLETE } from "./Queries";
 import { Query } from "react-apollo";
-import { Box, Image, Text, Heading, Flex } from "rebass";
+import { Box, Image, Text, Heading } from "rebass";
 
 let options = [];
 

@@ -3,9 +3,10 @@ import { Query } from "react-apollo";
 import { GET_TWEETS } from "./Queries";
 import { GET_TIMELINE } from "./Queries";
 import HappyMeter from "./HappyMeter";
-import { Accordion } from "react-light-accordion";
-import TweetAccordion from "./TweetAccordion";
-import { Text, Heading } from "rebass";
+// import { Accordion } from "react-light-accordion";
+// import TweetAccordion from "./TweetAccordion";
+import { Heading } from "rebass";
+import TweetGrid from "./TweetGrid";
 
 const Tweets = props => (
   <Query
@@ -111,14 +112,16 @@ function sorter(input) {
 
 const TweetWrapper = props => {
   return (
-    <div id={props.id}>
-      <div id="meter">
-        <Heading as="h3"> Joy Meter: {props.percentage}% </Heading>
-        <HappyMeter className="meter" percent={props.percentage} />
-        <br />
-        <br />
+    <div>
+      <div id={props.id}>
+        <div id="meter">
+          <Heading as="h3"> Joy Meter: {props.percentage}% </Heading>
+          <HappyMeter className="meter" percent={props.percentage} />
+          <br />
+          <br />
+        </div>
       </div>
-      <div>
+      {/* <div>
         <Accordion atomic={true}>
           <TweetAccordion
             title={`${props.rating.joy.num} Happy Tweets`}
@@ -141,6 +144,9 @@ const TweetWrapper = props => {
             rating={props.rating.disgust}
           />
         </Accordion>
+      </div> */}
+      <div>
+        <TweetGrid rating={props.rating.joy} />
       </div>
     </div>
   );

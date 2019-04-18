@@ -35,6 +35,7 @@ header {
   display: flex;
   flex-direction: column;
 }
+
 #tweet-map-wrapper {
   display: flex;
   flex-direction: column;
@@ -55,8 +56,14 @@ header {
 #timeline_tweet_wrapper {
   display: flex;
   flex-direction: column;
-  width: 60%;
   margin: 0 auto;
+}
+
+#timeline-input {
+  width: 60%;
+  padding: 20px;
+  margin: 0 auto;
+  z-index: 10;
 }
 
 .tweet-flex-wraper {
@@ -69,7 +76,9 @@ header {
 }
 
 #joyMeter {
+  width: 60%;
   padding: 20px;
+  margin: 0 auto;
 }
 
 #pac-container {
