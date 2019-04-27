@@ -20,6 +20,7 @@
 		"react-step-progress-bar": "^1.0.3",
 		"react-tabs": "^3.0.0",
 		"react-twitter-embed": "^2.0.7",
+		"react-web-tabs": "^1.0.1",
 		"rebass": "^3.0.1",
 		"styled-components": "^4.1.3"
 	},

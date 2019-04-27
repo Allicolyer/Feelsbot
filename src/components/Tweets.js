@@ -7,6 +7,8 @@ import HappyMeter from "./HappyMeter";
 // import TweetAccordion from "./TweetAccordion";
 import { Heading } from "rebass";
 import TweetGrid from "./TweetGrid";
+import { Tab, TabPanel, Tabs, TabList } from "react-web-tabs";
+import "react-web-tabs/dist/react-web-tabs.css";
 
 const Tweets = props => (
   <Query
@@ -78,19 +80,47 @@ const TweetTimeline = props => (
   </Query>
 );
 
-function percent(input) {
-  let percentage = 0;
-  percentage = Math.floor(
-    (input.joy.num /
-      (input.joy.num +
-        input.anger.num +
-        input.sadness.num +
-        input.fear.num +
-        input.disgust.num)) *
-      100
+const TweetWrapper = props => {
+  return (
+    <div>
+      <div id={props.id}>
+        <div id="meter">
+          <Heading as="h3"> Joy Meter: {props.percentage}% </Heading>
+          <HappyMeter className="meter" percent={props.percentage} />
+          <br />
+          <br />
+        </div>
+      </div>
+      <div>
+        <Tabs defaultTab="tab-joy" vertical className="vertical-tabs">
+          <TabList>
+            <Tab tabFor="tab-joy">Joy {props.rating.joy.num}</Tab>
+            <Tab tabFor="tab-sadness">Sadness {props.rating.sadness.num}</Tab>
+            <Tab tabFor="tab-anger">Anger {props.rating.anger.num}</Tab>
+            <Tab tabFor="tab-fear">Fear {props.rating.fear.num}</Tab>
+            <Tab tabFor="tab-disgust">Disgust {props.rating.disgust.num}</Tab>
+          </TabList>
+
+          <TabPanel tabId="tab-joy">
+            <TweetGrid rating={props.rating.joy} />
+          </TabPanel>
+          <TabPanel tabId="tab-sadness">
+            <TweetGrid rating={props.rating.sadness} />
+          </TabPanel>
+          <TabPanel tabId="tab-anger">
+            <TweetGrid rating={props.rating.anger} />
+          </TabPanel>
+          <TabPanel tabId="tab-fear">
+            <TweetGrid rating={props.rating.fear} />
+          </TabPanel>
+          <TabPanel tabId="tab-disgust">
+            <TweetGrid rating={props.rating.disgust} />
+          </TabPanel>
+        </Tabs>
+      </div>
+    </div>
   );
-  return percentage;
-}
+};
 
 function sorter(input) {
   let rating = {};
@@ -110,46 +140,18 @@ function sorter(input) {
   return rating;
 }
 
-const TweetWrapper = props => {
-  return (
-    <div>
-      <div id={props.id}>
-        <div id="meter">
-          <Heading as="h3"> Joy Meter: {props.percentage}% </Heading>
-          <HappyMeter className="meter" percent={props.percentage} />
-          <br />
-          <br />
-        </div>
-      </div>
-      {/* <div>
-        <Accordion atomic={true}>
-          <TweetAccordion
-            title={`${props.rating.joy.num} Happy Tweets`}
-            rating={props.rating.joy}
-          />
-          <TweetAccordion
-            title={`${props.rating.sadness.num} Sad Tweets`}
-            rating={props.rating.sadness}
-          />
-          <TweetAccordion
-            title={`${props.rating.anger.num} Angry Tweets`}
-            rating={props.rating.anger}
-          />
-          <TweetAccordion
-            title={`${props.rating.fear.num} Fearful Tweets`}
-            rating={props.rating.fear}
-          />
-          <TweetAccordion
-            title={`${props.rating.disgust.num} Disgusted Tweets`}
-            rating={props.rating.disgust}
-          />
-        </Accordion>
-      </div> */}
-      <div>
-        <TweetGrid rating={props.rating.joy} />
-      </div>
-    </div>
+function percent(input) {
+  let percentage = 0;
+  percentage = Math.floor(
+    (input.joy.num /
+      (input.joy.num +
+        input.anger.num +
+        input.sadness.num +
+        input.fear.num +
+        input.disgust.num)) *
+      100
   );
-};
+  return percentage;
+}
 
 export { Tweets, TweetTimeline };

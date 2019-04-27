@@ -136,15 +136,13 @@ class Map extends React.Component {
             <label>Miles</label>
             <input id="miles-input" type="text" />
           </div>
-          <div id="tweet-map-wrapper">
-            <div id="map" />
-            <TweetsRender
-              render={this.state.renderTweets}
-              lat={this.state.center.lat}
-              lng={this.state.center.lng}
-              m={this.state.miles}
-            />
-          </div>
+          <div id="map" />
+          <TweetsRender
+            render={this.state.renderTweets}
+            lat={this.state.center.lat}
+            lng={this.state.center.lng}
+            m={this.state.miles}
+          />
         </div>
       </div>
     );

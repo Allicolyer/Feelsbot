@@ -36,12 +36,6 @@ header {
   flex-direction: column;
 }
 
-#tweet-map-wrapper {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
 #map {
   height: 350px;
   width: 100%;
@@ -103,4 +97,20 @@ header {
 .searchCard {
   display: flex;
   text-align: left;
+}
+
+#tab-joy {
+  width: 100%;
+}
+#tab-sadness {
+  width: 100%;
+}
+#tab-anger {
+  width: 100%;
+}
+#tab-fear {
+  width: 100%;
+}
+#tab-disgust {
+  width: 100%;
 }

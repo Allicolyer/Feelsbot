@@ -8,21 +8,23 @@ class TweetGrid extends React.Component {
   };
 
   render() {
-    let i;
-    for (i = 0; i < this.props.rating.tweets.length; i++) {
-      this.props.rating.tweets[i].num = i + 1;
-    }
-    return (
-      <div id="stack-grid">
-        <StackGrid columnWidth={300} gridRef={grid => (this.grid = grid)}>
-          {this.props.rating.tweets.map(tweet => (
-            <div key={`key${tweet.num}`}>
-              <TwitterTweetEmbed tweetId={`${tweet.id_str}`} />
-            </div>
-          ))}
-        </StackGrid>
-      </div>
-    );
+    if (this.props.rating) {
+      let i;
+      for (i = 0; i < this.props.rating.tweets.length; i++) {
+        this.props.rating.tweets[i].num = i + 1;
+      }
+      return (
+        <div id="stack-grid">
+          <StackGrid columnWidth={300} gridRef={grid => (this.grid = grid)}>
+            {this.props.rating.tweets.map(tweet => (
+              <div key={`key${tweet.num}`}>
+                <TwitterTweetEmbed tweetId={`${tweet.id_str}`} />
+              </div>
+            ))}
+          </StackGrid>
+        </div>
+      );
+    } else return <div> "no tweets" </div>;
   }
 }
 
