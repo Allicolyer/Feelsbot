@@ -2,7 +2,7 @@ import React from "react";
 import { Query } from "react-apollo";
 import { GET_TWEETS } from "./Queries";
 import { GET_TIMELINE } from "./Queries";
-import HappyMeter from "./HappyMeter";
+import MoodMeter from "./MoodMeter";
 // import { Accordion } from "react-light-accordion";
 // import TweetAccordion from "./TweetAccordion";
 import styled from "styled-components";
@@ -11,15 +11,12 @@ import TweetGrid from "./TweetGrid";
 import { Tab, TabPanel, Tabs, TabList } from "react-web-tabs";
 import "react-web-tabs/dist/react-web-tabs.css";
 
-const Tweets = props => (
-  <Query
-    query={GET_TWEETS}
-    variables={{ lat: props.lat, lng: props.lng, m: props.m }}
-  >
+const Tweets = ({ lat, lng, m }) => (
+  <Query query={GET_TWEETS} variables={{ lat: lat, lng: lng, m: m }}>
     {({ loading, error, data }) => {
       // if (loading) return "Loading...";
       if (error)
-        return `Error - Arnold has been overwhelmed with emotion. Please try again.`;
+        return `Error - FeelsBot has been overwhelmed with emotion. Please try again.`;
 
       let tweets = [];
       let rating = {
@@ -42,8 +39,8 @@ const Tweets = props => (
   </Query>
 );
 
-const TweetTimeline = props => (
-  <Query query={GET_TIMELINE} variables={{ screen_name: props.screen_name }}>
+const TweetTimeline = ({ screen_name }) => (
+  <Query query={GET_TIMELINE} variables={{ screen_name: screen_name }}>
     {({ loading, error, data }) => {
       // if (loading) return "Loading...";
       if (error) return `Hold on a sec`;
@@ -73,7 +70,7 @@ const MeterInfo = ({ percentage }) => {
   return (
     <div id="meter">
       <Heading as="h3"> Joy Meter: {percentage}% </Heading>
-      <HappyMeter className="meter" percent={percentage} />
+      <MoodMeter className="meter" percent={percentage} />
       <br />
       <br />
     </div>
@@ -91,44 +88,48 @@ const TimelineTweetWrapper = styled.div`
   margin: 0 auto;
 `;
 
-const TweetWrapper = props => {
+const StyledTabPanel = styled(TabPanel)`
+  width: 100%;
+`;
+
+const TweetWrapper = ({ percentage, timeline, map, rating }) => {
   return (
     <div>
-      {props.timeline && (
+      {timeline && (
         <TimelineTweetWrapper>
-          <MeterInfo percentage={props.percentage} />
+          <MeterInfo percentage={percentage} />
         </TimelineTweetWrapper>
       )}
-      {props.map && (
+      {map && (
         <MapTweetWrapper>
-          <MeterInfo percentage={props.percentage} />
+          <MeterInfo percentage={percentage} />
         </MapTweetWrapper>
       )}
       <div>
         <Tabs defaultTab="none" vertical className="vertical-tabs">
           <TabList>
-            <Tab tabFor="tab-joy">Joy {props.rating.joy.num}</Tab>
-            <Tab tabFor="tab-sadness">Sadness {props.rating.sadness.num}</Tab>
-            <Tab tabFor="tab-anger">Anger {props.rating.anger.num}</Tab>
-            <Tab tabFor="tab-fear">Fear {props.rating.fear.num}</Tab>
-            <Tab tabFor="tab-disgust">Disgust {props.rating.disgust.num}</Tab>
+            <Tab tabFor="tab-joy">Joy {rating.joy.num}</Tab>
+            <Tab tabFor="tab-sadness">Sadness {rating.sadness.num}</Tab>
+            <Tab tabFor="tab-anger">Anger {rating.anger.num}</Tab>
+            <Tab tabFor="tab-fear">Fear {rating.fear.num}</Tab>
+            <Tab tabFor="tab-disgust">Disgust {rating.disgust.num}</Tab>
           </TabList>
 
-          <TabPanel tabId="tab-joy">
-            <TweetGrid rating={props.rating.joy} />
-          </TabPanel>
-          <TabPanel tabId="tab-sadness">
-            <TweetGrid rating={props.rating.sadness} />
-          </TabPanel>
-          <TabPanel tabId="tab-anger">
-            <TweetGrid rating={props.rating.anger} />
-          </TabPanel>
-          <TabPanel tabId="tab-fear">
-            <TweetGrid rating={props.rating.fear} />
-          </TabPanel>
-          <TabPanel tabId="tab-disgust">
-            <TweetGrid rating={props.rating.disgust} />
-          </TabPanel>
+          <StyledTabPanel tabId="tab-joy">
+            <TweetGrid rating={rating.joy} />
+          </StyledTabPanel>
+          <StyledTabPanel tabId="tab-sadness">
+            <TweetGrid rating={rating.sadness} />
+          </StyledTabPanel>
+          <StyledTabPanel tabId="tab-anger">
+            <TweetGrid rating={rating.anger} />
+          </StyledTabPanel>
+          <StyledTabPanel tabId="tab-fear">
+            <TweetGrid rating={rating.fear} />
+          </StyledTabPanel>
+          <StyledTabPanel tabId="tab-disgust">
+            <TweetGrid rating={rating.disgust} />
+          </StyledTabPanel>
         </Tabs>
       </div>
     </div>

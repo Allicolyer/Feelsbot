@@ -169,11 +169,11 @@ const LongInput = styled.input`
 const PacContainer = styled.div`
   padding: 10px;
 `;
-const TweetsRender = props => {
-  if (props.render) {
-    return <Tweets lat={props.lat} lng={props.lng} m={props.m} />;
+const TweetsRender = ({ render, lat, lng, m }) => {
+  if (render) {
+    return <Tweets lat={lat} lng={lng} m={m} />;
   } else {
-    return <div>Enter a Location so that Arnold can assess the mood.</div>;
+    return <div>Enter a Location so that FeelsBot can assess the mood.</div>;
   }
 };
 

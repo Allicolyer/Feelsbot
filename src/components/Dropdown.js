@@ -12,13 +12,13 @@ const SearchCard = styled.div`
 
 let options = [];
 
-const Dropdown = props => {
+const Dropdown = ({ autocompleteText, handleChange, selectedOption }) => {
   return (
-    <Query query={AUTOCOMPLETE} variables={{ text: props.autocompleteText }}>
+    <Query query={AUTOCOMPLETE} variables={{ text: autocompleteText }}>
       {({ loading, error, data }) => {
         // if (loading) return "Loading...";
         if (error)
-          return `Error - Arnold has been overwhelmed with emotion. Please try again.`;
+          return `Error - FeelsBot has been overwhelmed with emotion. Please try again.`;
 
         if (!loading) {
           if (data.autocomplete) {
@@ -40,8 +40,8 @@ const Dropdown = props => {
         }
         return (
           <Select
-            value={props.selectedOption}
-            onChange={props.handleChange}
+            value={selectedOption}
+            onChange={handleChange}
             options={options}
           />
         );

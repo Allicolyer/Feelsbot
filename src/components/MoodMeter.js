@@ -3,7 +3,7 @@ import "react-step-progress-bar/styles.css";
 import { ProgressBar, Step } from "react-step-progress-bar";
 import styled from "styled-components";
 
-const JoyMeter = styled.div`
+const MeterStyles = styled.div`
   width: 60%;
   padding: 20px;
   margin: 0 auto;
@@ -13,13 +13,13 @@ const Emoji = styled.span`
   font-size: 30px;
 `;
 
-const HappyMeter = props => {
+const MoodMeter = ({ percent }) => {
   let colors = [];
   switch (true) {
-    case props.percent < 33:
+    case percent < 33:
       colors.push("#922B21", "#C0392B ");
       break;
-    case props.percent < 66:
+    case percent < 66:
       colors.push("#F4D03F", "#F9E79F");
       break;
     default:
@@ -27,9 +27,9 @@ const HappyMeter = props => {
   }
 
   return (
-    <JoyMeter>
+    <MeterStyles>
       <ProgressBar
-        percent={props.percent}
+        percent={percent}
         filledBackground={`linear-gradient(to left, ${colors[0]}, ${
           colors[1]
         })`}
@@ -106,8 +106,8 @@ const HappyMeter = props => {
           )}
         </Step>
       </ProgressBar>
-    </JoyMeter>
+    </MeterStyles>
   );
 };
 
-export default HappyMeter;
+export default MoodMeter;

@@ -9,7 +9,7 @@ class Home extends Component {
     return (
       <div className="App">
         <header>
-          <Heading> Hi, I'm Arnold </Heading>
+          <Heading> Hi, I'm FeelsBot </Heading>
           <Text>
             {" "}
             I try to assess how humans are feeling by reading their tweets. Test

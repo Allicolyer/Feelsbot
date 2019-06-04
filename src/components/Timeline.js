@@ -49,7 +49,7 @@ class Timeline extends React.Component {
     return (
       <div className="App">
         <header>
-          <Heading> Hi, I'm Arnold </Heading>
+          <Heading> Hi, I'm FeelsBot </Heading>
           <Text>
             {" "}
             I try to assess how humans are feeling by reading their tweets. Let
@@ -81,12 +81,12 @@ const TimelineInput = styled.div`
   z-index: 10;
 `;
 
-const TweetTimelineRender = props => {
-  if (props.render) {
-    return <TweetTimeline screen_name={props.screen_name} />;
+const TweetTimelineRender = ({ render, screen_name }) => {
+  if (render) {
+    return <TweetTimeline screen_name={screen_name} />;
   } else {
     return (
-      <div>Enter your Twitter handle so Arnold can assess your tweets</div>
+      <div>Enter your Twitter handle so FeelsBot can assess your tweets</div>
     );
   }
 };
