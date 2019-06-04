@@ -3,6 +3,12 @@ import Select from "react-select";
 import { AUTOCOMPLETE } from "./Queries";
 import { Query } from "react-apollo";
 import { Box, Image, Text, Heading } from "rebass";
+import styled from "styled-components";
+
+const SearchCard = styled.div`
+  display: flex;
+  text-align: left;
+`;
 
 let options = [];
 
@@ -19,14 +25,14 @@ const Dropdown = props => {
             let users = data.autocomplete.map(user => ({
               value: user.screen_name,
               label: (
-                <div className="searchCard">
+                <SearchCard>
                   <Image src={user.profile_image_url} borderRadius={2} />
                   <Box px={2}>
                     <Heading as="h3">{user.name}</Heading>
                     <Text fontSize={0}>@{user.screen_name}</Text>
                     <Text fontSize={1}>{user.description}</Text>
                   </Box>
-                </div>
+                </SearchCard>
               )
             }));
             options = users;
@@ -43,4 +49,5 @@ const Dropdown = props => {
     </Query>
   );
 };
+
 export default Dropdown;

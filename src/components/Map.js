@@ -1,5 +1,6 @@
 import React from "react";
 import { Tweets } from "./Tweets";
+import styled from "styled-components";
 
 class Map extends React.Component {
   constructor() {
@@ -124,18 +125,17 @@ class Map extends React.Component {
   render() {
     return (
       <div>
-        <div id="map-wrapper">
-          <div id="pac-container">
+        <MapWrapper>
+          <PacContainer id="pac-container">
             <label>Location:</label>
-            <input
-              className="long-input"
+            <LongInput
               id="pac-input"
               type="text"
               placeholder="Search for a place"
             />
             <label>Miles</label>
-            <input id="miles-input" type="text" />
-          </div>
+            <MilesInput type="text" id="miles-input" />
+          </PacContainer>
           <div id="map" />
           <TweetsRender
             render={this.state.renderTweets}
@@ -143,14 +143,33 @@ class Map extends React.Component {
             lng={this.state.center.lng}
             m={this.state.miles}
           />
-        </div>
+        </MapWrapper>
       </div>
     );
   }
 }
 
+const MapWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+`;
+
+const MilesInput = styled.input`
+  width: 5%;
+  font-size: 1.5rem;
+  margin: 5px;
+`;
+
+const LongInput = styled.input`
+  width: 50%;
+  font-size: 1.5rem;
+  margin: 0 auto;
+`;
+
+const PacContainer = styled.div`
+  padding: 10px;
+`;
 const TweetsRender = props => {
-  console.log(props.render);
   if (props.render) {
     return <Tweets lat={props.lat} lng={props.lng} m={props.m} />;
   } else {

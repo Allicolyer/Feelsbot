@@ -2,6 +2,7 @@ import React from "react";
 import { TweetTimeline } from "./Tweets";
 import { Text, Heading } from "rebass";
 import Dropdown from "./Dropdown";
+import styled from "styled-components";
 
 class Timeline extends React.Component {
   constructor() {
@@ -56,13 +57,13 @@ class Timeline extends React.Component {
           </Text>
         </header>
         <div id="timeline_tweet_wrapper">
-          <div id="timeline-input">
+          <TimelineInput>
             <Dropdown
               autocompleteText={this.state.autocompleteText}
               handleChange={this.handleChange}
               selectedOption={this.state.selectedOption}
             />
-          </div>
+          </TimelineInput>
           <TweetTimelineRender
             render={this.state.render}
             screen_name={this.state.screen_name}
@@ -72,6 +73,13 @@ class Timeline extends React.Component {
     );
   }
 }
+
+const TimelineInput = styled.div`
+  width: 60%;
+  padding: 20px;
+  margin: 0 auto;
+  z-index: 10;
+`;
 
 const TweetTimelineRender = props => {
   if (props.render) {

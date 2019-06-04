@@ -5,6 +5,7 @@ import { GET_TIMELINE } from "./Queries";
 import HappyMeter from "./HappyMeter";
 // import { Accordion } from "react-light-accordion";
 // import TweetAccordion from "./TweetAccordion";
+import styled from "styled-components";
 import { Heading } from "rebass";
 import TweetGrid from "./TweetGrid";
 import { Tab, TabPanel, Tabs, TabList } from "react-web-tabs";
@@ -36,13 +37,7 @@ const Tweets = props => (
         percentage = percent(rating);
       }
 
-      return (
-        <TweetWrapper
-          rating={rating}
-          percentage={percentage}
-          id={"tweet_wrapper"}
-        />
-      );
+      return <TweetWrapper rating={rating} percentage={percentage} map />;
     }}
   </Query>
 );
@@ -69,30 +64,48 @@ const TweetTimeline = props => (
         percentage = percent(rating);
       }
 
-      return (
-        <TweetWrapper
-          rating={rating}
-          percentage={percentage}
-          id={"timeline_wrapper"}
-        />
-      );
+      return <TweetWrapper rating={rating} percentage={percentage} timeline />;
     }}
   </Query>
 );
 
+const MeterInfo = ({ percentage }) => {
+  return (
+    <div id="meter">
+      <Heading as="h3"> Joy Meter: {percentage}% </Heading>
+      <HappyMeter className="meter" percent={percentage} />
+      <br />
+      <br />
+    </div>
+  );
+};
+
+const MapTweetWrapper = styled.div`
+  padding: 10px;
+  width: 80%;
+`;
+
+const TimelineTweetWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  margin: 0 auto;
+`;
+
 const TweetWrapper = props => {
   return (
     <div>
-      <div id={props.id}>
-        <div id="meter">
-          <Heading as="h3"> Joy Meter: {props.percentage}% </Heading>
-          <HappyMeter className="meter" percent={props.percentage} />
-          <br />
-          <br />
-        </div>
-      </div>
+      {props.timeline && (
+        <TimelineTweetWrapper>
+          <MeterInfo percentage={props.percentage} />
+        </TimelineTweetWrapper>
+      )}
+      {props.map && (
+        <MapTweetWrapper>
+          <MeterInfo percentage={props.percentage} />
+        </MapTweetWrapper>
+      )}
       <div>
-        <Tabs defaultTab="tab-joy" vertical className="vertical-tabs">
+        <Tabs defaultTab="none" vertical className="vertical-tabs">
           <TabList>
             <Tab tabFor="tab-joy">Joy {props.rating.joy.num}</Tab>
             <Tab tabFor="tab-sadness">Sadness {props.rating.sadness.num}</Tab>

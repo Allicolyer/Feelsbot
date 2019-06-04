@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import "../styles/App.css";
+import styled from "styled-components";
 import Home from "./Home";
 import About from "./About";
 import Timeline from "./Timeline";
@@ -12,20 +13,35 @@ class App extends Component {
   }
 }
 
+const Navbar = styled.div`
+  background: gray;
+  width: 100%;
+  text-align: center;
+  display: flex;
+  justify-content: left;
+  padding: 5px;
+`;
+
+const NavLink = styled(Link)`
+  text-decoration: none;
+  color: white;
+  display: inline;
+`;
+
 const Navigation = () => {
   return (
     <div>
-      <nav className="navbar">
+      <Navbar>
         <Button m={1} bg="black">
-          <Link to="/">Home</Link>
+          <NavLink to="/">Home</NavLink>
         </Button>
         <Button m={1} bg="black">
-          <Link to="Timeline">Your Tweets</Link>
+          <NavLink to="Timeline">Your Tweets</NavLink>
         </Button>
         <Button m={1} bg="black">
-          <Link to="About">About</Link>
+          <NavLink to="About">About</NavLink>
         </Button>
-      </nav>
+      </Navbar>
 
       <Router>
         <Home path="/" />

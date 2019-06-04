@@ -1,6 +1,17 @@
 import React from "react";
 import "react-step-progress-bar/styles.css";
 import { ProgressBar, Step } from "react-step-progress-bar";
+import styled from "styled-components";
+
+const JoyMeter = styled.div`
+  width: 60%;
+  padding: 20px;
+  margin: 0 auto;
+`;
+
+const Emoji = styled.span`
+  font-size: 30px;
+`;
 
 const HappyMeter = props => {
   let colors = [];
@@ -16,7 +27,7 @@ const HappyMeter = props => {
   }
 
   return (
-    <div id="joyMeter">
+    <JoyMeter>
       <ProgressBar
         percent={props.percent}
         filledBackground={`linear-gradient(to left, ${colors[0]}, ${
@@ -31,9 +42,9 @@ const HappyMeter = props => {
               }`}
               style={{ filter: `grayscale(${accomplished ? 0 : 80}%)` }}
             >
-              <span role="img" aria-label="Sobbing" className="emoji">
+              <Emoji role="img" aria-label="Sobbing">
                 😭
-              </span>
+              </Emoji>
             </div>
           )}
         </Step>
@@ -46,9 +57,9 @@ const HappyMeter = props => {
               }`}
               style={{ filter: `grayscale(${accomplished ? 0 : 80}%)` }}
             >
-              <span role="img" aria-label="Sad" className="emoji">
+              <Emoji role="img" aria-label="Sad">
                 🙁
-              </span>
+              </Emoji>
             </div>
           )}
         </Step>
@@ -60,9 +71,9 @@ const HappyMeter = props => {
               }`}
               style={{ filter: `grayscale(${accomplished ? 0 : 80}%)` }}
             >
-              <span role="img" aria-label="Neutral" className="emoji">
+              <Emoji role="img" aria-label="Neutral">
                 😐
-              </span>
+              </Emoji>
             </div>
           )}
         </Step>
@@ -74,9 +85,9 @@ const HappyMeter = props => {
               }`}
               style={{ filter: `grayscale(${accomplished ? 0 : 80}%)` }}
             >
-              <span role="img" aria-label="Happy" className="emoji">
+              <Emoji role="img" aria-label="Happy">
                 🙂
-              </span>
+              </Emoji>
             </div>
           )}
         </Step>
@@ -88,14 +99,14 @@ const HappyMeter = props => {
               }`}
               style={{ filter: `grayscale(${accomplished ? 0 : 80}%)` }}
             >
-              <span role="img" aria-label="Extremely Happy" className="emoji">
+              <Emoji role="img" aria-label="Extremely Happy">
                 🤩
-              </span>
+              </Emoji>
             </div>
           )}
         </Step>
       </ProgressBar>
-    </div>
+    </JoyMeter>
   );
 };
 
