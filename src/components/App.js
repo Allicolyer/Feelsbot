@@ -5,16 +5,21 @@ import Home from "./Home";
 import About from "./About";
 import Timeline from "./Timeline";
 import { Router, Link } from "@reach/router";
-import { Button } from "rebass";
+import { theme } from "../styles/theme";
+import { ThemeProvider } from "styled-components";
 
 class App extends Component {
   render() {
-    return <Navigation />;
+    return (
+      <ThemeProvider theme={theme}>
+        <Navigation />
+      </ThemeProvider>
+    );
   }
 }
 
 const Navbar = styled.div`
-  background: gray;
+  background: ${p => p.theme.colors.lightgray};
   width: 100%;
   text-align: center;
   display: flex;
@@ -24,23 +29,19 @@ const Navbar = styled.div`
 
 const NavLink = styled(Link)`
   text-decoration: none;
-  color: white;
+  color: ${p => p.theme.colors.primaryDark1};
   display: inline;
+  padding: ${p => p.theme.space[2]}px;
+  margin: ${p => p.theme.space[2]}px;
 `;
 
 const Navigation = () => {
   return (
-    <div>
+    <header>
       <Navbar>
-        <Button m={1} bg="black">
-          <NavLink to="/">Home</NavLink>
-        </Button>
-        <Button m={1} bg="black">
-          <NavLink to="Timeline">Your Tweets</NavLink>
-        </Button>
-        <Button m={1} bg="black">
-          <NavLink to="About">About</NavLink>
-        </Button>
+        <NavLink to="/">Home</NavLink>
+        <NavLink to="Timeline">Your Tweets</NavLink>
+        <NavLink to="About">About</NavLink>
       </Navbar>
 
       <Router>
@@ -48,7 +49,7 @@ const Navigation = () => {
         <About path="/About" />
         <Timeline path="/Timeline" />
       </Router>
-    </div>
+    </header>
   );
 };
 

@@ -21,7 +21,6 @@ class Timeline extends React.Component {
       screen_name: selectedOption.value,
       render: true
     });
-    console.log(`Option selected:`, selectedOption);
   };
   componentDidMount() {
     let input = document.getElementById("react-select-2-input");
@@ -38,7 +37,6 @@ class Timeline extends React.Component {
       }
     });
     input.addEventListener("change", () => {
-      console.log(input.value);
       this.setState({
         screen_name: input.value,
         render: true
