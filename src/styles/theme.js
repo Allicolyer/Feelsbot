@@ -1,17 +1,3 @@
-// import { ThemeInterface } from "./ThemeInterface";
-
-// Guide
-// [C] means `Component`
-// --> Comments marked with //// are top level categories
-// --> No tag comments (//) are sub categories
-// --> Inline comments are for description
-
-// Q: What to not put here?
-// A: Don't put a variable here, if it is only valid to be with
-//    a specific component, like `buttonHeight` should be stored beside
-//    the `Button` component since it's not useful if that button is not
-//    present.
-
 const shadows = {
   small: "0px 2px 4px rgba(38, 38, 38, 0.15)",
   large: "0px 4px 8px rgba(38, 38, 38, 0.15);"
@@ -26,8 +12,7 @@ const zIndex = {
   tooltip: 1500
 };
 
-const darkColors = {
-  //// Colors
+const colors = {
   primary: "#e00082",
   primaryDark1: "#a4036f",
   primaryLight1: "#EB7BBC",
@@ -38,21 +23,6 @@ const darkColors = {
   infoLight1: "#C2DCF2",
   infoDark1: "#2a7ed2",
   lightGray: "rgb(244, 244, 244)",
-  white: "#fff"
-};
-
-const lightColors = {
-  //// Colors
-  primary: "#e00082",
-  primaryDark1: "#082333",
-  primaryLight1: "#EB7BBC",
-  secondary: "#082333",
-  secondaryDark1: "#082333",
-  secondaryLight1: "#082333",
-  info: "#0F7AD8",
-  infoLight1: "#459BF2",
-  infoDark1: "#2a7ed2",
-  lightGray: "#f9f9f9",
   white: "#fff"
 };
 
@@ -88,8 +58,7 @@ const sizes = {
 };
 
 export const theme = {
-  mode: "dark",
-  colors: darkColors,
+  colors,
   shadows,
   ...sizes,
   ...zIndex

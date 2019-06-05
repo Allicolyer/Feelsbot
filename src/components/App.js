@@ -21,10 +21,10 @@ class App extends Component {
 const Navbar = styled.div`
   background: ${p => p.theme.colors.lightgray};
   width: 100%;
+  height: ${p => p.theme.navHeight}px;
   text-align: center;
   display: flex;
   justify-content: left;
-  padding: 5px;
 `;
 
 const NavLink = styled(Link)`

@@ -1,19 +1,20 @@
 import React from "react";
+import { Title, Subtitle, Text, Link } from "./shared";
 
 const About = () => (
   <div className="App">
-    <h2>About</h2>
-    <p>
+    <Title>About</Title>
+    <Subtitle>
       {" "}
       How does AI understand our emotions? What about our emotions in tweets?
-    </p>
-    <p>
+    </Subtitle>
+    <Text>
       This project uses IBM's natural langauge understanding to understand the
       emotions that are in tweets. Here's a{" "}
-      <a href="https://natural-language-understanding-demo.ng.bluemix.net/">
+      <Link href="https://natural-language-understanding-demo.ng.bluemix.net/">
         demo.
-      </a>
-    </p>
+      </Link>
+    </Text>
   </div>
 );
 
