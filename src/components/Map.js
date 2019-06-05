@@ -1,6 +1,7 @@
 import React from "react";
 import { Tweets } from "./Tweets";
 import styled from "styled-components";
+import { Flex } from "rebass";
 
 class Map extends React.Component {
   constructor() {
@@ -125,7 +126,7 @@ class Map extends React.Component {
   render() {
     return (
       <div>
-        <MapWrapper>
+        <Flex flexDirection="column">
           <PacContainer id="pac-container">
             <label>Location:</label>
             <LongInput
@@ -143,16 +144,11 @@ class Map extends React.Component {
             lng={this.state.center.lng}
             m={this.state.miles}
           />
-        </MapWrapper>
+        </Flex>
       </div>
     );
   }
 }
-
-const MapWrapper = styled.div`
-  display: flex;
-  flex-direction: column;
-`;
 
 const MilesInput = styled.input`
   width: 5%;

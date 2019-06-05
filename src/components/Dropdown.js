@@ -2,11 +2,10 @@ import React from "react";
 import Select from "react-select";
 import { AUTOCOMPLETE } from "./Queries";
 import { Query } from "react-apollo";
-import { Box, Image, Text, Heading } from "rebass";
+import { Box, Image, Text, Heading, Flex } from "rebass";
 import styled from "styled-components";
 
-const SearchCard = styled.div`
-  display: flex;
+const SearchCard = styled(Flex)`
   text-align: left;
 `;
 

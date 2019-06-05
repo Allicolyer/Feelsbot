@@ -6,7 +6,7 @@ import MoodMeter from "./MoodMeter";
 // import { Accordion } from "react-light-accordion";
 // import TweetAccordion from "./TweetAccordion";
 import styled from "styled-components";
-import { Heading } from "rebass";
+import { Heading, Flex } from "rebass";
 import TweetGrid from "./TweetGrid";
 import { Tab, TabPanel, Tabs, TabList } from "react-web-tabs";
 import "react-web-tabs/dist/react-web-tabs.css";
@@ -82,12 +82,6 @@ const MapTweetWrapper = styled.div`
   width: 80%;
 `;
 
-const TimelineTweetWrapper = styled.div`
-  display: flex;
-  flex-direction: column;
-  margin: 0 auto;
-`;
-
 const StyledTabPanel = styled(TabPanel)`
   width: 100%;
 `;
@@ -96,9 +90,9 @@ const TweetWrapper = ({ percentage, timeline, map, rating }) => {
   return (
     <div>
       {timeline && (
-        <TimelineTweetWrapper>
+        <Flex flexDirection="column" justifyContent="center">
           <MeterInfo percentage={percentage} />
-        </TimelineTweetWrapper>
+        </Flex>
       )}
       {map && (
         <MapTweetWrapper>
