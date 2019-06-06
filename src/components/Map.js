@@ -2,6 +2,7 @@ import React from "react";
 import { Tweets } from "./Tweets";
 import styled from "styled-components";
 import { Flex } from "rebass";
+import { Span } from "./shared";
 
 class Map extends React.Component {
   constructor() {
@@ -128,13 +129,13 @@ class Map extends React.Component {
       <div>
         <Flex flexDirection="column">
           <PacContainer id="pac-container">
-            <label>Location:</label>
+            <Span>Location:</Span>
             <LongInput
               id="pac-input"
               type="text"
               placeholder="Search for a place"
             />
-            <label>Miles</label>
+            <Span>Miles</Span>
             <MilesInput type="text" id="miles-input" />
           </PacContainer>
           <div id="map" />
@@ -154,12 +155,14 @@ const MilesInput = styled.input`
   width: 5%;
   font-size: 1.5rem;
   margin: 5px;
+  border: 1px solid ${p => p.theme.colors.secondary};
 `;
 
 const LongInput = styled.input`
   width: 50%;
   font-size: 1.5rem;
   margin: 0 auto;
+  border: 1px solid ${p => p.theme.colors.secondary};
 `;
 
 const PacContainer = styled.div`

@@ -6,7 +6,8 @@ import MoodMeter from "./MoodMeter";
 // import { Accordion } from "react-light-accordion";
 // import TweetAccordion from "./TweetAccordion";
 import styled from "styled-components";
-import { Heading, Flex } from "rebass";
+import { Flex } from "rebass";
+import { Subtitle } from "./shared";
 import TweetGrid from "./TweetGrid";
 import { Tab, TabPanel, Tabs, TabList } from "react-web-tabs";
 import "react-web-tabs/dist/react-web-tabs.css";
@@ -69,7 +70,7 @@ const TweetTimeline = ({ screen_name }) => (
 const MeterInfo = ({ percentage }) => {
   return (
     <div id="meter">
-      <Heading as="h3"> Joy Meter: {percentage}% </Heading>
+      <Subtitle as="h3"> Joy Meter: {percentage}% </Subtitle>
       <MoodMeter className="meter" percent={percentage} />
       <br />
       <br />

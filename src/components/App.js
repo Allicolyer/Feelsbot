@@ -7,6 +7,7 @@ import Timeline from "./Timeline";
 import { Router, Link } from "@reach/router";
 import { theme } from "../styles/theme";
 import { ThemeProvider } from "styled-components";
+import Layout from "./Layout";
 
 class App extends Component {
   render() {
@@ -19,25 +20,26 @@ class App extends Component {
 }
 
 const Navbar = styled.div`
-  background: ${p => p.theme.colors.lightgray};
+  background: ${p => p.theme.colors.primary};
   width: 100%;
   height: ${p => p.theme.navHeight}px;
-  text-align: center;
+  align-content: center;
   display: flex;
   justify-content: left;
 `;
 
 const NavLink = styled(Link)`
   text-decoration: none;
-  color: ${p => p.theme.colors.primaryDark1};
+  font-size: ${p => p.theme.fontSizes[3]}px;
+  color: ${p => p.theme.colors.white};
   display: inline;
-  padding: ${p => p.theme.space[2]}px;
-  margin: ${p => p.theme.space[2]}px;
+  padding: ${p => p.theme.space[3]}px;
+  margin: auto 0;
 `;
 
 const Navigation = () => {
   return (
-    <header>
+    <Layout>
       <Navbar>
         <NavLink to="/">Home</NavLink>
         <NavLink to="Timeline">Your Tweets</NavLink>
@@ -49,7 +51,7 @@ const Navigation = () => {
         <About path="/About" />
         <Timeline path="/Timeline" />
       </Router>
-    </header>
+    </Layout>
   );
 };
 

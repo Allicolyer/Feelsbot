@@ -13,16 +13,23 @@ const zIndex = {
 };
 
 const colors = {
-  primary: "#e00082",
-  primaryDark1: "#a4036f",
-  primaryLight1: "#EB7BBC",
-  secondary: "#172a3a",
-  secondaryDark1: "rgb(0, 0, 0)",
-  secondaryLight1: "rgba(23, 42, 58, .5)",
-  info: "#2a7ed2",
-  infoLight1: "#C2DCF2",
-  infoDark1: "#2a7ed2",
-  lightGray: "rgb(244, 244, 244)",
+  //forest green
+  primary: "#1E392A",
+  primaryTint: "#62746a",
+  primaryShade: "#15281d",
+  //mint green
+  secondary: "#62C370",
+  secondaryTint: "#77d6a3",
+  secondaryShade: "#2a8957",
+  //tanish yellow
+  tertiary: "#E9C893",
+  tertiaryTint: "#f0d9b3",
+  tertiaryShade: "#a38c67",
+  gray: "#828081",
+  grayTint: "#b4b3b3",
+  grayShade: "#4e4d4d",
+  lightgray: "#dad9d9",
+  info: "#1a1a1a",
   white: "#fff"
 };
 

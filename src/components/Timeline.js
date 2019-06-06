@@ -1,8 +1,8 @@
 import React from "react";
 import { TweetTimeline } from "./Tweets";
-import { Text, Heading } from "rebass";
 import Dropdown from "./Dropdown";
 import styled from "styled-components";
+import { Title, Subtitle, Text, Link } from "./shared";
 
 class Timeline extends React.Component {
   constructor() {
@@ -24,30 +24,32 @@ class Timeline extends React.Component {
   };
   componentDidMount() {
     let input = document.getElementById("react-select-2-input");
-    input.addEventListener("keyup", e => {
-      this.setState({
-        autocompleteText: input.value,
-        search: true,
-        render: false
-      });
-      if (13 === e.keyCode) {
+    input &&
+      input.addEventListener("keyup", e => {
         this.setState({
+          autocompleteText: input.value,
+          search: true,
+          render: false
+        });
+        if (13 === e.keyCode) {
+          this.setState({
+            render: true
+          });
+        }
+      });
+    input &&
+      input.addEventListener("change", () => {
+        this.setState({
+          screen_name: input.value,
           render: true
         });
-      }
-    });
-    input.addEventListener("change", () => {
-      this.setState({
-        screen_name: input.value,
-        render: true
       });
-    });
   }
   render() {
     return (
       <div className="App">
         <header>
-          <Heading> Hi, I'm FeelsBot </Heading>
+          <Title> Hi, I'm FeelsBot </Title>
           <Text>
             {" "}
             I try to assess how humans are feeling by reading their tweets. Let
