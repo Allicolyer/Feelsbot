@@ -3,11 +3,9 @@ import { Query } from "react-apollo";
 import { GET_TWEETS } from "./Queries";
 import { GET_TIMELINE } from "./Queries";
 import MoodMeter from "./MoodMeter";
-// import { Accordion } from "react-light-accordion";
-// import TweetAccordion from "./TweetAccordion";
 import styled from "styled-components";
 import { Flex } from "rebass";
-import { Subtitle } from "./shared";
+import { Subtitle, Text } from "./shared";
 import TweetGrid from "./TweetGrid";
 import { Tab, TabPanel, Tabs, TabList } from "react-web-tabs";
 import "react-web-tabs/dist/react-web-tabs.css";
@@ -17,7 +15,11 @@ const Tweets = ({ lat, lng, m }) => (
     {({ loading, error, data }) => {
       // if (loading) return "Loading...";
       if (error)
-        return `Error - FeelsBot has been overwhelmed with emotion. Please try again.`;
+        return (
+          <Text>
+            FeelsBot has been overwhelmed with emotion. Please try again.
+          </Text>
+        );
 
       let tweets = [];
       let rating = {
@@ -44,7 +46,12 @@ const TweetTimeline = ({ screen_name }) => (
   <Query query={GET_TIMELINE} variables={{ screen_name: screen_name }}>
     {({ loading, error, data }) => {
       // if (loading) return "Loading...";
-      if (error) return `Hold on a sec`;
+      if (error)
+        return (
+          <Text>
+            FeelsBot has been overwhelmed with emotion. Please try again.
+          </Text>
+        );
 
       let tweets = [];
       let rating = {
@@ -70,7 +77,7 @@ const TweetTimeline = ({ screen_name }) => (
 const MeterInfo = ({ percentage }) => {
   return (
     <div id="meter">
-      <Subtitle as="h3"> Joy Meter: {percentage}% </Subtitle>
+      <Subtitle> Joy Meter: {percentage}% </Subtitle>
       <MoodMeter className="meter" percent={percentage} />
       <br />
       <br />
@@ -101,7 +108,7 @@ const TweetWrapper = ({ percentage, timeline, map, rating }) => {
         </MapTweetWrapper>
       )}
       <div>
-        <Tabs defaultTab="none" vertical className="vertical-tabs">
+        <Tabs vertical className="vertical-tabs">
           <TabList>
             <Tab tabFor="tab-joy">Joy {rating.joy.num}</Tab>
             <Tab tabFor="tab-sadness">Sadness {rating.sadness.num}</Tab>

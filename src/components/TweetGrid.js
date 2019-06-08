@@ -15,16 +15,14 @@ class TweetGrid extends React.Component {
         this.props.rating.tweets[i].num = i + 1;
       }
       return (
-        <div>
-          <div id="stack-grid" display="none">
-            <StackGrid columnWidth={300} gridRef={grid => (this.grid = grid)}>
-              {this.props.rating.tweets.map(tweet => (
-                <div key={`key${tweet.num}`}>
-                  <TwitterTweetEmbed tweetId={`${tweet.id_str}`} />
-                </div>
-              ))}
-            </StackGrid>
-          </div>
+        <div id="stack-grid" display="none" width="50%">
+          <StackGrid columnWidth={300} gridRef={grid => (this.grid = grid)}>
+            {this.props.rating.tweets.map(tweet => (
+              <div key={`key${tweet.num}`}>
+                <TwitterTweetEmbed tweetId={`${tweet.id_str}`} />
+              </div>
+            ))}
+          </StackGrid>
         </div>
       );
     } else return <div> "no tweets" </div>;
