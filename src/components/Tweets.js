@@ -1,13 +1,13 @@
 import React from "react";
-import { Query } from "react-apollo";
-import { GET_TWEETS } from "./Queries";
-import { GET_TIMELINE } from "./Queries";
-import MoodMeter from "./MoodMeter";
 import styled from "styled-components";
+import { Query } from "react-apollo";
+import { GET_TWEETS, GET_TIMELINE } from "./Queries";
+import MoodMeter from "./MoodMeter";
 import { Flex } from "rebass";
 import { Subtitle, Text } from "./shared";
 import TweetGrid from "./TweetGrid";
 import { Tab, TabPanel, Tabs, TabList } from "react-web-tabs";
+import { tweetSorter, percent } from "../utils/helpers";
 import "react-web-tabs/dist/react-web-tabs.css";
 
 const Tweets = ({ lat, lng, m }) => (
@@ -33,7 +33,7 @@ const Tweets = ({ lat, lng, m }) => (
       let percentage = 0;
       if (!loading) {
         tweets = data.tweets;
-        rating = sorter(tweets);
+        rating = tweetSorter(tweets);
         percentage = percent(rating);
       }
 
@@ -62,10 +62,11 @@ const TweetTimeline = ({ screen_name }) => (
         fear: { num: "-", tweets: [] },
         disgust: { num: "-", tweets: [] }
       };
+
       let percentage = 0;
       if (!loading) {
         tweets = data.user;
-        rating = sorter(tweets);
+        rating = tweetSorter(tweets);
         percentage = percent(rating);
       }
 
@@ -73,17 +74,6 @@ const TweetTimeline = ({ screen_name }) => (
     }}
   </Query>
 );
-
-const MeterInfo = ({ percentage }) => {
-  return (
-    <div id="meter">
-      <Subtitle> Joy Meter: {percentage}% </Subtitle>
-      <MoodMeter className="meter" percent={percentage} />
-      <br />
-      <br />
-    </div>
-  );
-};
 
 const MapTweetWrapper = styled.div`
   padding: 10px;
@@ -138,36 +128,17 @@ const TweetWrapper = ({ percentage, timeline, map, rating }) => {
   );
 };
 
-function sorter(input) {
-  let rating = {};
-  let keys = ["joy", "sadness", "fear", "anger", "disgust"];
-  //removes any entries that are 0 and records how many there are
-  rating.total = input.filter(a => a.emotion.joy).length;
+const MeterDiv = styled.div`
+  padding-bottom: ${p => p.theme.space[2]}px;
+`;
 
-  //creates a new array that sorts each tweet by it's category
-  keys.forEach(key => {
-    let filter = input.filter(a => a.emotion[key] > 0.6);
-    rating[key] = {
-      num: filter.length,
-      tweets: filter
-    };
-  });
-  console.log(rating);
-  return rating;
-}
-
-function percent(input) {
-  let percentage = 0;
-  percentage = Math.floor(
-    (input.joy.num /
-      (input.joy.num +
-        input.anger.num +
-        input.sadness.num +
-        input.fear.num +
-        input.disgust.num)) *
-      100
+const MeterInfo = ({ percentage }) => {
+  return (
+    <MeterDiv id="meter">
+      <Subtitle> Joy Meter: {percentage}% </Subtitle>
+      <MoodMeter className="meter" percent={percentage} />
+    </MeterDiv>
   );
-  return percentage;
-}
+};
 
 export { Tweets, TweetTimeline };
