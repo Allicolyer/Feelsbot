@@ -1,83 +1,22 @@
 @import "accordion.css";
 
-.App {
-  text-align: center;
-}
-
-header {
-  margin: 0 auto;
-  width: 75%;
-  padding: 5px;
-}
-
-.navbar {
-  background: gray;
+#tab-joy {
   width: 100%;
-  text-align: center;
-  display: flex;
-  justify-content: left;
-  padding: 5px;
+}
+#tab-sadness {
+  width: 100%;
+}
+#tab-anger {
+  width: 100%;
+}
+#tab-fear {
+  width: 100%;
+}
+#tab-disgust {
+  width: 100%;
 }
 
-.navbar a {
-  text-decoration: none;
-  color: white;
-  display: inline;
-}
-
-#root,
-#app,
-#map {
-  height: 100%;
-}
-
-#map-wrapper {
-  display: flex;
-  flex-direction: column;
-}
-#tweet-map-wrapper {
-  display: flex;
-  flex-direction: row;
-}
-
-#map {
-  height: 600px;
-  width: 48%;
-  padding: 10px;
-}
-
-#tweet_wrapper {
-  padding: 10px;
-  width: 48%;
-}
-
-#timeline_tweet_wrapper {
-  display: flex;
-  flex-direction: column;
-  width: 60%;
-  margin: 0 auto;
-}
-
-#pac-container {
-  padding: 10px;
-}
-
-.long-input {
-  width: 50%;
-  font-size: 1.5rem;
-  margin: 0 auto;
-}
-#miles-input {
-  width: 5%;
-  font-size: 1.5rem;
-  margin: 5px;
-}
-
-.emoji {
-  font-size: 30px;
-}
-
-.searchCard {
-  display: flex;
-  text-align: left;
+.updateGrid {
+  width: 98%;
+  visibility: block;
 }

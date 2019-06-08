@@ -2,31 +2,52 @@ import React from "react";
 import Select from "react-select";
 import { AUTOCOMPLETE } from "./Queries";
 import { Query } from "react-apollo";
-import { Box, Image, Text, Heading, Flex } from "rebass";
+import styled from "styled-components";
+import { Span, Text } from "./shared";
+
+const SearchCard = styled.div`
+  display: flex;
+  text-align: left;
+`;
+
+const TwitterImage = styled.img`
+  border-radius: ${p => p.theme.space[2]}px;
+  margin: auto 0;
+  padding: ${p => p.theme.space[2]}px;
+`;
+
+const UserName = styled.h3`
+  color: ${p => p.theme.colors.secondary};
+  display: inline;
+`;
 
 let options = [];
 
-const Dropdown = props => {
+const Dropdown = ({ autocompleteText, handleChange, selectedOption }) => {
   return (
-    <Query query={AUTOCOMPLETE} variables={{ text: props.autocompleteText }}>
+    <Query query={AUTOCOMPLETE} variables={{ text: autocompleteText }}>
       {({ loading, error, data }) => {
-        // if (loading) return "Loading...";
+        // if (loading) return <Text>Loading...</Text>;
         if (error)
-          return `Error - Arnold has been overwhelmed with emotion. Please try again.`;
+          return (
+            <Text>
+              FeelsBot has been overwhelmed with emotion. Please try again.
+            </Text>
+          );
 
         if (!loading) {
           if (data.autocomplete) {
             let users = data.autocomplete.map(user => ({
               value: user.screen_name,
               label: (
-                <div className="searchCard">
-                  <Image src={user.profile_image_url} borderRadius={2} />
-                  <Box px={2}>
-                    <Heading as="h3">{user.name}</Heading>
-                    <Text fontSize={0}>@{user.screen_name}</Text>
-                    <Text fontSize={1}>{user.description}</Text>
-                  </Box>
-                </div>
+                <SearchCard>
+                  <TwitterImage src={user.profile_image_url} />
+                  <div>
+                    <UserName>{user.name}</UserName> {""}
+                    <Span>@{user.screen_name}</Span>
+                    <Text>{user.description}</Text>
+                  </div>
+                </SearchCard>
               )
             }));
             options = users;
@@ -34,8 +55,8 @@ const Dropdown = props => {
         }
         return (
           <Select
-            value={props.selectedOption}
-            onChange={props.handleChange}
+            value={selectedOption}
+            onChange={handleChange}
             options={options}
           />
         );
@@ -43,4 +64,5 @@ const Dropdown = props => {
     </Query>
   );
 };
+
 export default Dropdown;

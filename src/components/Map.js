@@ -1,5 +1,8 @@
 import React from "react";
 import { Tweets } from "./Tweets";
+import styled from "styled-components";
+import { Flex } from "rebass";
+import { Span } from "./shared";
 
 class Map extends React.Component {
   constructor() {
@@ -124,39 +127,57 @@ class Map extends React.Component {
   render() {
     return (
       <div>
-        <div id="map-wrapper">
-          <div id="pac-container">
-            <label>Location:</label>
-            <input
-              className="long-input"
+        <Flex flexDirection="column">
+          <PacContainer id="pac-container">
+            <Span>Location:</Span>
+            <LongInput
               id="pac-input"
               type="text"
               placeholder="Search for a place"
             />
-            <label>Miles</label>
-            <input id="miles-input" type="text" />
-          </div>
-          <div id="tweet-map-wrapper">
-            <div id="map" />
-            <TweetsRender
-              render={this.state.renderTweets}
-              lat={this.state.center.lat}
-              lng={this.state.center.lng}
-              m={this.state.miles}
-            />
-          </div>
-        </div>
+            <Span>Miles</Span>
+            <MilesInput type="text" id="miles-input" />
+          </PacContainer>
+          <MapDiv id="map" />
+          <TweetsRender
+            render={this.state.renderTweets}
+            lat={this.state.center.lat}
+            lng={this.state.center.lng}
+            m={this.state.miles}
+          />
+        </Flex>
       </div>
     );
   }
 }
 
-const TweetsRender = props => {
-  console.log(props.render);
-  if (props.render) {
-    return <Tweets lat={props.lat} lng={props.lng} m={props.m} />;
+const MapDiv = styled.div`
+  height: 350px;
+  width: 100%;
+  padding: 25px;
+`;
+const MilesInput = styled.input`
+  width: 5%;
+  font-size: 1.5rem;
+  margin: 5px;
+  border: 1px solid ${p => p.theme.colors.secondary};
+`;
+
+const LongInput = styled.input`
+  width: 50%;
+  font-size: 1.5rem;
+  margin: 0 auto;
+  border: 1px solid ${p => p.theme.colors.secondary};
+`;
+
+const PacContainer = styled.div`
+  padding: 10px;
+`;
+const TweetsRender = ({ render, lat, lng, m }) => {
+  if (render) {
+    return <Tweets lat={lat} lng={lng} m={m} />;
   } else {
-    return <div>Enter a Location so that Arnold can assess the mood.</div>;
+    return <div>Enter a Location so that FeelsBot can assess the mood.</div>;
   }
 };
 
