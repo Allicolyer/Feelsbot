@@ -138,7 +138,7 @@ class Map extends React.Component {
             <Span>Miles</Span>
             <MilesInput type="text" id="miles-input" />
           </PacContainer>
-          <div id="map" />
+          <MapDiv id="map" />
           <TweetsRender
             render={this.state.renderTweets}
             lat={this.state.center.lat}
@@ -151,6 +151,11 @@ class Map extends React.Component {
   }
 }
 
+const MapDiv = styled.div`
+  height: 350px;
+  width: 100%;
+  padding: 25px;
+`;
 const MilesInput = styled.input`
   width: 5%;
   font-size: 1.5rem;

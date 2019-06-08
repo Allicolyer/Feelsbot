@@ -1,21 +1,5 @@
 @import "accordion.css";
 
-.App {
-  text-align: center;
-}
-
-#root,
-#app,
-#map {
-  height: 100%;
-}
-
-#map {
-  height: 350px;
-  width: 100%;
-  padding: 25px;
-}
-
 #tab-joy {
   width: 100%;
 }

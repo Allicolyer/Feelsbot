@@ -2,12 +2,11 @@ import React, { Component } from "react";
 import "../styles/App.css";
 import Map from "./Map";
 import { Title, Text, Link } from "./shared";
-import Layout from "./Layout";
 
 class Home extends Component {
   render() {
     return (
-      <Layout>
+      <div>
         <Title>Hi, I'm FeelsBot </Title>
         <Text>
           {" "}
@@ -17,7 +16,7 @@ class Home extends Component {
           are feeling.{" "}
         </Text>
         <Map />
-      </Layout>
+      </div>
     );
   }
 }

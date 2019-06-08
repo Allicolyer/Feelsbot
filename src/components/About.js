@@ -2,7 +2,7 @@ import React from "react";
 import { Title, Text, Link } from "./shared";
 
 const About = () => (
-  <div className="App">
+  <div>
     <Title> How does AI understand our emotions?</Title>
     <Text>
       This project uses IBM's natural langauge understanding to understand the
