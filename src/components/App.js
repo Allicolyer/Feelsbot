@@ -4,11 +4,12 @@ import styled from "styled-components";
 import Home from "./Home";
 import About from "./About";
 import Timeline from "./Timeline";
-import { Router, Link } from "@reach/router";
+import { Router } from "@reach/router";
 import { theme } from "../styles/theme";
 import { ThemeProvider } from "styled-components";
 import Layout from "./Layout";
-
+import logo from "../assets/logo.svg";
+import { Subtitle } from "./shared";
 class App extends Component {
   render() {
     return (
@@ -23,27 +24,54 @@ const Navbar = styled.div`
   background: ${p => p.theme.colors.primary};
   width: 100%;
   height: ${p => p.theme.navHeight}px;
-  align-content: center;
   display: flex;
-  justify-content: left;
+  justify-content: space-between;
 `;
 
-const NavLink = styled(Link)`
+const LogoContainer = styled.a`
+  text-decoration: none;
+  margin: auto 0;
+  display: flex;
+`;
+
+const Logo = styled.img`
+  height: ${p => p.theme.navHeight * 0.8}px;
+  padding: ${p => p.theme.space[2]}px;
+  display: inline;
+  margin: auto 0;
+`;
+
+const LogoText = styled(Subtitle)`
+  margin: auto 0;
+  padding: ${p => p.theme.space[2]}px;
+  color: ${p => p.theme.colors.white};
+`;
+
+const NavLinks = styled.div`
+  margin: auto 0;
+`;
+
+const NavLink = styled.a`
   text-decoration: none;
   font-size: ${p => p.theme.fontSizes[3]}px;
   color: ${p => p.theme.colors.white};
   display: inline;
   padding: ${p => p.theme.space[3]}px;
-  margin: auto 0;
 `;
 
 const Navigation = () => {
   return (
     <Layout>
       <Navbar>
-        <NavLink to="/">Home</NavLink>
-        <NavLink to="Timeline">Your Tweets</NavLink>
-        <NavLink to="About">About</NavLink>
+        <LogoContainer href="/">
+          <Logo src={logo} />
+          <LogoText>FeelsBot</LogoText>
+        </LogoContainer>
+        <NavLinks>
+          <NavLink href="/">Map</NavLink>
+          <NavLink href="Timeline">Your Tweets</NavLink>
+          <NavLink href="About">About</NavLink>
+        </NavLinks>
       </Navbar>
 
       <Router>

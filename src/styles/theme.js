@@ -13,24 +13,26 @@ const zIndex = {
 };
 
 const colors = {
-  //forest green
-  primary: "#1E392A",
-  primaryTint: "#62746a",
-  primaryShade: "#15281d",
-  //mint green
-  secondary: "#62C370",
-  secondaryTint: "#77d6a3",
-  secondaryShade: "#2a8957",
-  //tanish yellow
-  tertiary: "#E9C893",
-  tertiaryTint: "#f0d9b3",
-  tertiaryShade: "#a38c67",
+  //bright teal
+  primary: "#54BACE",
+  primaryTint: "#98d6e2",
+  primaryShade: "#32707c",
+  //bright red
+  secondary: "#E94467",
+  secondaryTint: "#f28fa4",
+  secondaryShade: "#8c293e",
   gray: "#828081",
   grayTint: "#b4b3b3",
   grayShade: "#4e4d4d",
   lightgray: "#dad9d9",
   info: "#1a1a1a",
   white: "#fff"
+};
+
+const metercolors = {
+  sad: ["#922B21", "#C0392B"],
+  neutral: ["#F4D03F", "#F9E79F"],
+  happy: ["#239B56", "#58D68D"]
 };
 
 const sizes = {
@@ -43,7 +45,6 @@ const sizes = {
   middleContainerNarrowWidth: 1100,
   // [C] Nav
   navHeight: 64,
-  brandHeight: 40,
   // Spaces
   space: [
     // margin and padding
@@ -66,6 +67,7 @@ const sizes = {
 
 export const theme = {
   colors,
+  metercolors,
   shadows,
   ...sizes,
   ...zIndex

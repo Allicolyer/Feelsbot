@@ -10,14 +10,14 @@ export const Span = styled.span`
 
 export const Link = styled.a`
   text-decoration: none;
-  color: ${p => p.theme.colors.secondary};
+  color: ${p => p.theme.colors.primary};
   display: inline;
 `;
 
 export const Title = styled.h1`
-  color: ${p => p.theme.colors.secondary};
+  color: ${p => p.theme.colors.primary};
 `;
 
 export const Subtitle = styled.h3`
-  color: ${p => p.theme.colors.secondary};
+  color: ${p => p.theme.colors.primary};
 `;

@@ -160,14 +160,14 @@ const MilesInput = styled.input`
   width: 5%;
   font-size: 1.5rem;
   margin: 5px;
-  border: 1px solid ${p => p.theme.colors.secondary};
+  border: 1px solid ${p => p.theme.colors.primary};
 `;
 
 const LongInput = styled.input`
   width: 50%;
   font-size: 1.5rem;
   margin: 0 auto;
-  border: 1px solid ${p => p.theme.colors.secondary};
+  border: 1px solid ${p => p.theme.colors.primary};
 `;
 
 const PacContainer = styled.div`

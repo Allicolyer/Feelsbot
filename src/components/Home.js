@@ -10,8 +10,10 @@ class Home extends Component {
         <Title>Hi, I'm FeelsBot </Title>
         <Text>
           {" "}
-          I try to assess how humans are feeling by reading their tweets. Test
-          out what I can do by using this map. I can also{" "}
+          I try to assess how humans are feeling by reading their tweets.{" "}
+        </Text>
+        <Text>
+          Test out what I can do by using this map. I can also{" "}
           <Link href="/timeline">read your tweets</Link> and tell you how you
           are feeling.{" "}
         </Text>
