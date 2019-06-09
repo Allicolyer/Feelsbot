@@ -17,7 +17,7 @@ const TwitterImage = styled.img`
 `;
 
 const UserName = styled.h3`
-  color: ${p => p.theme.colors.secondary};
+  color: ${p => p.theme.colors.primary};
   display: inline;
 `;
 
