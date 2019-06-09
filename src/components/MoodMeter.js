@@ -2,6 +2,7 @@ import React from "react";
 import "react-step-progress-bar/styles.css";
 import { ProgressBar, Step } from "react-step-progress-bar";
 import styled from "styled-components";
+import { theme } from "../styles/theme";
 
 const MeterStyles = styled.div`
   width: 60%;
@@ -13,98 +14,55 @@ const Emoji = styled.span`
   font-size: 30px;
 `;
 
+const colors = theme.metercolors;
+// console.log(colors.happy);
+
+const emojis = {
+  sobbing: "😭",
+  sad: "🙁",
+  neutral: "😐",
+  happy: "🙂",
+  estatic: "🤩"
+};
+
+const emojiKeys = Object.keys(emojis);
+
 const MoodMeter = ({ percent }) => {
-  let colors = [];
-  switch (true) {
-    case percent < 33:
-      colors.push("#922B21", "#C0392B ");
-      break;
-    case percent < 66:
-      colors.push("#F4D03F", "#F9E79F");
-      break;
-    default:
-      colors.push("#239B56", "#58D68D");
+  let meterColors = [];
+  if (percent < 33) {
+    meterColors = colors.sad;
+  } else if (percent < 66) {
+    meterColors = colors.neutral;
+  } else {
+    meterColors = colors.happy;
   }
 
   return (
     <MeterStyles>
       <ProgressBar
         percent={percent}
-        filledBackground={`linear-gradient(to left, ${colors[0]}, ${
-          colors[1]
+        filledBackground={`linear-gradient(to left, ${meterColors[0]}, ${
+          meterColors[1]
         })`}
       >
-        <Step transition="scale">
-          {({ accomplished }) => (
-            <div
-              className={`transitionStep ${
-                accomplished ? "accomplished" : null
-              }`}
-              style={{ filter: `grayscale(${accomplished ? 0 : 80}%)` }}
-            >
-              <Emoji role="img" aria-label="Sobbing">
-                😭
-              </Emoji>
-            </div>
-          )}
-        </Step>
-
-        <Step transition="scale">
-          {({ accomplished }) => (
-            <div
-              className={`transitionStep ${
-                accomplished ? "accomplished" : null
-              }`}
-              style={{ filter: `grayscale(${accomplished ? 0 : 80}%)` }}
-            >
-              <Emoji role="img" aria-label="Sad">
-                🙁
-              </Emoji>
-            </div>
-          )}
-        </Step>
-        <Step transition="scale">
-          {({ accomplished }) => (
-            <div
-              className={`transitionStep ${
-                accomplished ? "accomplished" : null
-              }`}
-              style={{ filter: `grayscale(${accomplished ? 0 : 80}%)` }}
-            >
-              <Emoji role="img" aria-label="Neutral">
-                😐
-              </Emoji>
-            </div>
-          )}
-        </Step>
-        <Step transition="scale" position={90}>
-          {({ accomplished }) => (
-            <div
-              className={`transitionStep ${
-                accomplished ? "accomplished" : null
-              }`}
-              style={{ filter: `grayscale(${accomplished ? 0 : 80}%)` }}
-            >
-              <Emoji role="img" aria-label="Happy">
-                🙂
-              </Emoji>
-            </div>
-          )}
-        </Step>
-        <Step transition="scale" position={90}>
-          {({ accomplished }) => (
-            <div
-              className={`transitionStep ${
-                accomplished ? "accomplished" : null
-              }`}
-              style={{ filter: `grayscale(${accomplished ? 0 : 80}%)` }}
-            >
-              <Emoji role="img" aria-label="Extremely Happy">
-                🤩
-              </Emoji>
-            </div>
-          )}
-        </Step>
+        {emojiKeys.map((emotion, index) => {
+          return (
+            <Step transition="scale" position={90} key={index}>
+              {({ accomplished }) => (
+                <div
+                  className={`transitionStep ${
+                    accomplished ? "accomplished" : null
+                  }`}
+                  style={{ filter: `grayscale(${accomplished ? 0 : 80}%)` }}
+                >
+                  <Emoji role="img" aria-label={emotion}>
+                    {emojis[emotion]}
+                  </Emoji>
+                </div>
+              )}
+            </Step>
+          );
+        })}
       </ProgressBar>
     </MeterStyles>
   );

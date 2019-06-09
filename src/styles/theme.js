@@ -29,6 +29,12 @@ const colors = {
   white: "#fff"
 };
 
+const metercolors = {
+  sad: ["#922B21", "#C0392B"],
+  neutral: ["#F4D03F", "#F9E79F"],
+  happy: ["#239B56", "#58D68D"]
+};
+
 const sizes = {
   ///// Sizes
   breakpoints: ["40em", "52em", "64em"],
@@ -39,7 +45,6 @@ const sizes = {
   middleContainerNarrowWidth: 1100,
   // [C] Nav
   navHeight: 64,
-  brandHeight: 40,
   // Spaces
   space: [
     // margin and padding
@@ -62,6 +67,7 @@ const sizes = {
 
 export const theme = {
   colors,
+  metercolors,
   shadows,
   ...sizes,
   ...zIndex
