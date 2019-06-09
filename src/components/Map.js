@@ -1,5 +1,5 @@
 import React from "react";
-import { Tweets } from "./Tweets";
+import Tweets from "./Tweets";
 import styled from "styled-components";
 import { Flex } from "rebass";
 import { Span } from "./shared";
@@ -175,7 +175,7 @@ const PacContainer = styled.div`
 `;
 const TweetsRender = ({ render, lat, lng, m }) => {
   if (render) {
-    return <Tweets lat={lat} lng={lng} m={m} />;
+    return <Tweets lat={lat} lng={lng} m={m} map />;
   } else {
     return <div>Enter a Location so that FeelsBot can assess the mood.</div>;
   }

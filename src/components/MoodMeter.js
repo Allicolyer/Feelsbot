@@ -15,7 +15,6 @@ const Emoji = styled.span`
 `;
 
 const colors = theme.metercolors;
-// console.log(colors.happy);
 
 const emojis = {
   sobbing: "😭",
@@ -27,16 +26,12 @@ const emojis = {
 
 const emojiKeys = Object.keys(emojis);
 
-const MoodMeter = ({ percent }) => {
-  let meterColors = [];
-  if (percent < 33) {
-    meterColors = colors.sad;
-  } else if (percent < 66) {
-    meterColors = colors.neutral;
-  } else {
-    meterColors = colors.happy;
-  }
+const MoodMeter = ({ percent, mood }) => {
+  console.log(mood);
+  console.log(colors);
+  console.log(colors[mood]);
 
+  let meterColors = colors[mood];
   return (
     <MeterStyles>
       <ProgressBar

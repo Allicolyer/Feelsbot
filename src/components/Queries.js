@@ -2,7 +2,7 @@ import gql from "graphql-tag";
 
 const GET_TWEETS = gql`
   query($lat: Float!, $lng: Float!, $m: Int!) {
-    tweets(lat: $lat, lng: $lng, m: $m) {
+    tweets: tweets(lat: $lat, lng: $lng, m: $m) {
       id_str
       text
       url
@@ -24,7 +24,7 @@ const GET_TWEETS = gql`
 
 const GET_TIMELINE = gql`
   query($screen_name: String!) {
-    user(screen_name: $screen_name) {
+    tweets: user(screen_name: $screen_name) {
       id_str
       text
       emotion {
