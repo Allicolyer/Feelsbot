@@ -18,7 +18,7 @@ const About = () => (
       tweets. Using this algorithm, Feelsbot categorizes tweets into five
       categories: joy, sadness, anger, fear and disgust. Feelsbot can only
       analyze tweets that are in English and are longer than X words. Each tweet
-      recieves a confidence level of how strongly it matches one of those
+      receives a confidence level of how strongly it matches one of those
       categories. Tweets that have a confidence level higher than 65% are
       categorized as containing that emotion. Feelsbot calculates the joy meter
       by figuring out what percentage of the categorized tweets are rated as
@@ -45,7 +45,7 @@ const About = () => (
       Feelsbot was created by{" "}
       <Link href="https://www.alli.science">Allison Colyer</Link>. Robot
       drawings were created by{" "}
-      <Link href="https://www.rubyrios.com">Ruby Rios.</Link>
+      <Link href="https://www.rubyrios.com">Ruby Ríos.</Link>
     </Text>
   </Content>
 );

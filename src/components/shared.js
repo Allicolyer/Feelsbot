@@ -2,10 +2,13 @@ import styled from "styled-components";
 
 export const Text = styled.p`
   color: ${p => p.theme.colors.info};
+  font-size: ${p => p.theme.fontSizes[3]}px;
+  line-height: ${p => p.theme.fontSizes[3] * 1.25}px;
 `;
 
 export const Span = styled.span`
   color: ${p => p.theme.colors.info};
+  font-size: ${p => p.theme.fontSizes[3]}px;
 `;
 
 export const Link = styled.a`
