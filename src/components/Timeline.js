@@ -2,7 +2,7 @@ import React from "react";
 import Tweets from "./Tweets";
 import Dropdown from "./Dropdown";
 import styled from "styled-components";
-import { Title, Subtitle, Text, Link } from "./shared";
+import { Title, Text, Content } from "./shared";
 
 class Timeline extends React.Component {
   constructor() {
@@ -47,29 +47,25 @@ class Timeline extends React.Component {
   }
   render() {
     return (
-      <div className="App">
-        <header>
-          <Title> Hi, I'm FeelsBot </Title>
-          <Text>
-            {" "}
-            I try to assess how humans are feeling by reading their tweets. Let
-            me read your tweets and I'll tell you how you are feeling.
-          </Text>
-        </header>
-        <div id="timeline_tweet_wrapper">
-          <TimelineInput>
-            <Dropdown
-              autocompleteText={this.state.autocompleteText}
-              handleChange={this.handleChange}
-              selectedOption={this.state.selectedOption}
-            />
-          </TimelineInput>
-          <TweetTimelineRender
-            render={this.state.render}
-            screen_name={this.state.screen_name}
+      <Content>
+        <Title> Hi, I'm FeelsBot </Title>
+        <Text>
+          {" "}
+          I try to assess how humans are feeling by reading their tweets. Let me
+          read your tweets and I'll tell you how you are feeling.
+        </Text>
+        <TimelineInput>
+          <Dropdown
+            autocompleteText={this.state.autocompleteText}
+            handleChange={this.handleChange}
+            selectedOption={this.state.selectedOption}
           />
-        </div>
-      </div>
+        </TimelineInput>
+        <TweetTimelineRender
+          render={this.state.render}
+          screen_name={this.state.screen_name}
+        />
+      </Content>
     );
   }
 }
@@ -86,7 +82,7 @@ const TweetTimelineRender = ({ render, screen_name }) => {
     return <Tweets screen_name={screen_name} timeline />;
   } else {
     return (
-      <div>Enter your Twitter handle so FeelsBot can assess your tweets</div>
+      <Text>Enter your Twitter handle so FeelsBot can assess your tweets</Text>
     );
   }
 };

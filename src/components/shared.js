@@ -21,3 +21,18 @@ export const Title = styled.h1`
 export const Subtitle = styled.h3`
   color: ${p => p.theme.colors.primary};
 `;
+
+export const Layout = styled.div`
+  height: 100%;
+  width: 100%;
+  text-align: center;
+`;
+
+export const Content = styled.div`
+  height: 100%;
+  width: 85%;
+  margin: 0 auto;
+  padding: ${p => p.theme.space[2]}px;
+  line-height: ${p => p.theme.fontSizes[3]}px;
+  text-align: center;
+`;

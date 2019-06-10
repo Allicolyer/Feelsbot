@@ -7,9 +7,8 @@ import Timeline from "./Timeline";
 import { Router } from "@reach/router";
 import { theme } from "../styles/theme";
 import { ThemeProvider } from "styled-components";
-import Layout from "./Layout";
 import logo from "../assets/logo.svg";
-import { Subtitle } from "./shared";
+import { Subtitle, Layout } from "./shared";
 class App extends Component {
   render() {
     return (

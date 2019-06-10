@@ -2,7 +2,8 @@ import React from "react";
 import Tweets from "./Tweets";
 import styled from "styled-components";
 import { Flex } from "rebass";
-import { Span } from "./shared";
+import { Span, Text } from "./shared";
+import { theme } from "../styles/theme";
 
 class Map extends React.Component {
   constructor() {
@@ -47,10 +48,10 @@ class Map extends React.Component {
     var mileCircle;
     const drawcircle = (center, miles) => {
       mileCircle = new window.google.maps.Circle({
-        strokeColor: "#FF0000",
+        strokeColor: `${theme.colors.primary}`,
         strokeOpacity: 0.8,
         strokeWeight: 2,
-        fillColor: "#FF0000",
+        fillColor: `${theme.colors.primary}`,
         fillOpacity: 0.35,
         map: map,
         center: center,
@@ -75,6 +76,7 @@ class Map extends React.Component {
     let marker = new window.google.maps.Marker({
       map: map,
       position: this.state.center
+      // icon: { url: "http://maps.google.com/mapfiles/ms/icons/blue-dot.png" }
     });
 
     // initialize the autocomplete functionality using the #pac-input input box
@@ -152,9 +154,8 @@ class Map extends React.Component {
 }
 
 const MapDiv = styled.div`
-  height: 350px;
+  height: 400px;
   width: 100%;
-  padding: 25px;
 `;
 const MilesInput = styled.input`
   width: 5%;
@@ -177,7 +178,7 @@ const TweetsRender = ({ render, lat, lng, m }) => {
   if (render) {
     return <Tweets lat={lat} lng={lng} m={m} map />;
   } else {
-    return <div>Enter a Location so that FeelsBot can assess the mood.</div>;
+    return <Text>Enter a Location so that FeelsBot can assess the mood.</Text>;
   }
 };
 
