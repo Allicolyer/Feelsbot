@@ -30,9 +30,11 @@ export const percent = input => {
 
 export const assignMood = input => {
   let mood;
-  if (input < 33) {
+  if (input == "-") {
+    mood = "loading";
+  } else if (input < 50) {
     mood = "sad";
-  } else if (input < 66) {
+  } else if (input < 75) {
     mood = "neutral";
   } else {
     mood = "happy";

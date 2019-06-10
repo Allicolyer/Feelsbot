@@ -7,9 +7,8 @@ import Timeline from "./Timeline";
 import { Router } from "@reach/router";
 import { theme } from "../styles/theme";
 import { ThemeProvider } from "styled-components";
-import Layout from "./Layout";
 import logo from "../assets/logo.svg";
-import { Subtitle } from "./shared";
+import { Subtitle, Layout } from "./shared";
 class App extends Component {
   render() {
     return (
@@ -43,7 +42,7 @@ const Logo = styled.img`
 
 const LogoText = styled(Subtitle)`
   margin: auto 0;
-  padding: ${p => p.theme.space[2]}px;
+  padding: ${p => p.theme.space[0]}px;
   color: ${p => p.theme.colors.white};
 `;
 
