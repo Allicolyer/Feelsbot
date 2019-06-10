@@ -1,5 +1,5 @@
 import React from "react";
-import { TweetTimeline } from "./Tweets";
+import Tweets from "./Tweets";
 import Dropdown from "./Dropdown";
 import styled from "styled-components";
 import { Title, Subtitle, Text, Link } from "./shared";
@@ -83,7 +83,7 @@ const TimelineInput = styled.div`
 
 const TweetTimelineRender = ({ render, screen_name }) => {
   if (render) {
-    return <TweetTimeline screen_name={screen_name} />;
+    return <Tweets screen_name={screen_name} timeline />;
   } else {
     return (
       <div>Enter your Twitter handle so FeelsBot can assess your tweets</div>

@@ -3,7 +3,6 @@ export const tweetSorter = input => {
   let keys = ["joy", "sadness", "fear", "anger", "disgust"];
   //removes any entries that are 0 and records how many there are
   rating.total = input.filter(a => a.emotion.joy).length;
-
   //creates a new array that sorts each tweet by it's category
   keys.forEach(key => {
     let filter = input.filter(a => a.emotion[key] > 0.6);
@@ -12,7 +11,6 @@ export const tweetSorter = input => {
       tweets: filter
     };
   });
-  console.log(rating);
   return rating;
 };
 
@@ -28,4 +26,16 @@ export const percent = input => {
       100
   );
   return percentage;
+};
+
+export const assignMood = input => {
+  let mood;
+  if (input < 33) {
+    mood = "sad";
+  } else if (input < 66) {
+    mood = "neutral";
+  } else {
+    mood = "happy";
+  }
+  return mood;
 };
