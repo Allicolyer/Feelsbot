@@ -13,7 +13,7 @@ class Home extends Component {
           I try to assess how humans are feeling by reading their tweets.{" "}
         </Text>
         <Text>
-          Test out what I can do by using this map. I can also{" "}
+          Put in a location that you want me to read the Tweets from. I can also{" "}
           <Link href="/timeline">read your tweets</Link> and tell you how you
           are feeling.{" "}
         </Text>

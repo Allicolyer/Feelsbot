@@ -43,7 +43,7 @@ const Logo = styled.img`
 
 const LogoText = styled(Subtitle)`
   margin: auto 0;
-  padding: ${p => p.theme.space[2]}px;
+  padding: ${p => p.theme.space[0]}px;
   color: ${p => p.theme.colors.white};
 `;
 

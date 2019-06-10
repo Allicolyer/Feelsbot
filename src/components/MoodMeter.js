@@ -27,10 +27,6 @@ const emojis = {
 const emojiKeys = Object.keys(emojis);
 
 const MoodMeter = ({ percent, mood }) => {
-  console.log(mood);
-  console.log(colors);
-  console.log(colors[mood]);
-
   let meterColors = colors[mood];
   return (
     <MeterStyles>
