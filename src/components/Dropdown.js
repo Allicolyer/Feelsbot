@@ -4,6 +4,7 @@ import { AUTOCOMPLETE } from "./Queries";
 import { Query } from "react-apollo";
 import styled from "styled-components";
 import { Span, Text } from "./shared";
+import { theme } from "../styles/theme";
 
 const SearchCard = styled.div`
   display: flex;
@@ -20,6 +21,16 @@ const UserName = styled.h3`
   color: ${p => p.theme.colors.primary};
   display: inline;
 `;
+
+const customStyles = {
+  control: styles => ({
+    ...styles,
+    border: `1px solid ${theme.colors.primary}`,
+    ":hover": {
+      border: `1.5px solid ${theme.colors.primary}`
+    }
+  })
+};
 
 let options = [];
 
@@ -55,6 +66,7 @@ const Dropdown = ({ autocompleteText, handleChange, selectedOption }) => {
         }
         return (
           <Select
+            styles={customStyles}
             value={selectedOption}
             onChange={handleChange}
             options={options}
