@@ -2,7 +2,7 @@ import React from "react";
 import Tweets from "./Tweets";
 import styled from "styled-components";
 import { Flex } from "rebass";
-import { Span, Text } from "./shared";
+import { Span, Text, Content, Subtitle } from "./shared";
 import { theme } from "../styles/theme";
 
 class Map extends React.Component {
@@ -128,27 +128,31 @@ class Map extends React.Component {
 
   render() {
     return (
-      <div>
-        <Flex flexDirection="column">
-          <PacContainer id="pac-container">
-            <Span>Location:</Span>
-            <LongInput
-              id="pac-input"
-              type="text"
-              placeholder="Search for a place"
-            />
-            <Span>Miles</Span>
-            <MilesInput type="text" id="miles-input" />
-          </PacContainer>
-          <MapDiv id="map" />
-          <TweetsRender
-            render={this.state.renderTweets}
-            lat={this.state.center.lat}
-            lng={this.state.center.lng}
-            m={this.state.miles}
-          />
-        </Flex>
-      </div>
+      <Flex flexDirection="column">
+        <Content>
+          <Flex>
+            <FlexContainer>
+              <Subtitle> Enter a location to search near</Subtitle>
+              <LocationInput
+                id="pac-input"
+                type="text"
+                placeholder="Search for a place"
+              />
+            </FlexContainer>
+            <FlexContainer>
+              <Subtitle> Enter how many miles to search</Subtitle>
+              <LocationInput type="text" id="miles-input" />
+            </FlexContainer>
+          </Flex>
+        </Content>
+        <MapDiv id="map" />
+        <TweetsRender
+          render={this.state.renderTweets}
+          lat={this.state.center.lat}
+          lng={this.state.center.lng}
+          m={this.state.miles}
+        />
+      </Flex>
     );
   }
 }
@@ -157,28 +161,23 @@ const MapDiv = styled.div`
   height: 400px;
   width: 100%;
 `;
-const MilesInput = styled.input`
-  width: 5%;
+const LocationInput = styled.input`
+  width: 100%;
   font-size: 1.5rem;
-  margin: 5px;
   border: 1px solid ${p => p.theme.colors.primary};
+  text-align: center;
 `;
 
-const LongInput = styled.input`
+const FlexContainer = styled.div`
   width: 50%;
-  font-size: 1.5rem;
-  margin: 0 auto;
-  border: 1px solid ${p => p.theme.colors.primary};
+  margin: ${p => p.theme.space[2]}px;
 `;
 
-const PacContainer = styled.div`
-  padding: 10px;
-`;
 const TweetsRender = ({ render, lat, lng, m }) => {
   if (render) {
     return <Tweets lat={lat} lng={lng} m={m} map />;
   } else {
-    return <Text>Enter a Location so that FeelsBot can assess the mood.</Text>;
+    return null;
   }
 };
 

@@ -9,6 +9,7 @@ import { theme } from "../styles/theme";
 import { ThemeProvider } from "styled-components";
 import logo from "../assets/logo.svg";
 import { Subtitle, Layout } from "./shared";
+
 class App extends Component {
   render() {
     return (

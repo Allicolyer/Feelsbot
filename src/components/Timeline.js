@@ -2,7 +2,7 @@ import React from "react";
 import Tweets from "./Tweets";
 import Dropdown from "./Dropdown";
 import styled from "styled-components";
-import { Title, Text, Content } from "./shared";
+import { Title, Text, Content, Space, Subtitle } from "./shared";
 
 class Timeline extends React.Component {
   constructor() {
@@ -48,12 +48,16 @@ class Timeline extends React.Component {
   render() {
     return (
       <Content>
-        <Title> Hi, I'm FeelsBot </Title>
+        <Space />
+        <Title>Hi I'm FeelsBot </Title>
         <Text>
+          I assess how humans are feeling by reading their tweets.
+        </Text>{" "}
+        <Space />
+        <Subtitle>
           {" "}
-          I try to assess how humans are feeling by reading their tweets. Let me
-          read your tweets and I'll tell you how you are feeling.
-        </Text>
+          Enter a Twitter handle and I'll assess that person's tweets.
+        </Subtitle>
         <TimelineInput>
           <Dropdown
             autocompleteText={this.state.autocompleteText}
@@ -80,11 +84,7 @@ const TimelineInput = styled.div`
 const TweetTimelineRender = ({ render, screen_name }) => {
   if (render) {
     return <Tweets screen_name={screen_name} timeline />;
-  } else {
-    return (
-      <Text>Enter your Twitter handle so FeelsBot can assess your tweets</Text>
-    );
-  }
+  } else return null;
 };
 
 export default Timeline;
