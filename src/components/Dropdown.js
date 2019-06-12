@@ -1,6 +1,6 @@
 import React from "react";
 import Select from "react-select";
-import { AUTOCOMPLETE } from "./Queries";
+import { AUTOCOMPLETE } from "../utils/Queries";
 import { Query } from "react-apollo";
 import styled from "styled-components";
 import { Span, Text } from "./shared";

@@ -2,7 +2,7 @@ import React from "react";
 import Tweets from "./Tweets";
 import styled from "styled-components";
 import { Flex } from "rebass";
-import { Span, Text, Content, Subtitle } from "./shared";
+import { Content, Subtitle } from "./shared";
 import { theme } from "../styles/theme";
 
 class Map extends React.Component {

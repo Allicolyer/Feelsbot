@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import { Query } from "react-apollo";
-import { GET_TWEETS, GET_TIMELINE } from "./Queries";
+import { GET_TWEETS, GET_TIMELINE } from "../utils/Queries";
 import MoodMeter from "./MoodMeter";
 import { Subtitle, Text, Content } from "./shared";
 import { tweetSorter, percent, assignMood } from "../utils/helpers";
