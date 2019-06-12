@@ -2,13 +2,14 @@ import React from "react";
 import styled from "styled-components";
 import { Tab, TabPanel, Tabs, TabList } from "react-web-tabs";
 import TweetGrid from "./TweetGrid";
-import "react-web-tabs/dist/react-web-tabs.css";
+import "../styles/tabs.css";
 
 const StyledTabPanel = styled(TabPanel)`
   width: 100%;
 `;
 
 const emotions = ["joy", "sadness", "anger", "fear", "disgust"];
+
 const TweetTabs = ({ rating }) => {
   return (
     <Tabs vertical className="vertical-tabs">
