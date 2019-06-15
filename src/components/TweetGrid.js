@@ -5,19 +5,23 @@ import { TwitterTweetEmbed } from "react-twitter-embed";
 import ReactDOM from "react-dom";
 import { Text } from "./shared";
 
-const measureElement = element =>
-  element && ReactDOM.findDOMNode(element).offsetHeight;
+const measureHeight = element =>
+  element ? ReactDOM.findDOMNode(element).offsetHeight : 0;
 
 const heightTimer = (element, grid) => {
-  let timerId = setInterval(() => {
-    measureElement(element);
-    if (measureElement(element)) {
-      setTimeout(() => {
-        clearInterval(timerId);
-        updateGrid(grid);
-      });
+  let timerID = setInterval(() => {
+    measureHeight(element);
+    console.log("I'm still going");
+    if (measureHeight(element)) {
+      updateGrid(grid);
+      clearInterval(timerID);
+      console.log("I stop");
     }
   }, 500);
+  //stop automatically after 5 seconds
+  setTimeout(() => {
+    clearInterval(timerID);
+  }, 5000);
 };
 
 const updateGrid = grid => {
@@ -27,10 +31,24 @@ const updateGrid = grid => {
 class TweetGrid extends React.Component {
   constructor(props) {
     super(props);
+    this.state = { tweets: this.props.rating.tweets };
   }
 
-  componentDidUpdate() {
-    heightTimer(this.content, this.grid);
+  componentWillMount() {
+    let findContent = setInterval(() => {
+      this.content && heightTimer(this.content, this.grid);
+      console.log("I trying");
+      if (this.content) {
+        //stop once it finds the content
+        clearInterval(findContent);
+        console.log("I find");
+      }
+    }, 200);
+
+    //stop automatically after 5 seconds
+    setTimeout(() => {
+      clearInterval(findContent);
+    }, 5000);
   }
 
   render() {
