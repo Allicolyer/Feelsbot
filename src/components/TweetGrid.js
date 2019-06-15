@@ -1,33 +1,50 @@
 import React from "react";
 import StackGrid from "react-stack-grid";
+import TweetCard from "./TweetCard";
 import { TwitterTweetEmbed } from "react-twitter-embed";
+import ReactDOM from "react-dom";
 import { Text } from "./shared";
+
+const measureElement = element =>
+  element && ReactDOM.findDOMNode(element).offsetHeight;
+
+const heightTimer = (element, grid) => {
+  let timerId = setInterval(() => {
+    measureElement(element);
+    if (measureElement(element)) {
+      setTimeout(() => {
+        clearInterval(timerId);
+        updateGrid(grid);
+      });
+    }
+  }, 500);
+};
+
+const updateGrid = grid => {
+  grid.updateLayout();
+};
 
 class TweetGrid extends React.Component {
   constructor(props) {
     super(props);
   }
 
-  updateGrid = () => {
-    this.grid.updateLayout();
-  };
-
-  TwitterCard = () => {};
+  componentDidUpdate() {
+    heightTimer(this.content, this.grid);
+  }
 
   render() {
-    const tweetLength = this.props.rating.num;
-
     if (this.props.rating) {
-      let i;
-      for (i = 0; i < tweetLength; i++) {
-        this.props.rating.tweets[i].num = i + 1;
-      }
       return (
         <div id="stack-grid" display="none">
+          {/* <button onClick={() => this.updateGrid()}>hi</button> */}
           <StackGrid columnWidth={300} gridRef={grid => (this.grid = grid)}>
             {this.props.rating.tweets.map(tweet => (
-              <div key={`key${tweet.num}`}>
-                <TwitterTweetEmbed tweetId={`${tweet.id_str}`} />
+              <div key={tweet.id_str}>
+                <TwitterTweetEmbed
+                  ref={r => (this.content = r)}
+                  tweetId={tweet.id_str}
+                />
               </div>
             ))}
           </StackGrid>
