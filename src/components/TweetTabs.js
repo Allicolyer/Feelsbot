@@ -16,7 +16,7 @@ const TweetTabs = ({ rating }) => {
       <TabList>
         {emotions.map(emotion => {
           return (
-            <Tab tabFor={`tab-${emotion}`}>
+            <Tab key={emotion} tabFor={`tab-${emotion}`}>
               {emotion.charAt(0).toUpperCase() + emotion.slice(1)}{" "}
               {rating[emotion].num}
             </Tab>
@@ -25,7 +25,7 @@ const TweetTabs = ({ rating }) => {
       </TabList>
       {emotions.map(emotion => {
         return (
-          <StyledTabPanel tabId={`tab-${emotion}`}>
+          <StyledTabPanel key={emotion} tabId={`tab-${emotion}`}>
             <TweetGrid rating={rating[emotion]} />
           </StyledTabPanel>
         );
