@@ -35,7 +35,13 @@ export const Content = styled.div`
   height: 100%;
   width: 85%;
   margin: 0 auto;
-  padding: ${p => p.theme.space[2]}px;
+  padding: ${p => p.theme.space[1]}px;
   line-height: ${p => p.theme.fontSizes[3]}px;
   text-align: center;
+`;
+
+export const Space = styled.div`
+  width: ${p => p.theme.space[4]}px;
+  height: ${p => p.theme.space[4]}px;
+  flex-shrink: 0;
 `;
