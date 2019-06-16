@@ -89,7 +89,7 @@ const About = () => (
           </Text>
         </AuthorDiv>
         <AuthorDiv>
-          <Avatar src="https://avatars3.githubusercontent.com/u/1049544?s=400&v=4" />
+          <Avatar src="https://roobeedotorg.files.wordpress.com/2019/05/rubyrios_branding2019-6-1.png?w=640" />
           <Text>
             Robot drawings were created by{" "}
             <Link href="https://www.rubyrios.com">Ruby Ríos.</Link>

@@ -1,7 +1,6 @@
 import React from "react";
 import Tweets from "./Tweets";
 import styled from "styled-components";
-import { Flex } from "rebass";
 import { Content, Subtitle } from "./shared";
 import { theme } from "../styles/theme";
 
@@ -81,7 +80,7 @@ class Map extends React.Component {
 
     // initialize the autocomplete functionality using the #pac-input input box
     let inputNode = document.getElementById("pac-input");
-    inputNode.value = "Los Angeles, CA, USA";
+    inputNode.value = "";
     let autoComplete = new window.google.maps.places.Autocomplete(inputNode);
 
     autoComplete.addListener("place_changed", () => {
@@ -128,7 +127,7 @@ class Map extends React.Component {
 
   render() {
     return (
-      <Flex flexDirection="column">
+      <FlexColumn>
         <Content>
           <Flex>
             <FlexContainer>
@@ -146,13 +145,15 @@ class Map extends React.Component {
           </Flex>
         </Content>
         <MapDiv id="map" />
-        <TweetsRender
-          render={this.state.renderTweets}
-          lat={this.state.center.lat}
-          lng={this.state.center.lng}
-          m={this.state.miles}
-        />
-      </Flex>
+        <Content>
+          <TweetsRender
+            render={this.state.renderTweets}
+            lat={this.state.center.lat}
+            lng={this.state.center.lng}
+            m={this.state.miles}
+          />
+        </Content>
+      </FlexColumn>
     );
   }
 }
@@ -180,5 +181,13 @@ const TweetsRender = ({ render, lat, lng, m }) => {
     return null;
   }
 };
+
+const Flex = styled.div`
+  display: flex;
+`;
+
+const FlexColumn = styled(Flex)`
+  flex-direction: column;
+`;
 
 export default Map;

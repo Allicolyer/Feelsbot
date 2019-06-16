@@ -75,7 +75,7 @@ const TweetWrapper = ({ percentage, rating }) => {
     happy: happyBot
   };
   return (
-    <Content>
+    <div>
       <MeterDiv id="meter">
         <Subtitle> Joy Meter: {percentage}% </Subtitle>
         {rating.total == "-" ? (
@@ -86,7 +86,7 @@ const TweetWrapper = ({ percentage, rating }) => {
         <MoodMeter className="meter" percent={percentage} mood={mood} />
       </MeterDiv>
       <TweetTabs rating={rating} />
-    </Content>
+    </div>
   );
 };
 

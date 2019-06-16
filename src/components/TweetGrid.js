@@ -1,4 +1,5 @@
 import React from "react";
+import styled from "styled-components";
 import StackGrid from "react-stack-grid";
 import { TwitterTweetEmbed } from "react-twitter-embed";
 import { Text } from "./shared";
@@ -31,7 +32,7 @@ class TweetGrid extends React.Component {
   render() {
     if (this.props.rating) {
       return (
-        <div id="stack-grid" display="none">
+        <div id="stack-grid">
           <StackGrid columnWidth={300} gridRef={grid => (this.grid = grid)}>
             {this.props.rating.tweets.map(tweet => (
               <div key={tweet.id_str}>
