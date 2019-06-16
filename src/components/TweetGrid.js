@@ -12,22 +12,30 @@ class TweetGrid extends React.Component {
     this.grid.updateLayout();
   };
 
-  TwitterCard = () => {};
+  componentWillUpdate() {
+    let findelement = setInterval(() => {
+      let embeds = document.getElementsByClassName("twitter-tweet");
+      let height = embeds.length ? embeds[0].clientHeight : 0;
+      if (height) {
+        this.updateGrid();
+        clearInterval(findelement);
+      }
+    }, 500);
+
+    //stop automatically after 8 seconds if tweet embeds are not loading
+    setTimeout(() => {
+      clearInterval(findelement);
+    }, 8000);
+  }
 
   render() {
-    const tweetLength = this.props.rating.num;
-
     if (this.props.rating) {
-      let i;
-      for (i = 0; i < tweetLength; i++) {
-        this.props.rating.tweets[i].num = i + 1;
-      }
       return (
         <div id="stack-grid" display="none">
           <StackGrid columnWidth={300} gridRef={grid => (this.grid = grid)}>
             {this.props.rating.tweets.map(tweet => (
-              <div key={`key${tweet.num}`}>
-                <TwitterTweetEmbed tweetId={`${tweet.id_str}`} />
+              <div key={tweet.id_str}>
+                <TwitterTweetEmbed tweetId={tweet.id_str} />
               </div>
             ))}
           </StackGrid>
