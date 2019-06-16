@@ -25,6 +25,27 @@ export const Subtitle = styled.h3`
   color: ${p => p.theme.colors.primary};
 `;
 
+export const Button = styled.button`
+  background-color: ${p => p.theme.colors.primary};
+  color: ${p => p.theme.colors.white};
+  font-size: ${p => p.theme.fontSizes[2]}px;
+  border-radius: ${p => p.theme.fontSizes[1]}px;
+  padding: ${p => p.theme.space[3] * 0.75}px;
+  font-weight: bold;
+  margin: ${p => p.theme.space[1]}px;
+  align-text: center;
+`;
+
+export const Flex = styled.div`
+  display: flex;
+`;
+export const FlexColumn = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+`;
+
 export const Layout = styled.div`
   height: 100%;
   width: 100%;
