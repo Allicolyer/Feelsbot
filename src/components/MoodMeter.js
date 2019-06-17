@@ -1,69 +1,48 @@
-import React from "react";
-import "react-step-progress-bar/styles.css";
-import { ProgressBar, Step } from "react-step-progress-bar";
-import styled from "styled-components";
+import * as React from "react";
 import { theme } from "../styles/theme";
-import { mobile } from "./shared";
+import styled from "styled-components";
 
-const MeterStyles = styled.div`
-  width: 80%;
+let color;
+
+const MoodMeter = ({ percent, mood }) => {
+  if (mood == "happy") {
+    color = theme.metercolors.happy;
+  } else if (mood == "neutral") {
+    color = theme.metercolors.neutral;
+  } else if (mood == "sad") {
+    color = theme.metercolors.sad;
+  }
+
+  return (
+    <Container>
+      <Outside color={color}>
+        <Filler percent={percent} color={color} />
+      </Outside>
+    </Container>
+  );
+};
+
+const Container = styled.div`
+  width: 80%
   padding: 20px;
   margin: 0 auto;
 `;
 
-const Emoji = styled.span`
-  font-size: 2em;
-
-  display: none;
-
-  @media ${mobile} {
-    display: none;
-  }
+const Outside = styled.div`
+  position: relative;
+  height: 1em;
+  width: 100%;
+  border-radius: 50px;
+  border: 1px solid #333;
+  border-color: ${props => props.color};
 `;
 
-const colors = theme.metercolors;
-
-const emojis = {
-  sobbing: "😭",
-  sad: "🙁",
-  neutral: "😐",
-  happy: "🙂",
-  estatic: "🤩"
-};
-
-const emojiKeys = Object.keys(emojis);
-
-const MoodMeter = ({ percent, mood }) => {
-  let meterColors = colors[mood];
-  return (
-    <MeterStyles>
-      <ProgressBar
-        percent={percent}
-        filledBackground={`linear-gradient(to left, ${meterColors[0]}, ${
-          meterColors[1]
-        })`}
-      >
-        {emojiKeys.map((emotion, index) => {
-          return (
-            <Step transition="scale" position={90} key={index}>
-              {({ accomplished }) => (
-                <div
-                  className={`transitionStep ${
-                    accomplished ? "accomplished" : null
-                  }`}
-                  style={{ filter: `grayscale(${accomplished ? 0 : 80}%)` }}
-                >
-                  <Emoji role="img" aria-label={emotion}>
-                    {emojis[emotion]}
-                  </Emoji>
-                </div>
-              )}
-            </Step>
-          );
-        })}
-      </ProgressBar>
-    </MeterStyles>
-  );
-};
+const Filler = styled("div")`
+  background: ${props => props.color};
+  height: 100%;
+  border-radius: inherit;
+  transition: width 0.2s ease-in;
+  width: ${props => props.percent || "0"}%;
+`;
 
 export default MoodMeter;

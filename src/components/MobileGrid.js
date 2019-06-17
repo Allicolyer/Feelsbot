@@ -2,6 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import { TwitterTweetEmbed } from "react-twitter-embed";
 import { Text, Subtitle } from "./shared";
+
 const MobileGrid = ({ title, rating }) => (
   <Container>
     <Subtitle>{title}</Subtitle>

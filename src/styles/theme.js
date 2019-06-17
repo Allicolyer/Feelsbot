@@ -30,9 +30,9 @@ const colors = {
 };
 
 const metercolors = {
-  sad: ["#922B21", "#C0392B"],
-  neutral: ["#F4D03F", "#F9E79F"],
-  happy: ["#239B56", "#58D68D"]
+  sad: "#C0392B",
+  neutral: "#F4D03F",
+  happy: "#58D68D"
 };
 
 const sizes = {
