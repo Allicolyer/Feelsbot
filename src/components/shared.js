@@ -1,14 +1,18 @@
 import styled from "styled-components";
+import { theme } from "../styles/theme";
+
+export const mobile = `only screen and (max-width: ${theme.breakpoints[0]})`;
+export const tablet = `only screen and (max-width: ${theme.breakpoints[1]})`;
 
 export const Text = styled.p`
   color: ${p => p.theme.colors.info};
-  font-size: ${p => p.theme.fontSizes[3]}px;
-  line-height: ${p => p.theme.fontSizes[3] * 1.25}px;
+  font-size: 1em
+  line-height: 1.25em;
 `;
 
 export const Span = styled.span`
   color: ${p => p.theme.colors.info};
-  font-size: ${p => p.theme.fontSizes[3]}px;
+  font-size: 1em;
 `;
 
 export const Link = styled.a`
@@ -19,10 +23,12 @@ export const Link = styled.a`
 
 export const Title = styled.h1`
   color: ${p => p.theme.colors.primary};
+  font-size: 2em;
 `;
 
 export const Subtitle = styled.h3`
   color: ${p => p.theme.colors.primary};
+  font-size: 1.25em;
 `;
 
 export const Button = styled.button`
@@ -50,6 +56,10 @@ export const Layout = styled.div`
   height: 100%;
   width: 100%;
   text-align: center;
+  font-size: 1.25em;
+  @media ${tablet} {
+    font-size: 1em;
+  }
 `;
 
 export const Content = styled.div`
@@ -57,7 +67,6 @@ export const Content = styled.div`
   width: 85%;
   margin: 0 auto;
   padding: ${p => p.theme.space[1]}px;
-  line-height: ${p => p.theme.fontSizes[3]}px;
   text-align: center;
 `;
 
@@ -65,4 +74,30 @@ export const Space = styled.div`
   width: ${p => p.theme.space[4]}px;
   height: ${p => p.theme.space[4]}px;
   flex-shrink: 0;
+`;
+
+export const ShowOnMobile = styled.div`
+  display: none;
+  @media ${mobile} {
+    display: block;
+  }
+`;
+
+export const HideOnMobile = styled.div`
+  @media ${mobile} {
+    display: none;
+  }
+`;
+
+export const ShowOnTablet = styled.div`
+  display: none;
+  @media ${tablet} {
+    display: block;
+  }
+`;
+
+export const HideOnTablet = styled.div`
+  @media ${tablet} {
+    display: none;
+  }
 `;

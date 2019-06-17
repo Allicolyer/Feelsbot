@@ -5,20 +5,20 @@ import Home from "./Home";
 import About from "./About";
 import Timeline from "./Timeline";
 import { Router } from "@reach/router";
-import { theme } from "../styles/theme";
-import { ThemeProvider } from "styled-components";
 import logo from "../assets/logo.svg";
-import { Subtitle, Layout } from "./shared";
+import MobileNav from "./MobileNav";
+import { Subtitle, Layout, mobile, ShowOnMobile, HideOnMobile } from "./shared";
 
-class App extends Component {
-  render() {
-    return (
-      <ThemeProvider theme={theme}>
-        <Navigation />
-      </ThemeProvider>
-    );
-  }
-}
+const App = () => (
+  <Layout>
+    <Navigation />
+    <Router>
+      <Home path="/" />
+      <About path="/about" />
+      <Timeline path="/timeline" />
+    </Router>
+  </Layout>
+);
 
 const Navbar = styled.div`
   background: ${p => p.theme.colors.primary};
@@ -32,6 +32,7 @@ const LogoContainer = styled.a`
   text-decoration: none;
   margin: auto 0;
   display: flex;
+  margin: auto ${p => p.theme.space[2]}px;
 `;
 
 const Logo = styled.img`
@@ -48,38 +49,38 @@ const LogoText = styled(Subtitle)`
 `;
 
 const NavLinks = styled.div`
-  margin: auto 0;
+  margin: auto ${p => p.theme.space[2]}px;
 `;
 
 const NavLink = styled.a`
   text-decoration: none;
-  font-size: ${p => p.theme.fontSizes[3]}px;
+  font-size: 1em;
   color: ${p => p.theme.colors.white};
   display: inline;
   padding: ${p => p.theme.space[3]}px;
+  @media ${mobile} {
+    padding: ${p => p.theme.space[1]}px;
+  }
 `;
 
 const Navigation = () => {
   return (
-    <Layout>
-      <Navbar>
-        <LogoContainer href="/">
-          <Logo src={logo} />
-          <LogoText>FeelsBot</LogoText>
-        </LogoContainer>
-        <NavLinks>
+    <Navbar>
+      <LogoContainer href="/">
+        <Logo src={logo} />
+        <LogoText>FeelsBot</LogoText>
+      </LogoContainer>
+      <NavLinks>
+        <HideOnMobile>
           <NavLink href="/">Map</NavLink>
           <NavLink href="timeline">Your Tweets</NavLink>
           <NavLink href="about">About</NavLink>
-        </NavLinks>
-      </Navbar>
-
-      <Router>
-        <Home path="/" />
-        <About path="/about" />
-        <Timeline path="/timeline" />
-      </Router>
-    </Layout>
+        </HideOnMobile>
+        <ShowOnMobile>
+          <MobileNav />
+        </ShowOnMobile>
+      </NavLinks>
+    </Navbar>
   );
 };
 

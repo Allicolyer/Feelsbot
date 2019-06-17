@@ -57,7 +57,6 @@ const sizes = {
     128,
     256
   ],
-
   // Font
   fontSizes: [12, 14, 16, 20, 28, 32, 48, 64],
   fontWeights: [300, 400, 600, 700],
