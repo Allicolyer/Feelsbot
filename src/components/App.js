@@ -69,15 +69,15 @@ const Navigation = () => {
         </LogoContainer>
         <NavLinks>
           <NavLink href="/">Map</NavLink>
-          <NavLink href="Timeline">Your Tweets</NavLink>
-          <NavLink href="About">About</NavLink>
+          <NavLink href="timeline">Your Tweets</NavLink>
+          <NavLink href="about">About</NavLink>
         </NavLinks>
       </Navbar>
 
       <Router>
         <Home path="/" />
-        <About path="/About" />
-        <Timeline path="/Timeline" />
+        <About path="/about" />
+        <Timeline path="/timeline" />
       </Router>
     </Layout>
   );
