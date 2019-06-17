@@ -2,6 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import { Tab, TabPanel, Tabs, TabList } from "react-web-tabs";
 import TweetGrid from "./TweetGrid";
+import MobileGrid from "./MobileGrid";
 import "../styles/tabs.css";
 import {
   mobile,
@@ -9,7 +10,8 @@ import {
   tablet,
   ShowOnBigTablet,
   HideOnBigTablet,
-  HideOnMobile
+  HideOnMobile,
+  isMobile
 } from "./shared";
 
 const StyledTabPanel = styled(TabPanel)`
@@ -38,6 +40,14 @@ const emojis = {
   anger: "😡",
   fear: "😱",
   disgust: "🤮"
+};
+
+const titles = {
+  joy: "Joyful Tweets",
+  sadness: "Sad Tweets",
+  anger: "Angry Tweets",
+  fear: "Fearful Tweets",
+  disgust: "Disgusted Tweets"
 };
 
 const TweetTabs = ({ rating }) => {
@@ -69,7 +79,10 @@ const TweetTabs = ({ rating }) => {
       {emotions.map(emotion => {
         return (
           <StyledTabPanel key={emotion} tabId={`tab-${emotion}`}>
-            <TweetGrid rating={rating[emotion]} />
+            {!isMobile() && <TweetGrid rating={rating[emotion]} />}
+            {isMobile() && (
+              <MobileGrid title={titles[emotion]} rating={rating[emotion]} />
+            )}
           </StyledTabPanel>
         );
       })}

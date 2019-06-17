@@ -118,10 +118,10 @@ export const HideOnBigTablet = styled.div`
 
 export const isMobile = () => {
   var intViewportWidth = window.innerWidth;
-  return intViewportWidth < theme.breakpoints[0];
+  return intViewportWidth < theme.breakpointspx[0];
 };
 
 export const isTablet = () => {
   var intViewportWidth = window.innerWidth;
-  return intViewportWidth < theme.breakpoints[1];
+  return intViewportWidth < theme.breakpointspx[1];
 };
