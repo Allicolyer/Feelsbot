@@ -12,12 +12,13 @@ const emotions = ["joy", "sadness", "anger", "fear", "disgust"];
 
 const TweetTabs = ({ rating }) => {
   return (
-    <Tabs vertical className="vertical-tabs">
+    <Tabs>
       <TabList>
         {emotions.map(emotion => {
           return (
             <Tab key={emotion} tabFor={`tab-${emotion}`}>
-              {emotion.charAt(0).toUpperCase() + emotion.slice(1)}{" "}
+              {emotion.charAt(0).toUpperCase() + emotion.slice(1)}
+              <br />
               {rating[emotion].num}
             </Tab>
           );

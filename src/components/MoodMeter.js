@@ -3,15 +3,20 @@ import "react-step-progress-bar/styles.css";
 import { ProgressBar, Step } from "react-step-progress-bar";
 import styled from "styled-components";
 import { theme } from "../styles/theme";
+import { mobile } from "./shared";
 
 const MeterStyles = styled.div`
-  width: 60%;
+  width: 80%;
   padding: 20px;
   margin: 0 auto;
 `;
 
 const Emoji = styled.span`
-  font-size: 30px;
+  font-size: 2em;
+
+  @media ${mobile} {
+    display: none;
+  }
 `;
 
 const colors = theme.metercolors;
