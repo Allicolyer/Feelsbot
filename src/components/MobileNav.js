@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import HamburgerMenu from "react-hamburger-menu";
 import styled from "styled-components";
-import { Link, FlexColumn } from "./shared";
+import { Link } from "./shared";
 
 class MobileNav extends Component {
   constructor() {

@@ -3,12 +3,42 @@ import styled from "styled-components";
 import { Tab, TabPanel, Tabs, TabList } from "react-web-tabs";
 import TweetGrid from "./TweetGrid";
 import "../styles/tabs.css";
+import {
+  mobile,
+  Subtitle,
+  tablet,
+  ShowOnBigTablet,
+  HideOnBigTablet,
+  HideOnMobile
+} from "./shared";
 
 const StyledTabPanel = styled(TabPanel)`
   width: 100%;
 `;
 
+const Emoji = styled.span`
+  font-size: 2em;
+  @media ${mobile} {
+    font-size: 1em;
+  }
+`;
+
+const TabText = styled(Subtitle)`
+  font-size: 1em;
+  @media ${tablet} {
+    font-size: 1em;
+  }
+`;
+
 const emotions = ["joy", "sadness", "anger", "fear", "disgust"];
+
+const emojis = {
+  joy: "😄",
+  sadness: "😭",
+  anger: "😡",
+  fear: "😱",
+  disgust: "🤮"
+};
 
 const TweetTabs = ({ rating }) => {
   return (
@@ -17,9 +47,21 @@ const TweetTabs = ({ rating }) => {
         {emotions.map(emotion => {
           return (
             <Tab key={emotion} tabFor={`tab-${emotion}`}>
-              {emotion.charAt(0).toUpperCase() + emotion.slice(1)}
-              <br />
-              {rating[emotion].num}
+              <TabText>
+                <HideOnBigTablet>
+                  {emotion.charAt(0).toUpperCase() + emotion.slice(1)}:{" "}
+                  {rating[emotion].num}
+                </HideOnBigTablet>
+                <ShowOnBigTablet>
+                  <HideOnMobile>
+                    {emotion.charAt(0).toUpperCase() + emotion.slice(1)}
+                  </HideOnMobile>
+                  {rating[emotion].num}
+                </ShowOnBigTablet>
+              </TabText>
+              <Emoji role="img" aria-label={emotion}>
+                {emojis[emotion]}
+              </Emoji>
             </Tab>
           );
         })}

@@ -31,8 +31,6 @@
 @media only screen and (max-width: 40em) {
   .rwt__tab {
     padding: 0.5rem 0.5rem;
-    font-size: 1em;
-    flex-wrap: wrap;
   }
 }
 

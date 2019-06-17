@@ -3,6 +3,7 @@ import { theme } from "../styles/theme";
 
 export const mobile = `only screen and (max-width: ${theme.breakpoints[0]})`;
 export const tablet = `only screen and (max-width: ${theme.breakpoints[1]})`;
+export const bigtablet = `only screen and (max-width: ${theme.breakpoints[2]})`;
 
 export const Text = styled.p`
   color: ${p => p.theme.colors.info};
@@ -101,3 +102,26 @@ export const HideOnTablet = styled.div`
     display: none;
   }
 `;
+
+export const ShowOnBigTablet = styled.div`
+  display: none;
+  @media ${bigtablet} {
+    display: block;
+  }
+`;
+
+export const HideOnBigTablet = styled.div`
+  @media ${bigtablet} {
+    display: none;
+  }
+`;
+
+export const isMobile = () => {
+  var intViewportWidth = window.innerWidth;
+  return intViewportWidth < theme.breakpoints[0];
+};
+
+export const isTablet = () => {
+  var intViewportWidth = window.innerWidth;
+  return intViewportWidth < theme.breakpoints[1];
+};

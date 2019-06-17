@@ -14,6 +14,8 @@ const MeterStyles = styled.div`
 const Emoji = styled.span`
   font-size: 2em;
 
+  display: none;
+
   @media ${mobile} {
     display: none;
   }

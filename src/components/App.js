@@ -63,25 +63,23 @@ const NavLink = styled.a`
   }
 `;
 
-const Navigation = () => {
-  return (
-    <Navbar>
-      <LogoContainer href="/">
-        <Logo src={logo} />
-        <LogoText>FeelsBot</LogoText>
-      </LogoContainer>
-      <NavLinks>
-        <HideOnMobile>
-          <NavLink href="/">Map</NavLink>
-          <NavLink href="timeline">Your Tweets</NavLink>
-          <NavLink href="about">About</NavLink>
-        </HideOnMobile>
-        <ShowOnMobile>
-          <MobileNav />
-        </ShowOnMobile>
-      </NavLinks>
-    </Navbar>
-  );
-};
+const Navigation = () => (
+  <Navbar>
+    <LogoContainer href="/">
+      <Logo src={logo} />
+      <LogoText>FeelsBot</LogoText>
+    </LogoContainer>
+    <NavLinks>
+      <HideOnMobile>
+        <NavLink href="/">Map</NavLink>
+        <NavLink href="timeline">Your Tweets</NavLink>
+        <NavLink href="about">About</NavLink>
+      </HideOnMobile>
+      <ShowOnMobile>
+        <MobileNav />
+      </ShowOnMobile>
+    </NavLinks>
+  </Navbar>
+);
 
 export default App;
