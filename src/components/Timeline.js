@@ -1,8 +1,8 @@
 import React from "react";
 import Tweets from "./Tweets";
 import styled from "styled-components";
-import { Title, Text, Content, Space, Subtitle } from "./shared";
 import Select from "./Select";
+import { Title, Text, Content, Space, Subtitle, mobile } from "./shared";
 
 class Timeline extends React.Component {
   constructor() {
@@ -79,6 +79,9 @@ const TimelineInput = styled.div`
   padding: 20px;
   margin: 0 auto;
   z-index: 10;
+  @media ${mobile} {
+    width: 80%;
+  }
 `;
 
 const TweetTimelineRender = ({ render, screen_name }) => {

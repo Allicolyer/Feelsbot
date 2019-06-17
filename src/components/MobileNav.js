@@ -22,12 +22,11 @@ class MobileNav extends Component {
         <HamburgerMenu
           isOpen={this.state.open}
           menuClicked={this.handleClick.bind(this)}
-          width={22}
-          height={15}
+          width={26}
+          height={18}
           strokeWidth={2}
           rotate={0}
           color="white"
-          borderRadius={0}
           animationDuration={0.5}
         />
         {this.state.open && <Menu />}
@@ -63,7 +62,7 @@ justify-content: center;
   top: ${p => p.theme.navHeight}px;
   left: 0
   background: ${p => p.theme.colors.primary};
-  opacity: 0.85;
+  opacity: 0.80;
   z-index: ${p => p.theme.mobileStepper};
 `;
 
