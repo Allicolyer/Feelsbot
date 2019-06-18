@@ -146,12 +146,14 @@ class Map extends React.Component {
         </Content>
         <MapDiv id="map" />
         <Content>
-          <TweetsRender
-            render={this.state.renderTweets}
-            lat={this.state.center.lat}
-            lng={this.state.center.lng}
-            m={this.state.miles}
-          />
+          {this.state.renderTweets && (
+            <Tweets
+              lat={this.state.center.lat}
+              lng={this.state.center.lng}
+              m={this.state.miles}
+              map
+            />
+          )}
         </Content>
       </FlexColumn>
     );
@@ -176,14 +178,6 @@ const FlexContainer = styled.div`
     width: 100%;
   }
 `;
-
-const TweetsRender = ({ render, lat, lng, m }) => {
-  if (render) {
-    return <Tweets lat={lat} lng={lng} m={m} map />;
-  } else {
-    return null;
-  }
-};
 
 const ResponsiveFlex = styled(Flex)`
   @media ${mobile} {
