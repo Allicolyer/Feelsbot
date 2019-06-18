@@ -3,13 +3,26 @@ import { Async } from "react-select";
 import { autocomplete } from "../utils/query-calls";
 import styled from "styled-components";
 import { theme } from "../styles/theme";
-import { Span, Subtitle, isMobile } from "./shared";
+import { Span, Subtitle, mobile } from "./shared";
+import Tweets from "./Tweets";
 
 export default class Select extends Component {
-  state = { autocompleteText: "" };
+  state = {
+    screen_name: "",
+    render: false,
+    autocompleteText: ""
+  };
+
   handleInputChange = autocompleteText => {
     this.setState({ autocompleteText });
     console.log(this.state.autocompleteText);
+  };
+
+  handleChange = selectedOption => {
+    this.setState({
+      screen_name: selectedOption.value,
+      render: true
+    });
   };
 
   customStyles = {
@@ -31,11 +44,17 @@ export default class Select extends Component {
   render() {
     return (
       <div>
-        <Async
-          styles={this.customStyles}
-          loadOptions={loadOptions}
-          onInputChange={this.handleInputChange}
-        />
+        <SelectContainer>
+          <Async
+            styles={this.customStyles}
+            loadOptions={loadOptions}
+            onInputChange={this.handleInputChange}
+            onChange={this.handleChange}
+          />
+        </SelectContainer>
+        {this.state.render && (
+          <Tweets screen_name={this.state.screen_name} timeline />
+        )}
       </div>
     );
   }
@@ -75,4 +94,12 @@ const TwitterImage = styled.img`
 
 const UserName = styled(Subtitle)`
   display: inline;
+`;
+
+const SelectContainer = styled.div`
+  width: 60%;
+  margin: 0 auto;
+  @media ${mobile} {
+    width: 80%;
+  }
 `;
