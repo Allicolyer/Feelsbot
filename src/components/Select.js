@@ -3,7 +3,7 @@ import { Async } from "react-select";
 import { autocomplete } from "../utils/query-calls";
 import styled from "styled-components";
 import { theme } from "../styles/theme";
-import { Span, Subtitle } from "./shared";
+import { Span, Subtitle, isMobile } from "./shared";
 
 export default class Select extends Component {
   state = { autocompleteText: "" };
@@ -15,6 +15,8 @@ export default class Select extends Component {
   customStyles = {
     input: () => ({
       fontSize: "1.25em",
+      height: "2em",
+      padding: "1em 0 0 0",
       color: `${theme.colors.primary}`
     }),
     control: styles => ({
@@ -48,7 +50,7 @@ const loadOptions = async autocompleteText => {
           <SearchCard>
             <TwitterImage src={user.profile_image_url} />
             <div>
-              <UserName>{user.name}</UserName> {""}
+              <UserName>{user.name}</UserName> <br />
               <Span>@{user.screen_name}</Span>
             </div>
           </SearchCard>
@@ -66,7 +68,7 @@ const SearchCard = styled.div`
 `;
 
 const TwitterImage = styled.img`
-  height: 1.75em;
+  height: 2em;
   margin: auto 0;
   padding: ${p => p.theme.space[1]}px;
 `;

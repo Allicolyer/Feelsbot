@@ -1,7 +1,7 @@
 import React from "react";
 import Tweets from "./Tweets";
 import styled from "styled-components";
-import { Content, Subtitle, FlexColumn, Flex } from "./shared";
+import { Content, Subtitle, FlexColumn, Flex, mobile } from "./shared";
 import { theme } from "../styles/theme";
 
 class Map extends React.Component {
@@ -129,7 +129,7 @@ class Map extends React.Component {
     return (
       <FlexColumn>
         <Content>
-          <Flex>
+          <ResponsiveFlex>
             <FlexContainer>
               <Subtitle> Enter a location to search near</Subtitle>
               <LocationInput
@@ -142,7 +142,7 @@ class Map extends React.Component {
               <Subtitle> Enter how many miles to search</Subtitle>
               <LocationInput type="text" id="miles-input" />
             </FlexContainer>
-          </Flex>
+          </ResponsiveFlex>
         </Content>
         <MapDiv id="map" />
         <Content>
@@ -172,6 +172,9 @@ const LocationInput = styled.input`
 const FlexContainer = styled.div`
   width: 50%;
   margin: ${p => p.theme.space[2]}px;
+  @media ${mobile} {
+    width: 100%;
+  }
 `;
 
 const TweetsRender = ({ render, lat, lng, m }) => {
@@ -181,5 +184,11 @@ const TweetsRender = ({ render, lat, lng, m }) => {
     return null;
   }
 };
+
+const ResponsiveFlex = styled(Flex)`
+  @media ${mobile} {
+    flex-direction: column;
+  }
+`;
 
 export default Map;

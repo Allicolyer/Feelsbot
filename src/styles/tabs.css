@@ -4,6 +4,9 @@
 
 .rwt__tablist:not([aria-orientation="vertical"]) {
   border-bottom: 1px solid #ddd;
+  display: flex;
+  align-content: center;
+  justify-content: center;
 }
 
 .rwt__tablist[aria-orientation="vertical"] {
@@ -18,13 +21,20 @@
 .rwt__tab {
   background: transparent;
   border: 0;
+  width: 20%;
   font-family: inherit;
   font-size: inherit;
   padding: 1rem 2rem;
   transition: background 0.3s cubic-bezier(0.22, 0.61, 0.36, 1);
 }
 
-.rwt__tab[aria-selected="false"]:hover,
+@media only screen and (max-width: 40em) {
+  .rwt__tab {
+    padding: 0.5rem 0.5rem;
+  }
+}
+
+.rwt__tab[aria-selected="falrwt__tabse"]:hover,
 .rwt__tab:focus {
   outline: 0;
   background-color: #c1e6ee;

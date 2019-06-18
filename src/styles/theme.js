@@ -30,14 +30,15 @@ const colors = {
 };
 
 const metercolors = {
-  sad: ["#922B21", "#C0392B"],
-  neutral: ["#F4D03F", "#F9E79F"],
-  happy: ["#239B56", "#58D68D"]
+  sad: "#C0392B",
+  neutral: "#F4D03F",
+  happy: "#58D68D"
 };
 
 const sizes = {
   ///// Sizes
   breakpoints: ["40em", "52em", "64em"],
+  breakpointspx: [480, 624, 768],
   // Radius
   radii: [4, 6, 8],
   // [C] Container
@@ -57,7 +58,6 @@ const sizes = {
     128,
     256
   ],
-
   // Font
   fontSizes: [12, 14, 16, 20, 28, 32, 48, 64],
   fontWeights: [300, 400, 600, 700],

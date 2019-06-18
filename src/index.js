@@ -5,6 +5,8 @@ import App from "./components/App";
 import * as serviceWorker from "./serviceWorker";
 import ApolloClient from "apollo-boost";
 import { ApolloProvider } from "react-apollo";
+import { theme } from "./styles/theme";
+import { ThemeProvider } from "styled-components";
 
 export const client = new ApolloClient({
   uri: process.env.REACT_APP_SERVER_URI
@@ -12,7 +14,9 @@ export const client = new ApolloClient({
 
 ReactDOM.render(
   <ApolloProvider client={client}>
-    <App />
+    <ThemeProvider theme={theme}>
+      <App />
+    </ThemeProvider>
   </ApolloProvider>,
   document.getElementById("root")
 );

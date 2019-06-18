@@ -3,7 +3,7 @@ import styled from "styled-components";
 import { Query } from "react-apollo";
 import { GET_TWEETS, GET_TIMELINE } from "../utils/Queries";
 import MoodMeter from "./MoodMeter";
-import { Subtitle, Text, Content } from "./shared";
+import { Subtitle, Text } from "./shared";
 import { tweetSorter, percent, assignMood } from "../utils/helpers";
 import happyBot from "../assets/happyBot.svg";
 import neutralBot from "../assets/neutralBot.svg";
@@ -78,12 +78,17 @@ const TweetWrapper = ({ percentage, rating }) => {
     <div>
       <MeterDiv id="meter">
         <Subtitle> Joy Meter: {percentage}% </Subtitle>
-        {rating.total === "-" ? (
-          <Robot src={loadingBot} />
+        {rating.total == "-" ? (
+          <div>
+            <Robot src={loadingBot} />
+            <MoodMeter loading={true} percent={percentage} />
+          </div>
         ) : (
-          <Robot src={bots[mood]} />
+          <div>
+            <Robot src={bots[mood]} />
+            <MoodMeter loading={false} percent={percentage} mood={mood} />
+          </div>
         )}
-        <MoodMeter className="meter" percent={percentage} mood={mood} />
       </MeterDiv>
       <TweetTabs rating={rating} />
     </div>

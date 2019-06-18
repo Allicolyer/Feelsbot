@@ -3,7 +3,7 @@ import styled from "styled-components";
 import happy from "../assets/happyBot.svg";
 import sad from "../assets/sadBot.svg";
 import neutral from "../assets/neutralBot.svg";
-import { Link, Text, Title, Content, Space, Subtitle } from "./shared";
+import { Link, Text, Title, Content, Space, Subtitle, mobile } from "./shared";
 
 const Image = styled.img`
   width: 33%;
@@ -27,8 +27,8 @@ const FlexDiv = styled.div`
   align-content: center;
   width: 50%;
   margin: 0 auto;
-  @media (max-width: 700px) {
-    width: 100%;
+  @media ${mobile} {
+    width: 80%;
   }
 `;
 
