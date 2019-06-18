@@ -1,8 +1,8 @@
 import React from "react";
 import Tweets from "./Tweets";
-import Dropdown from "./Dropdown";
 import styled from "styled-components";
 import { Title, Text, Content, Space, Subtitle } from "./shared";
+import Select from "./Select";
 
 class Timeline extends React.Component {
   constructor() {
@@ -59,7 +59,7 @@ class Timeline extends React.Component {
           Enter a Twitter handle and I'll assess that person's tweets.
         </Subtitle>
         <TimelineInput>
-          <Dropdown
+          <Select
             autocompleteText={this.state.autocompleteText}
             handleChange={this.handleChange}
             selectedOption={this.state.selectedOption}

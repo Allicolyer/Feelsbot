@@ -78,7 +78,7 @@ const TweetWrapper = ({ percentage, rating }) => {
     <div>
       <MeterDiv id="meter">
         <Subtitle> Joy Meter: {percentage}% </Subtitle>
-        {rating.total == "-" ? (
+        {rating.total === "-" ? (
           <Robot src={loadingBot} />
         ) : (
           <Robot src={bots[mood]} />
