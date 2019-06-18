@@ -76,9 +76,7 @@ class Timeline extends React.Component {
 
 const TimelineInput = styled.div`
   width: 60%;
-  padding: 20px;
   margin: 0 auto;
-  z-index: 10;
   @media ${mobile} {
     width: 80%;
   }
