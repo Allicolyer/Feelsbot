@@ -40,8 +40,14 @@ const Menu = () => (
     <NavLink href="/">Map</NavLink>
     <NavLink href="timeline">Your Tweets</NavLink>
     <NavLink href="about">About</NavLink>
+    <Offset />
   </MenuContainer>
 );
+
+//Offsets the menu so it appears to be centered vertically
+const Offset = styled.div`
+  height: ${p => 2 * p.theme.navHeight}px;
+`;
 
 const NavLink = styled(Link)`
   color: ${p => p.theme.colors.white};
@@ -55,15 +61,15 @@ display: flex;
 flex-direction: column;
 align-items: center;
 justify-content: center;
-  width: 100%;
-  height: 100vh
-  text-size: 3em;
-  position: absolute
-  top: ${p => p.theme.navHeight}px;
-  left: 0
-  background: ${p => p.theme.colors.primary};
-  opacity: 0.80;
-  z-index: ${p => p.theme.mobileStepper};
+width: 100%;
+height: 100vh
+text-size: 3em;
+position: absolute
+top: ${p => p.theme.navHeight}px;
+left: 0
+background: ${p => p.theme.colors.primary};
+opacity: 0.80;
+z-index: ${p => p.theme.mobileStepper};
 `;
 
 export default MobileNav;

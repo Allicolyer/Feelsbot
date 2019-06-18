@@ -130,18 +130,18 @@ class Map extends React.Component {
       <FlexColumn>
         <Content>
           <ResponsiveFlex>
-            <FlexContainer>
+            <LocationContainer>
               <Subtitle> Enter a location to search near</Subtitle>
-              <LocationInput
+              <Input
                 id="pac-input"
                 type="text"
                 placeholder="Search for a place"
               />
-            </FlexContainer>
-            <FlexContainer>
+            </LocationContainer>
+            <MilesContainer>
               <Subtitle> Enter how many miles to search</Subtitle>
-              <LocationInput type="text" id="miles-input" />
-            </FlexContainer>
+              <Input type="text" id="miles-input" />
+            </MilesContainer>
           </ResponsiveFlex>
         </Content>
         <MapDiv id="map" />
@@ -164,18 +164,28 @@ const MapDiv = styled.div`
   height: 400px;
   width: 100%;
 `;
-const LocationInput = styled.input`
+
+const Input = styled.input`
   width: 100%;
   font-size: 1.5rem;
   border: 1px solid ${p => p.theme.colors.primary};
   text-align: center;
 `;
 
-const FlexContainer = styled.div`
+const LocationContainer = styled.div`
   width: 50%;
-  margin: ${p => p.theme.space[2]}px;
+  margin: 0 0.5em 1em 0;
   @media ${mobile} {
     width: 100%;
+    margin: 0
+`;
+
+const MilesContainer = styled.div`
+  width: 50%;
+  margin: 0 0 1em 0.5em;
+  @media ${mobile} {
+    width: 100%;
+    margin: 0 0 1em 0;
   }
 `;
 
