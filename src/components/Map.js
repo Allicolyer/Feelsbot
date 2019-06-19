@@ -127,7 +127,7 @@ class Map extends React.Component {
     milesinput.value = "2";
     milesinput.addEventListener("change", () => {
       this.setState({
-        miles: parseFloat(milesinput.value)
+        miles: Math.round(parseFloat(milesinput.value))
       });
       // reset map with new search parameters
       updateMap(this.state.place, this.state.miles, this.state.center);
