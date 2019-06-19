@@ -7,6 +7,7 @@ import { theme } from "../styles/theme";
 class Map extends React.Component {
   constructor() {
     super();
+    this.myRef = React.createRef(); // Create a ref object
     this.state = {
       zoom: 13,
       maptype: "roadmap",
@@ -21,6 +22,8 @@ class Map extends React.Component {
       renderTweets: false
     };
   }
+  scrollToMyRef = () => window.scrollTo(0, this.myRef.current.offsetTop);
+
   componentDidMount() {
     let map = new window.google.maps.Map(document.getElementById("map"), {
       center: this.state.center,
@@ -88,7 +91,11 @@ class Map extends React.Component {
       if (!place.geometry) {
         // User entered the name of a Place that was not suggested and
         // pressed the Enter key, or the Place Details request failed.
-        window.alert("Sorry can't find'" + place.name + "'");
+        window.alert(`Sorry I can't find '${place.name}'`);
+        return;
+      }
+      if (!milesinput.value) {
+        window.alert("Pleae enter how many miles I should search");
         return;
       }
 
@@ -109,19 +116,24 @@ class Map extends React.Component {
         center: { lat: parseFloat(coords[0]), lng: parseFloat(coords[1]) },
         renderTweets: true
       });
-
       // bring the selected place in view on the map
       updateMap(this.state.place, this.state.miles, this.state.center);
+      setTimeout(() => {
+        this.scrollToMyRef();
+      }, 1000);
     });
 
     let milesinput = document.getElementById("miles-input");
     milesinput.value = "2";
     milesinput.addEventListener("change", () => {
       this.setState({
-        miles: parseFloat(milesinput.value)
+        miles: Math.round(parseFloat(milesinput.value))
       });
       // reset map with new search parameters
       updateMap(this.state.place, this.state.miles, this.state.center);
+      setTimeout(() => {
+        this.scrollToMyRef();
+      }, 1000);
     });
   }
 
@@ -146,14 +158,16 @@ class Map extends React.Component {
         </Content>
         <MapDiv id="map" />
         <Content>
-          {this.state.renderTweets && (
-            <Tweets
-              lat={this.state.center.lat}
-              lng={this.state.center.lng}
-              m={this.state.miles}
-              map
-            />
-          )}
+          <div ref={this.myRef}>
+            {this.state.renderTweets && (
+              <Tweets
+                lat={this.state.center.lat}
+                lng={this.state.center.lng}
+                m={this.state.miles}
+                map
+              />
+            )}
+          </div>
         </Content>
       </FlexColumn>
     );

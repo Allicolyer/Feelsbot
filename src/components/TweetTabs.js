@@ -16,6 +16,7 @@ import {
 
 const StyledTabPanel = styled(TabPanel)`
   width: 100%;
+  height: 100vh;
 `;
 
 const Emoji = styled.span`
