@@ -7,15 +7,21 @@ import { Span, Subtitle, mobile } from "./shared";
 import Tweets from "./Tweets";
 
 export default class Select extends Component {
-  state = {
-    screen_name: "",
-    render: false,
-    autocompleteText: ""
-  };
+  constructor(props) {
+    super(props);
+    this.myRef = React.createRef(); // Create a ref object
+
+    this.state = {
+      screen_name: "",
+      render: false,
+      autocompleteText: ""
+    };
+  }
+
+  scrollToMyRef = () => window.scrollTo(0, this.myRef.current.offsetTop);
 
   handleInputChange = autocompleteText => {
     this.setState({ autocompleteText });
-    console.log(this.state.autocompleteText);
   };
 
   handleChange = selectedOption => {
@@ -23,6 +29,9 @@ export default class Select extends Component {
       screen_name: selectedOption.value,
       render: true
     });
+    setTimeout(() => {
+      this.scrollToMyRef();
+    }, 500);
   };
 
   customStyles = {
@@ -52,9 +61,11 @@ export default class Select extends Component {
             onChange={this.handleChange}
           />
         </SelectContainer>
-        {this.state.render && (
-          <Tweets screen_name={this.state.screen_name} timeline />
-        )}
+        <div ref={this.myRef}>
+          {this.state.render && (
+            <Tweets screen_name={this.state.screen_name} timeline />
+          )}
+        </div>
       </div>
     );
   }
