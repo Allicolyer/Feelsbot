@@ -56,8 +56,15 @@ class TweetGrid extends React.Component {
         <div id="stack-grid">
           <StackGrid columnWidth={300} gridRef={grid => (this.grid = grid)}>
             {this.props.rating.tweets.map(tweet => (
-              <div key={tweet.id_str} id={tweet.id_str}>
-                <TwitterTweetEmbed tweetId={tweet.id_str} />
+              <div key={tweet.id_str}>
+                {tweet.retweeted_status && (
+                  <RetweetContainer>
+                    <Text>{tweet.user.screen_name} Retweeted</Text>
+                  </RetweetContainer>
+                )}
+                <div id={tweet.id_str}>
+                  <TwitterTweetEmbed tweetId={tweet.id_str} />
+                </div>
               </div>
             ))}
           </StackGrid>
@@ -66,5 +73,15 @@ class TweetGrid extends React.Component {
     } else return <Text> No {this.props.description.toLowerCase()} </Text>;
   }
 }
+
+const RetweetContainer = styled.div`
+  margin: 10px;
+  margin-bottom: 0px;
+  border-color: rgb(225, 232, 237);
+  border-style: solid;
+  border-width: 1px;
+  border-radius: 4px;
+  font: 16px/1.4 Helvetica, Roboto, "Segoe UI", Calibri, sans-serif;
+`;
 
 export default TweetGrid;
