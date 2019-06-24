@@ -14,46 +14,14 @@ import {
   isMobile
 } from "./shared";
 
-const StyledTabPanel = styled(TabPanel)`
-  width: 100%;
-  height: 100vh;
-`;
-
-const Emoji = styled.span`
-  font-size: 2em;
-  @media ${mobile} {
-    font-size: 1em;
-  }
-`;
-
-const TabText = styled(Subtitle)`
-  font-size: 1em;
-  @media ${tablet} {
-    font-size: 1em;
-  }
-`;
-
-const emotions = ["joy", "sadness", "anger", "fear", "disgust"];
-
-const emojis = {
-  joy: "😄",
-  sadness: "😭",
-  anger: "😡",
-  fear: "😱",
-  disgust: "🤮"
-};
-
-const titles = {
-  joy: "Joyful Tweets",
-  sadness: "Sad Tweets",
-  anger: "Angry Tweets",
-  fear: "Fearful Tweets",
-  disgust: "Disgusted Tweets"
-};
-
 const TweetTabs = ({ rating }) => {
   return (
-    <Tabs>
+    <Tabs
+      defaultTab="tab-joy"
+      onChange={tabId => {
+        console.log(tabId);
+      }}
+    >
       <TabList>
         {emotions.map(emotion => {
           return (
@@ -89,6 +57,43 @@ const TweetTabs = ({ rating }) => {
       })}
     </Tabs>
   );
+};
+
+const StyledTabPanel = styled(TabPanel)`
+  width: 100%;
+  height: 100vh;
+`;
+
+const Emoji = styled.span`
+  font-size: 2em;
+  @media ${mobile} {
+    font-size: 1em;
+  }
+`;
+
+const TabText = styled(Subtitle)`
+  font-size: 1em;
+  @media ${tablet} {
+    font-size: 1em;
+  }
+`;
+
+const emotions = ["joy", "sadness", "anger", "fear", "disgust"];
+
+const emojis = {
+  joy: "😄",
+  sadness: "😭",
+  anger: "😡",
+  fear: "😱",
+  disgust: "🤮"
+};
+
+const titles = {
+  joy: "Joyful Tweets",
+  sadness: "Sad Tweets",
+  anger: "Angry Tweets",
+  fear: "Fearful Tweets",
+  disgust: "Disgusted Tweets"
 };
 
 export default TweetTabs;
