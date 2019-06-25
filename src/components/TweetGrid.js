@@ -20,13 +20,11 @@ class TweetGrid extends React.Component {
       let heights = [];
       this.props.rating.tweets.forEach(tweet => {
         let embed = document.getElementById(tweet.id_str);
+        //check if the heightis greater than 0
         let height = embed ? embed.clientHeight : false;
         //make an array of the heights of the embedded tweets nodes
-
         heights.push(height);
       });
-
-      //check if the heights of the first one is greater than 0
 
       if (
         heights.every(i => {
@@ -65,7 +63,7 @@ class TweetGrid extends React.Component {
           </StackGrid>
         </div>
       );
-    } else return <Text> No Tweets </Text>;
+    } else return <Text> No {this.props.description.toLowerCase()} </Text>;
   }
 }
 
