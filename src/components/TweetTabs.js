@@ -14,12 +14,19 @@ import {
   isMobile
 } from "./shared";
 
+const changeWidth = tabId => {
+  let div = document.getElementById(tabId);
+  div.style.width === "99.5%"
+    ? (div.style.width = "100%")
+    : (div.style.width = "99.5%");
+};
+
 const TweetTabs = ({ rating }) => {
   return (
     <Tabs
       defaultTab="tab-joy"
       onChange={tabId => {
-        console.log(tabId);
+        changeWidth(tabId);
       }}
     >
       <TabList>
@@ -47,10 +54,22 @@ const TweetTabs = ({ rating }) => {
       </TabList>
       {emotions.map(emotion => {
         return (
-          <StyledTabPanel key={emotion} tabId={`tab-${emotion}`}>
-            {!isMobile() && <TweetGrid rating={rating[emotion]} />}
+          <StyledTabPanel
+            id={`tab-${emotion}`}
+            key={emotion}
+            tabId={`tab-${emotion}`}
+          >
+            {!isMobile() && (
+              <TweetGrid
+                description={titles[emotion]}
+                rating={rating[emotion]}
+              />
+            )}
             {isMobile() && (
-              <MobileGrid title={titles[emotion]} rating={rating[emotion]} />
+              <MobileGrid
+                description={titles[emotion]}
+                rating={rating[emotion]}
+              />
             )}
           </StyledTabPanel>
         );
