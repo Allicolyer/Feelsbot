@@ -184,6 +184,10 @@ const Input = styled.input`
   font-size: 1.5rem;
   border: 1px solid ${p => p.theme.colors.primary};
   text-align: center;
+  padding: 0;
+  @media ${mobile} {
+    padding: 0;
+  }
 `;
 
 const LocationContainer = styled.div`
@@ -191,7 +195,7 @@ const LocationContainer = styled.div`
   margin: 0 0.5em 1em 0;
   @media ${mobile} {
     width: 100%;
-    margin: 0 0 0 0;
+    margin: 0;
 `;
 
 const MilesContainer = styled.div`
