@@ -14,6 +14,70 @@ import {
   isMobile
 } from "./shared";
 
+const changeWidth = tabId => {
+  let div = document.getElementById(tabId);
+  div.style.width === "99.5%"
+    ? (div.style.width = "100%")
+    : (div.style.width = "99.5%");
+};
+
+const TweetTabs = ({ rating }) => {
+  return (
+    <Tabs
+      defaultTab="tab-joy"
+      onChange={tabId => {
+        changeWidth(tabId);
+      }}
+    >
+      <TabList>
+        {emotions.map(emotion => {
+          return (
+            <Tab key={emotion} tabFor={`tab-${emotion}`}>
+              <TabText>
+                <HideOnBigTablet>
+                  {emotion.charAt(0).toUpperCase() + emotion.slice(1)}:{" "}
+                  {rating[emotion].num}
+                </HideOnBigTablet>
+                <ShowOnBigTablet>
+                  <HideOnMobile>
+                    {emotion.charAt(0).toUpperCase() + emotion.slice(1)}
+                  </HideOnMobile>
+                  {rating[emotion].num}
+                </ShowOnBigTablet>
+              </TabText>
+              <Emoji role="img" aria-label={emotion}>
+                {emojis[emotion]}
+              </Emoji>
+            </Tab>
+          );
+        })}
+      </TabList>
+      {emotions.map(emotion => {
+        return (
+          <StyledTabPanel
+            id={`tab-${emotion}`}
+            key={emotion}
+            tabId={`tab-${emotion}`}
+          >
+            {!isMobile() && (
+              <TweetGrid
+                description={titles[emotion]}
+                rating={rating[emotion]}
+              />
+            )}
+            {isMobile() && (
+              <MobileGrid
+                description={titles[emotion]}
+                rating={rating[emotion]}
+              />
+            )}
+          </StyledTabPanel>
+        );
+      })}
+    </Tabs>
+  );
+};
+
 const StyledTabPanel = styled(TabPanel)`
   width: 100%;
   height: 100vh;
@@ -49,46 +113,6 @@ const titles = {
   anger: "Angry Tweets",
   fear: "Fearful Tweets",
   disgust: "Disgusted Tweets"
-};
-
-const TweetTabs = ({ rating }) => {
-  return (
-    <Tabs>
-      <TabList>
-        {emotions.map(emotion => {
-          return (
-            <Tab key={emotion} tabFor={`tab-${emotion}`}>
-              <TabText>
-                <HideOnBigTablet>
-                  {emotion.charAt(0).toUpperCase() + emotion.slice(1)}:{" "}
-                  {rating[emotion].num}
-                </HideOnBigTablet>
-                <ShowOnBigTablet>
-                  <HideOnMobile>
-                    {emotion.charAt(0).toUpperCase() + emotion.slice(1)}
-                  </HideOnMobile>
-                  {rating[emotion].num}
-                </ShowOnBigTablet>
-              </TabText>
-              <Emoji role="img" aria-label={emotion}>
-                {emojis[emotion]}
-              </Emoji>
-            </Tab>
-          );
-        })}
-      </TabList>
-      {emotions.map(emotion => {
-        return (
-          <StyledTabPanel key={emotion} tabId={`tab-${emotion}`}>
-            {!isMobile() && <TweetGrid rating={rating[emotion]} />}
-            {isMobile() && (
-              <MobileGrid title={titles[emotion]} rating={rating[emotion]} />
-            )}
-          </StyledTabPanel>
-        );
-      })}
-    </Tabs>
-  );
 };
 
 export default TweetTabs;

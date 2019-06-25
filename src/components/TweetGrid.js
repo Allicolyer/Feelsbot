@@ -17,16 +17,24 @@ class TweetGrid extends React.Component {
     let rerender = false;
 
     let findelement = setInterval(() => {
-      //make an array from the embedded tweets nodes
-      let embeds = document.getElementsByClassName("twitter-tweet");
-      //check if the heights of the first one is greater than 0
-      let height = embeds.length ? embeds[0].clientHeight : false;
+      let heights = [];
+      this.props.rating.tweets.forEach(tweet => {
+        let embed = document.getElementById(tweet.id_str);
+        //check if the heightis greater than 0
+        let height = embed ? embed.clientHeight : false;
+        //make an array of the heights of the embedded tweets nodes
+        heights.push(height);
+      });
 
-      if (height) {
+      if (
+        heights.every(i => {
+          return i;
+        })
+      ) {
         this.updateGrid();
         rerender = true;
         clearInterval(findelement);
-        console.log("done");
+        console.log(`${this.props.rating.num} done`);
       }
     }, 500);
 
@@ -37,7 +45,7 @@ class TweetGrid extends React.Component {
       if (!rerender) {
         this.updateGrid();
         rerender = true;
-        console.log("timeout");
+        console.log(`${this.props.rating.num} timeout`);
       }
     }, 4000);
   }
@@ -45,19 +53,17 @@ class TweetGrid extends React.Component {
   render() {
     if (this.props.rating.num) {
       return (
-        <div>
-          <div id="stack-grid">
-            <StackGrid columnWidth={300} gridRef={grid => (this.grid = grid)}>
-              {this.props.rating.tweets.map(tweet => (
-                <div key={tweet.id_str}>
-                  <TwitterTweetEmbed tweetId={tweet.id_str} />
-                </div>
-              ))}
-            </StackGrid>
-          </div>
+        <div id="stack-grid">
+          <StackGrid columnWidth={300} gridRef={grid => (this.grid = grid)}>
+            {this.props.rating.tweets.map(tweet => (
+              <div key={tweet.id_str} id={tweet.id_str}>
+                <TwitterTweetEmbed tweetId={tweet.id_str} />
+              </div>
+            ))}
+          </StackGrid>
         </div>
       );
-    } else return <Text> No Tweets </Text>;
+    } else return <Text> No {this.props.description.toLowerCase()} </Text>;
   }
 }
 
