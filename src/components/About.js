@@ -85,7 +85,7 @@ const About = () => (
           <Avatar src="https://avatars1.githubusercontent.com/u/11083917?s=460&v=4" />
           <Text>
             Feelsbot was created by{" "}
-            <Link href="https://www.alli.science">Allison Colyer.</Link>
+            <Link href="http://www.alli.science">Allison Colyer.</Link>
           </Text>
         </AuthorDiv>
         <AuthorDiv>

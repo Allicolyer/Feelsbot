@@ -191,7 +191,7 @@ const LocationContainer = styled.div`
   margin: 0 0.5em 1em 0;
   @media ${mobile} {
     width: 100%;
-    margin: 0
+    margin: 0 0 0 0;
 `;
 
 const MilesContainer = styled.div`
