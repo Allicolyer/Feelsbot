@@ -6,9 +6,8 @@ const GET_TWEETS = gql`
       id_str
       text
       url
+      retweeted_status
       user {
-        name
-        location
         screen_name
       }
       emotion {
@@ -27,6 +26,10 @@ const GET_TIMELINE = gql`
     tweets: user(screen_name: $screen_name) {
       id_str
       text
+      retweeted_status
+      user {
+        screen_name
+      }
       emotion {
         joy
         sadness

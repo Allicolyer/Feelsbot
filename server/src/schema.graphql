@@ -21,6 +21,7 @@ type Tweet {
   text: String!
   created_at: String!
   coordinates: String
+  retweeted_status: Boolean!
   user: User!
   url: String
   emotion: Emotion
