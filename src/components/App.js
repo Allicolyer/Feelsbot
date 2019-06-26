@@ -18,16 +18,15 @@ import {
 
 const App = () => (
   <Layout>
-    <Wrapper>
-      <Navigation />
-      <Router>
-        <Home path="/" />
-        <About path="/about" />
-        <Timeline path="/user" />
-      </Router>
-    </Wrapper>
-
-    <Footer />
+    {/* <Wrapper> */}
+    <Navigation />
+    <Router>
+      <Home path="/" />
+      <About path="/about" />
+      <Timeline path="/user" />
+    </Router>
+    {/* </Wrapper>
+    <Footer /> */}
   </Layout>
 );
 
@@ -50,17 +49,17 @@ const Navigation = () => (
   </Navbar>
 );
 
-const Footer = () => (
-  <div>
-    <FooterContainer>
-      <FooterSpan>© 2019 Feelsbot</FooterSpan>
-    </FooterContainer>
-  </div>
-);
+// const Footer = () => (
+//   <div>
+//     <FooterContainer>
+//       <FooterSpan>© 2019 Feelsbot</FooterSpan>
+//     </FooterContainer>
+//   </div>
+// );
 
-const Wrapper = styled.div`
-  min-height: calc(100vh - ${p => p.theme.navHeight / 2}px);
-`;
+// const Wrapper = styled.div`
+//   min-height: calc(100vh - ${p => p.theme.navHeight / 2}px);
+// `;
 
 const Navbar = styled.div`
   background: ${p => p.theme.colors.primary};
@@ -105,17 +104,17 @@ const NavLink = styled.a`
   }
 `;
 
-const FooterContainer = styled.div`
-  background: ${p => p.theme.colors.primary};
-  width: 100%;
-  height: ${p => p.theme.navHeight / 2}px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-`;
+// const FooterContainer = styled.div`
+//   background: ${p => p.theme.colors.primary};
+//   width: 100%;
+//   height: ${p => p.theme.navHeight / 2}px;
+//   display: flex;
+//   align-items: center;
+//   justify-content: center;
+// `;
 
-const FooterSpan = styled(Span)`
-  color: ${p => p.theme.colors.white};
-`;
+// const FooterSpan = styled(Span)`
+//   color: ${p => p.theme.colors.white};
+// `;
 
 export default App;
