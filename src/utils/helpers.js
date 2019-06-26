@@ -15,16 +15,16 @@ export const tweetSorter = input => {
 };
 
 export const percent = input => {
-  let percentage = 0;
-  percentage = Math.floor(
-    (input.joy.num /
-      (input.joy.num +
-        input.anger.num +
-        input.sadness.num +
-        input.fear.num +
-        input.disgust.num)) *
-      100
-  );
+  let percentage =
+    Math.round(
+      (input.joy.num /
+        (input.joy.num +
+          input.anger.num +
+          input.sadness.num +
+          input.fear.num +
+          input.disgust.num)) *
+        100
+    ) || 0;
   return percentage;
 };
 
