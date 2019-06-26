@@ -25,13 +25,15 @@ export default class Select extends Component {
   };
 
   handleChange = selectedOption => {
-    this.setState({
-      screen_name: selectedOption.value,
-      render: true
-    });
-    setTimeout(() => {
-      this.scrollToMyRef();
-    }, 500);
+    if (selectedOption) {
+      this.setState({
+        screen_name: selectedOption.value,
+        render: true
+      });
+      setTimeout(() => {
+        this.scrollToMyRef();
+      }, 500);
+    }
   };
 
   customStyles = {
@@ -59,6 +61,7 @@ export default class Select extends Component {
             loadOptions={loadOptions}
             onInputChange={this.handleInputChange}
             onChange={this.handleChange}
+            isClearable
           />
         </SelectContainer>
         <div ref={this.myRef}>
