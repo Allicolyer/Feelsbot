@@ -164,6 +164,7 @@ class Map extends React.Component {
                 lat={this.state.center.lat}
                 lng={this.state.center.lng}
                 m={this.state.miles}
+                location={this.state.place.place_formatted}
                 map
               />
             )}

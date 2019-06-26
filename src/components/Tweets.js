@@ -3,7 +3,7 @@ import styled from "styled-components";
 import { Query } from "react-apollo";
 import { GET_TWEETS, GET_TIMELINE } from "../utils/Queries";
 import MoodMeter from "./MoodMeter";
-import { Subtitle, Text } from "./shared";
+import { Subtitle, Text, Title } from "./shared";
 import { tweetSorter, percent, assignMood } from "../utils/helpers";
 import happyBot from "../assets/happyBot.svg";
 import neutralBot from "../assets/neutralBot.svg";
@@ -11,7 +11,7 @@ import sadBot from "../assets/sadBot.svg";
 import loadingBot from "../assets/loadingBot.svg";
 import TweetTabs from "./TweetTabs";
 
-const Tweets = ({ map, lat, lng, m, timeline, screen_name }) => {
+const Tweets = ({ map, lat, lng, m, timeline, screen_name, location }) => {
   let query;
   let variables;
   if (map) {
@@ -48,7 +48,16 @@ const Tweets = ({ map, lat, lng, m, timeline, screen_name }) => {
           percentage = percent(rating);
         }
 
-        return <TweetWrapper rating={rating} percentage={percentage} s />;
+        return (
+          <TweetWrapper
+            rating={rating}
+            percentage={percentage}
+            map={map}
+            timeline={timeline}
+            screen_name={screen_name}
+            location={location}
+          />
+        );
       }}
     </Query>
   );
@@ -65,10 +74,17 @@ const MeterDiv = styled.div`
 
 const Robot = styled.img`
   height: 150px;
-  padding: ${p => p.theme.space[2]}px;
+  margin-top: ${p => p.theme.space[4]}px;
 `;
 
-const TweetWrapper = ({ percentage, rating }) => {
+const TweetWrapper = ({
+  percentage,
+  rating,
+  map,
+  timeline,
+  screen_name,
+  location
+}) => {
   let mood = assignMood(percentage);
   const bots = {
     sad: sadBot,
@@ -78,29 +94,87 @@ const TweetWrapper = ({ percentage, rating }) => {
   return (
     <div>
       <MeterDiv id="meter">
-        {rating.total ? (
-          <Subtitle> Joy Meter: {percentage}% </Subtitle>
-        ) : (
-          <div>
-            <Subtitle> No Tweets</Subtitle>
-            <Text> Feelsbot couldn't find any emotional tweets.</Text>
-          </div>
-        )}
         {rating.loading ? (
           <div>
             <Robot src={loadingBot} />
+            <Title> Joy Meter: {percentage}% </Title>
             <MoodMeter loading={true} percent={percentage} />
+            <MeterExplanation loading />
           </div>
         ) : (
           <div>
-            <Robot src={bots[mood]} />
-            <MoodMeter loading={false} percent={percentage} mood={mood} />
+            {!rating.total ? (
+              <div>
+                <Robot src={bots.neutral} />
+                <Title> No Emotional Tweets</Title>
+                <NoTweetText
+                  map={map}
+                  timeline={timeline}
+                  screen_name={screen_name}
+                  location={location}
+                />
+              </div>
+            ) : (
+              <div>
+                <Robot src={bots[mood]} />
+                <Title> Joy Meter: {percentage}% </Title>
+                <MoodMeter loading={false} percent={percentage} mood={mood} />
+                <MeterExplanation
+                  percent={percentage}
+                  map={map}
+                  timeline={timeline}
+                  screen_name={screen_name}
+                  location={location}
+                />
+              </div>
+            )}
           </div>
         )}
       </MeterDiv>
-      <TweetTabs rating={rating} />
+      <TweetTabs percent={percentage} rating={rating} />
     </div>
   );
 };
 
 export default Tweets;
+
+const NoTweetText = ({
+  screen_name = "null",
+  location = "null",
+  map,
+  timeline
+}) => (
+  <div>
+    {map && (
+      <HelperText>{`Feelsbot couldn't find any emotional tweets near ${location}. Try searching for a different location.`}</HelperText>
+    )}
+    {timeline && (
+      <HelperText>{`Feelsbot couldn't find any emotional tweets by @${screen_name}. Try searching for a different Twitter user.`}</HelperText>
+    )}
+  </div>
+);
+
+const MeterExplanation = ({
+  percent = "0",
+  screen_name = "null",
+  location = "null",
+  map,
+  timeline,
+  loading
+}) => (
+  <div>
+    {map && (
+      <HelperText>{`${percent}% of emotional tweets near ${location} tweets are joyful`}</HelperText>
+    )}
+    {timeline && (
+      <HelperText>{`${percent}% of emotional tweets by @${screen_name} are joyful`}</HelperText>
+    )}
+    {loading && <HelperText>{`loading...`}</HelperText>}
+  </div>
+);
+
+const HelperText = styled(Text)`
+  margin-top: 0px;
+  font-size: 0.75em;
+  font-style: italic;
+`;

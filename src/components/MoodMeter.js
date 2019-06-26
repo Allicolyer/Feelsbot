@@ -1,7 +1,7 @@
 import * as React from "react";
 import { theme } from "../styles/theme";
 import styled from "styled-components";
-import { Subtitle } from "./shared";
+import { Subtitle, mobile } from "./shared";
 
 let color;
 
@@ -18,20 +18,35 @@ const MoodMeter = ({ percent, mood, loading }) => {
 
   return (
     <Container>
-      <Subtitle>0%</Subtitle>
+      <ZeroPercent>0%</ZeroPercent>
       <Outside color={color}>
         {loading && <LoadingFiller />}
         <Filler percent={percent} color={color} />
       </Outside>
-      <Subtitle>100%</Subtitle>
+      <OneHundredPercent>100%</OneHundredPercent>
     </Container>
   );
 };
 
+const OneHundredPercent = styled(Subtitle)`
+  margin: 0 0 0 ${props => props.theme.space[3]}px;
+  @media ${mobile} {
+    display: none;
+  }
+`;
+
+const ZeroPercent = styled(Subtitle)`
+  margin: 0 ${props => props.theme.space[3]}px 0 0;
+  @media ${mobile} {
+    display: none;
+  }
+`;
+
 const Container = styled.div`
   width: 80%
-  padding: 20px;
-  display:flex
+  padding: ${props => props.theme.space[3]}px;
+  display:flex;
+  alignn-items:center;
   margin: 0 auto;
 `;
 
