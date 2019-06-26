@@ -15,7 +15,7 @@ const App = () => (
     <Router>
       <Home path="/" />
       <About path="/about" />
-      <Timeline path="/timeline" />
+      <Timeline path="/user" />
     </Router>
   </Layout>
 );
@@ -72,7 +72,7 @@ const Navigation = () => (
     <NavLinks>
       <HideOnMobile>
         <NavLink href="/">Map</NavLink>
-        <NavLink href="timeline">Your Tweets</NavLink>
+        <NavLink href="user">Twitter User</NavLink>
         <NavLink href="about">About</NavLink>
       </HideOnMobile>
       <ShowOnMobile>
