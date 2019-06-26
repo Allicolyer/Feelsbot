@@ -214,9 +214,6 @@ const Input = styled.input`
   border: 1px solid ${p => p.theme.colors.primary};
   text-align: center;
   padding: 0;
-  @media ${mobile} {
-    padding: 0;
-  }
 `;
 
 const Select = styled.select`
@@ -225,12 +222,8 @@ const Select = styled.select`
   font-size: 1em
   line-height: 1.25em;
   text-align-last: center;
-
   border: 1px solid ${p => p.theme.colors.primary};
   padding: 0;
-  @media ${mobile} {
-    padding: 0;
-  }
 `;
 
 const LocationContainer = styled.div`

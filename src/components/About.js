@@ -27,6 +27,7 @@ const FlexDiv = styled.div`
   align-content: center;
   width: 50%;
   margin: 0 auto;
+  padding: 0;
   @media ${mobile} {
     width: 80%;
   }
