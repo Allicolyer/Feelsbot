@@ -1,6 +1,6 @@
 import React from "react";
 import Select from "./Select";
-import { Title, Text, Content, Space, Subtitle, mobile } from "./shared";
+import { Title, Text, Content, Space, Subtitle } from "./shared";
 
 const Timeline = () => (
   <Content>
@@ -9,7 +9,7 @@ const Timeline = () => (
     <Text>I assess how humans are feeling by reading their tweets.</Text>{" "}
     <Space />
     <Subtitle>
-      Enter a Twitter handle and I'll assess that person's tweets.
+      Search for a Twitter user and I'll assess that user's tweets.
     </Subtitle>
     <Select />
   </Content>

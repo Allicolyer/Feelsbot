@@ -38,7 +38,7 @@ class MobileNav extends Component {
 const Menu = () => (
   <MenuContainer>
     <NavLink href="/">Map</NavLink>
-    <NavLink href="timeline">Your Tweets</NavLink>
+    <NavLink href="user">Twitter User</NavLink>
     <NavLink href="about">About</NavLink>
     <Offset />
   </MenuContainer>

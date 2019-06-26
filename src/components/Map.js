@@ -39,6 +39,7 @@ class Map extends React.Component {
       this.setState({
         zoom: map.getZoom()
       });
+      console.log(this.state.zoom);
     });
 
     map.addListener("maptypeid_changed", () => {
@@ -65,7 +66,7 @@ class Map extends React.Component {
     const updateMap = (place, miles, center) => {
       mileCircle.setMap(null);
       map.fitBounds(place.viewport);
-      map.setZoom(Math.round(14 - Math.log(miles) / Math.LN2));
+      map.setZoom(zoomLevels[miles]);
       map.setCenter(center);
       marker.setPlace({
         placeId: place.place_id,
@@ -78,7 +79,6 @@ class Map extends React.Component {
     let marker = new window.google.maps.Marker({
       map: map,
       position: this.state.center
-      // icon: { url: "http://maps.google.com/mapfiles/ms/icons/blue-dot.png" }
     });
 
     // initialize the autocomplete functionality using the #pac-input input box
@@ -123,14 +123,21 @@ class Map extends React.Component {
       }, 1000);
     });
 
+    //event listener that handles when miles are changed
     let milesinput = document.getElementById("miles-input");
-    milesinput.value = "2";
+
     milesinput.addEventListener("change", () => {
       this.setState({
-        miles: Math.round(parseFloat(milesinput.value))
+        miles: parseFloat(milesinput.value)
       });
+      //if there is no input location value, ask the user to enter a location
+      if (!inputNode.value) {
+        window.alert("Please enter a location to search");
+        return;
+      }
       // reset map with new search parameters
       updateMap(this.state.place, this.state.miles, this.state.center);
+      // scroll to the tweets
       setTimeout(() => {
         this.scrollToMyRef();
       }, 1000);
@@ -143,16 +150,35 @@ class Map extends React.Component {
         <Content>
           <ResponsiveFlex>
             <LocationContainer>
-              <Subtitle> Enter a location to search near</Subtitle>
+              <Subtitle> Search for a Location</Subtitle>
               <Input
                 id="pac-input"
                 type="text"
-                placeholder="Search for a place"
+                placeholder="Example: Los Angeles"
               />
             </LocationContainer>
             <MilesContainer>
-              <Subtitle> Enter how many miles to search</Subtitle>
-              <Input type="text" id="miles-input" />
+              <Subtitle> Select a Distance</Subtitle>
+              <Select id="miles-input">
+                <option value="1">1 Mile</option>
+                <option value="2" selected="selected">
+                  2 Miles
+                </option>
+                <option value="3">3 Miles</option>
+                <option value="4">4 Miles</option>
+                <option value="5">5 Miles</option>
+                <option value="10">10 Miles</option>
+                <option value="20">20 Miles</option>
+                <option value="30">30 Miles</option>
+                <option value="40">40 Miles</option>
+                <option value="50">50 Miles</option>
+                <option value="60">60 Miles</option>
+                <option value="70">70 Miles</option>
+                <option value="80">80 Miles</option>
+                <option value="90">90 Miles</option>
+                <option value="100">100 Miles</option>
+                <option value="200">200 Miles</option>
+              </Select>
             </MilesContainer>
           </ResponsiveFlex>
         </Content>
@@ -164,6 +190,7 @@ class Map extends React.Component {
                 lat={this.state.center.lat}
                 lng={this.state.center.lng}
                 m={this.state.miles}
+                location={this.state.place.place_formatted}
                 map
               />
             )}
@@ -181,13 +208,22 @@ const MapDiv = styled.div`
 
 const Input = styled.input`
   width: 100%;
-  font-size: 1.5rem;
+  height: 2em;
+  font-size: 1em
+  line-height: 1.25em;
   border: 1px solid ${p => p.theme.colors.primary};
   text-align: center;
   padding: 0;
-  @media ${mobile} {
-    padding: 0;
-  }
+`;
+
+const Select = styled.select`
+  width: 100%;
+  height: 2em;
+  font-size: 1em
+  line-height: 1.25em;
+  text-align-last: center;
+  border: 1px solid ${p => p.theme.colors.primary};
+  padding: 0;
 `;
 
 const LocationContainer = styled.div`
@@ -212,5 +248,24 @@ const ResponsiveFlex = styled(Flex)`
     flex-direction: column;
   }
 `;
+
+const zoomLevels = {
+  1: 13,
+  2: 13,
+  3: 12,
+  4: 12,
+  5: 11,
+  10: 10,
+  20: 9,
+  30: 9,
+  40: 8,
+  50: 8,
+  60: 8,
+  70: 7,
+  80: 7,
+  90: 7,
+  100: 7,
+  200: 6
+};
 
 export default Map;

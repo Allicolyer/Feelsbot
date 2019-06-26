@@ -3,32 +3,43 @@ import styled from "styled-components";
 import happy from "../assets/happyBot.svg";
 import sad from "../assets/sadBot.svg";
 import neutral from "../assets/neutralBot.svg";
-import { Link, Text, Title, Content, Space, Subtitle, mobile } from "./shared";
+import {
+  Link,
+  Text,
+  Title,
+  Content,
+  Space,
+  Subtitle,
+  mobile,
+  tablet
+} from "./shared";
 
 const Image = styled.img`
-  width: 33%;
-  padding: ${p => p.theme.space[3]}px;
+  width: 28%;
 `;
 
 const Avatar = styled.img`
-  width: 75%;
+  width: 100%
   border-radius: 100px;
-  padding: ${p => p.theme.space[3]}px;
 `;
 
 const AuthorDiv = styled.div`
   text-align: center;
-  width: 33%;
+  width: 28%;
 `;
 
 const FlexDiv = styled.div`
   display: flex;
-  justify-content: center;
+  justify-content: space-around;
   align-content: center;
   width: 50%;
   margin: 0 auto;
-  @media ${mobile} {
+  padding: 0;
+  @media ${tablet} {
     width: 80%;
+  }
+  @media ${mobile} {
+    width: 100%;
   }
 `;
 
@@ -59,7 +70,10 @@ const About = () => (
       <Text>
         {" "}
         Curious to explore more with nautral language procesing? Check out IBM's{" "}
-        <Link href="https://natural-language-understanding-demo.ng.bluemix.net/">
+        <Link
+          href="https://natural-language-understanding-demo.ng.bluemix.net/"
+          target="_blank"
+        >
           demo{" "}
         </Link>
         of their machine learning model.
@@ -78,6 +92,7 @@ const About = () => (
         Tweeter's profile. Feelsbot can also analyze the tweets of any Twitter
         user, as long as their profile is not set to private.
       </Text>
+
       <Subtitle> Contributors</Subtitle>
 
       <FlexDiv>
@@ -85,22 +100,29 @@ const About = () => (
           <Avatar src="https://avatars1.githubusercontent.com/u/11083917?s=460&v=4" />
           <Text>
             Feelsbot was created by{" "}
-            <Link href="http://www.alli.science">Allison Colyer.</Link>
+            <Link href="http://www.alli.science" target="_blank">
+              Allison Colyer.
+            </Link>
           </Text>
         </AuthorDiv>
         <AuthorDiv>
           <Avatar src="https://roobeedotorg.files.wordpress.com/2019/05/rubyrios_branding2019-6-1.png?w=640" />
           <Text>
             Robot drawings were created by{" "}
-            <Link href="https://www.rubyrios.com">Ruby Ríos.</Link>
+            <Link href="https://www.rubyrios.com" target="_blank">
+              Ruby Ríos.
+            </Link>
           </Text>
         </AuthorDiv>
         <AuthorDiv>
           <Avatar src="https://pbs.twimg.com/profile_images/1065025670563033088/34PLNXb2.jpg" />
           <Text>
             {" "}
-            Big thanks to <Link href="https://novvum.io">Novvum</Link> for
-            supporting the development of Feelsbot.
+            Big thanks to{" "}
+            <Link href="https://www.novvum.io/" target="_blank">
+              Novvum
+            </Link>{" "}
+            for supporting the development of Feelsbot.
           </Text>
         </AuthorDiv>
       </FlexDiv>

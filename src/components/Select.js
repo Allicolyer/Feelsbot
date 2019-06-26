@@ -25,13 +25,15 @@ export default class Select extends Component {
   };
 
   handleChange = selectedOption => {
-    this.setState({
-      screen_name: selectedOption.value,
-      render: true
-    });
-    setTimeout(() => {
-      this.scrollToMyRef();
-    }, 500);
+    if (selectedOption) {
+      this.setState({
+        screen_name: selectedOption.value,
+        render: true
+      });
+      setTimeout(() => {
+        this.scrollToMyRef();
+      }, 500);
+    }
   };
 
   customStyles = {
@@ -59,6 +61,7 @@ export default class Select extends Component {
             loadOptions={loadOptions}
             onInputChange={this.handleInputChange}
             onChange={this.handleChange}
+            isClearable
           />
         </SelectContainer>
         <div ref={this.myRef}>
@@ -98,9 +101,9 @@ const SearchCard = styled.div`
 `;
 
 const TwitterImage = styled.img`
-  height: 2em;
+  height: 2.5em;
   margin: auto 0;
-  padding: ${p => p.theme.space[1]}px;
+  padding: 0 ${p => p.theme.space[2] * 1.5}px 0 ${p => p.theme.space[2]}px;
 `;
 
 const UserName = styled(Subtitle)`
