@@ -59,7 +59,10 @@ const About = () => (
       <Text>
         {" "}
         Curious to explore more with nautral language procesing? Check out IBM's{" "}
-        <Link href="https://natural-language-understanding-demo.ng.bluemix.net/">
+        <Link
+          href="https://natural-language-understanding-demo.ng.bluemix.net/"
+          target="_blank"
+        >
           demo{" "}
         </Link>
         of their machine learning model.
@@ -85,22 +88,29 @@ const About = () => (
           <Avatar src="https://avatars1.githubusercontent.com/u/11083917?s=460&v=4" />
           <Text>
             Feelsbot was created by{" "}
-            <Link href="http://www.alli.science">Allison Colyer.</Link>
+            <Link href="http://www.alli.science" target="_blank">
+              Allison Colyer.
+            </Link>
           </Text>
         </AuthorDiv>
         <AuthorDiv>
           <Avatar src="https://roobeedotorg.files.wordpress.com/2019/05/rubyrios_branding2019-6-1.png?w=640" />
           <Text>
             Robot drawings were created by{" "}
-            <Link href="https://www.rubyrios.com">Ruby Ríos.</Link>
+            <Link href="https://www.rubyrios.com" target="_blank">
+              Ruby Ríos.
+            </Link>
           </Text>
         </AuthorDiv>
         <AuthorDiv>
           <Avatar src="https://pbs.twimg.com/profile_images/1065025670563033088/34PLNXb2.jpg" />
           <Text>
             {" "}
-            Big thanks to <Link href="https://novvum.io">Novvum</Link> for
-            supporting the development of Feelsbot.
+            Big thanks to{" "}
+            <Link href="https://www.novvum.io/" target="_blank">
+              Novvum
+            </Link>{" "}
+            for supporting the development of Feelsbot.
           </Text>
         </AuthorDiv>
       </FlexDiv>
