@@ -7,18 +7,60 @@ import Timeline from "./Timeline";
 import { Router } from "@reach/router";
 import logo from "../assets/logo.svg";
 import MobileNav from "./MobileNav";
-import { Subtitle, Layout, mobile, ShowOnMobile, HideOnMobile } from "./shared";
+import {
+  Subtitle,
+  Span,
+  Layout,
+  mobile,
+  ShowOnMobile,
+  HideOnMobile
+} from "./shared";
 
 const App = () => (
   <Layout>
-    <Navigation />
-    <Router>
-      <Home path="/" />
-      <About path="/about" />
-      <Timeline path="/user" />
-    </Router>
+    <Wrapper>
+      <Navigation />
+      <Router>
+        <Home path="/" />
+        <About path="/about" />
+        <Timeline path="/user" />
+      </Router>
+    </Wrapper>
+
+    <Footer />
   </Layout>
 );
+
+const Navigation = () => (
+  <Navbar>
+    <LogoContainer href="/">
+      <Logo src={logo} />
+      <LogoText>FeelsBot</LogoText>
+    </LogoContainer>
+    <NavLinks>
+      <HideOnMobile>
+        <NavLink href="/">Map</NavLink>
+        <NavLink href="user">Twitter User</NavLink>
+        <NavLink href="about">About</NavLink>
+      </HideOnMobile>
+      <ShowOnMobile>
+        <MobileNav />
+      </ShowOnMobile>
+    </NavLinks>
+  </Navbar>
+);
+
+const Footer = () => (
+  <div>
+    <FooterContainer>
+      <FooterSpan>© 2019 Feelsbot</FooterSpan>
+    </FooterContainer>
+  </div>
+);
+
+const Wrapper = styled.div`
+  min-height: calc(100vh - ${p => p.theme.navHeight / 2}px);
+`;
 
 const Navbar = styled.div`
   background: ${p => p.theme.colors.primary};
@@ -63,23 +105,17 @@ const NavLink = styled.a`
   }
 `;
 
-const Navigation = () => (
-  <Navbar>
-    <LogoContainer href="/">
-      <Logo src={logo} />
-      <LogoText>FeelsBot</LogoText>
-    </LogoContainer>
-    <NavLinks>
-      <HideOnMobile>
-        <NavLink href="/">Map</NavLink>
-        <NavLink href="user">Twitter User</NavLink>
-        <NavLink href="about">About</NavLink>
-      </HideOnMobile>
-      <ShowOnMobile>
-        <MobileNav />
-      </ShowOnMobile>
-    </NavLinks>
-  </Navbar>
-);
+const FooterContainer = styled.div`
+  background: ${p => p.theme.colors.primary};
+  width: 100%;
+  height: ${p => p.theme.navHeight / 2}px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+`;
+
+const FooterSpan = styled(Span)`
+  color: ${p => p.theme.colors.white};
+`;
 
 export default App;
