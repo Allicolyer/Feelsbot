@@ -14,7 +14,7 @@ class TweetGrid extends React.Component {
   }
 
   updateGrid = () => {
-    this.grid.updateLayout();
+    this.grid && this.grid.updateLayout();
   };
 
   componentWillUpdate() {

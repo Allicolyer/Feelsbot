@@ -39,6 +39,7 @@ class Map extends React.Component {
       this.setState({
         zoom: map.getZoom()
       });
+      console.log(this.state.zoom);
     });
 
     map.addListener("maptypeid_changed", () => {
@@ -65,7 +66,7 @@ class Map extends React.Component {
     const updateMap = (place, miles, center) => {
       mileCircle.setMap(null);
       map.fitBounds(place.viewport);
-      map.setZoom(Math.round(14 - Math.log(miles) / Math.LN2));
+      map.setZoom(zoomLevels[miles]);
       map.setCenter(center);
       marker.setPlace({
         placeId: place.place_id,
@@ -129,13 +130,14 @@ class Map extends React.Component {
       this.setState({
         miles: parseFloat(milesinput.value)
       });
+      //if there is no input location value, ask the user to enter a location
       if (!inputNode.value) {
         window.alert("Please enter a location to search");
         return;
       }
       // reset map with new search parameters
       updateMap(this.state.place, this.state.miles, this.state.center);
-      //if there is no input location value, ask the user to enter a location
+      // scroll to the tweets
       setTimeout(() => {
         this.scrollToMyRef();
       }, 1000);
@@ -253,5 +255,24 @@ const ResponsiveFlex = styled(Flex)`
     flex-direction: column;
   }
 `;
+
+const zoomLevels = {
+  1: 13,
+  2: 13,
+  3: 12,
+  4: 12,
+  5: 11,
+  10: 10,
+  20: 9,
+  30: 9,
+  40: 8,
+  50: 8,
+  60: 8,
+  70: 7,
+  80: 7,
+  90: 7,
+  100: 7,
+  200: 6
+};
 
 export default Map;
