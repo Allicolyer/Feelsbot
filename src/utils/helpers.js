@@ -2,7 +2,9 @@ export const tweetSorter = input => {
   let rating = {};
   let keys = ["joy", "sadness", "fear", "anger", "disgust"];
   //removes any entries that are 0 and records how many there are
-  rating.total = input.filter(a => a.emotion.joy).length;
+  rating.loading = false;
+  //resets the total to zero
+  rating.total = 0;
   //creates a new array that sorts each tweet by it's category
   keys.forEach(key => {
     let filter = input.filter(a => a.emotion[key] > 0.6);
@@ -10,6 +12,8 @@ export const tweetSorter = input => {
       num: filter.length,
       tweets: filter
     };
+    //keeps track of the total tally of tweets
+    rating.total += filter.length;
   });
   return rating;
 };

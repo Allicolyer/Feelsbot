@@ -33,7 +33,8 @@ const Tweets = ({ map, lat, lng, m, timeline, screen_name }) => {
           );
         let tweets = [];
         let rating = {
-          total: "-",
+          loading: true,
+          total: 0,
           joy: { num: "-", tweets: [] },
           anger: { num: "-", tweets: [] },
           sadness: { num: "-", tweets: [] },
@@ -77,8 +78,15 @@ const TweetWrapper = ({ percentage, rating }) => {
   return (
     <div>
       <MeterDiv id="meter">
-        <Subtitle> Joy Meter: {percentage}% </Subtitle>
-        {rating.total == "-" ? (
+        {rating.total ? (
+          <Subtitle> Joy Meter: {percentage}% </Subtitle>
+        ) : (
+          <div>
+            <Subtitle> No Tweets</Subtitle>
+            <Text> Feelsbot couldn't find any emotional tweets.</Text>
+          </div>
+        )}
+        {rating.loading ? (
           <div>
             <Robot src={loadingBot} />
             <MoodMeter loading={true} percent={percentage} />
