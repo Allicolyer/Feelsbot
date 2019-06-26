@@ -1,21 +1,35 @@
 import React from "react";
 import styled from "styled-components";
 import { TwitterTweetEmbed } from "react-twitter-embed";
-import { Text, Subtitle } from "./shared";
+import {
+  Text,
+  Subtitle,
+  RetweetContainer,
+  RetweetText,
+  RetweetArrows
+} from "./shared";
 
-const MobileGrid = ({ title, rating }) => (
+const MobileGrid = ({ description, rating }) => (
   <Container>
-    <Subtitle>{title}</Subtitle>
     {rating.num ? (
       <div>
+        <Subtitle>{description}</Subtitle>
         {rating.tweets.map(tweet => (
-          <div key={tweet.id_str}>
-            <TwitterTweetEmbed tweetId={tweet.id_str} />
+          <div>
+            {tweet.retweeted_status && (
+              <RetweetContainer>
+                <RetweetText>Retweet by {tweet.user.screen_name}</RetweetText>
+                <RetweetArrows />
+              </RetweetContainer>
+            )}
+            <div key={tweet.id_str}>
+              <TwitterTweetEmbed tweetId={tweet.id_str} />
+            </div>
           </div>
         ))}
       </div>
     ) : (
-      <Text> No Tweets </Text>
+      <Subtitle> No {description} </Subtitle>
     )}
   </Container>
 );
