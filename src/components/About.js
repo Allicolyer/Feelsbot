@@ -3,33 +3,43 @@ import styled from "styled-components";
 import happy from "../assets/happyBot.svg";
 import sad from "../assets/sadBot.svg";
 import neutral from "../assets/neutralBot.svg";
-import { Link, Text, Title, Content, Space, Subtitle, mobile } from "./shared";
+import {
+  Link,
+  Text,
+  Title,
+  Content,
+  Space,
+  Subtitle,
+  mobile,
+  tablet
+} from "./shared";
 
 const Image = styled.img`
-  width: 33%;
-  padding: ${p => p.theme.space[3]}px;
+  width: 28%;
 `;
 
 const Avatar = styled.img`
-  width: 75%;
+  width: 100%
   border-radius: 100px;
-  padding: ${p => p.theme.space[3]}px;
 `;
 
 const AuthorDiv = styled.div`
   text-align: center;
-  width: 33%;
+  width: 28%;
 `;
 
 const FlexDiv = styled.div`
   display: flex;
-  justify-content: center;
+  justify-content: space-around;
   align-content: center;
   width: 50%;
   margin: 0 auto;
   padding: 0;
-  @media ${mobile} {
+  @media ${tablet} {
     width: 80%;
+  }
+  @media ${mobile} {
+    width: 100%;
   }
 `;
 
@@ -82,6 +92,7 @@ const About = () => (
         Tweeter's profile. Feelsbot can also analyze the tweets of any Twitter
         user, as long as their profile is not set to private.
       </Text>
+
       <Subtitle> Contributors</Subtitle>
 
       <FlexDiv>
