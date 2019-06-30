@@ -24,6 +24,19 @@
     -->
     <title>Feelsbot</title>
     <script src="https://maps.googleapis.com/maps/api/js?key=%REACT_APP_MAPS_KEY%&libraries=places"></script>
+    <script
+      async
+      src="https://www.googletagmanager.com/gtag/js?id=UA-115956895-2"
+    ></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag("js", new Date());
+
+      gtag("config", "UA-115956895-2");
+    </script>
   </head>
   <body>
     <noscript>You need to enable JavaScript to run this app.</noscript>
