@@ -56,21 +56,38 @@ const About = () => (
       <Text>How accurate is Feelsbot?</Text> <Space />
     </Content>
     <LeftContent>
-      <Subtitle> How Feelsbot uses AI </Subtitle>
+      <Subtitle> How Feelsbot works </Subtitle>
       <Text>
         Feelsbot uses a machine learning model from IBM to analyze emotions in
         tweets. Using this algorithm, Feelsbot categorizes tweets into five
-        categories: joy, sadness, anger, fear and disgust. Feelsbot can only
-        analyze tweets that are in English and are longer than X words. Each
-        tweet receives a confidence level of how strongly it matches one of
-        those categories. Tweets that have a confidence level higher than 65%
-        are categorized as containing that emotion. Feelsbot calculates the joy
-        meter by figuring out what percentage of the categorized tweets are
-        rated as joyful versus every other emotion.
+        categories: joy, sadness, anger, fear and disgust. This algorithm only
+        works in English, so Feelsbot can only analyze tweets that are in
+        English. Each tweet receives a confidence level of how strongly it
+        matches one of those categories. Feelsbots categories tweets that have a
+        confidence level higher than 65%. The joy meter is calculated as the
+        percentage joyful tweets versus every other emotion.
+        <Text>
+          Feelsbot uses Twitter's API to fetch the last 100 tweets that are
+          geotagged near a location entered into the map. Often times, there are
+          not many recent geotagged tweets, so Twitter defaults to fetching
+          tweets based on user's profile locations. When Feelsbot analyzes a
+          user's Twitter account, it fetches the last 200 tweets. Twitter
+          profiles need to be public for Feelsbot to work.
+        </Text>
       </Text>
+
+      <FlexDiv>
+        <Image src={sad} />
+        <Image src={neutral} />
+        <Image src={happy} />
+      </FlexDiv>
+
+      <Subtitle> What we can learn from Feelsbot</Subtitle>
       <Text>
-        {" "}
-        Curious to explore more with nautral language procesing? Check out IBM's{" "}
+        The way Feelsbot categorizes tweets can tell us a lot about the nuances
+        of human language that are hard for a machine to pick up on. Did
+        Feelsbot surprise you in any way? If you want to explore more with
+        natural language processing, check out IBM's{" "}
         <Link
           href="https://natural-language-understanding-demo.ng.bluemix.net/"
           target="_blank"
@@ -79,23 +96,8 @@ const About = () => (
         </Link>
         of their machine learning model.
       </Text>
-      <FlexDiv>
-        <Image src={sad} />
-        <Image src={neutral} />
-        <Image src={happy} />
-      </FlexDiv>
-      <Subtitle> How Feelsbot uses Twitter </Subtitle>
-      <Text>
-        Feelsbot uses Twitter's API to grab tweets based on the location entered
-        into the map. Twitter will grab the first 100 tweets that are geotagged
-        near that location. Often times, there are not many recent geotagged
-        tweets, so Twitter defaults grabbing tweets based on the location of the
-        Tweeter's profile. Feelsbot can also analyze the tweets of any Twitter
-        user, as long as their profile is not set to private.
-      </Text>
 
       <Subtitle> Contributors</Subtitle>
-
       <FlexDiv>
         <AuthorDiv>
           <Avatar src="https://avatars1.githubusercontent.com/u/11083917?s=460&v=4" />
@@ -127,6 +129,14 @@ const About = () => (
           </Text>
         </AuthorDiv>
       </FlexDiv>
+      <Text>
+        If you liked this AI experiment, please share it with your friends. Feel
+        free to add me on{" "}
+        <Link href="https://www.twitter.com/allicolyer" target="_blank">
+          Twitter
+        </Link>{" "}
+        or reach out with any issues.
+      </Text>
     </LeftContent>
   </div>
 );
