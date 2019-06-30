@@ -36,7 +36,6 @@ class TweetGrid extends React.Component {
         this.updateGrid();
         rerender = true;
         clearInterval(findelement);
-        console.log(`${this.props.rating.num} done`);
       }
     }, 500);
     //stop automatically after 4 seconds if tweet embeds are not loading
@@ -46,7 +45,6 @@ class TweetGrid extends React.Component {
       if (!rerender) {
         this.updateGrid();
         rerender = true;
-        console.log(`${this.props.rating.num} timeout`);
       }
     }, 4000);
   }

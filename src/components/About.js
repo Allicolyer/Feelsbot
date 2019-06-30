@@ -16,10 +16,11 @@ import {
 
 const Image = styled.img`
   width: 28%;
+  height: 1%;
 `;
 
 const Avatar = styled.img`
-  width: 100%
+  width: 80%
   border-radius: 100px;
 `;
 

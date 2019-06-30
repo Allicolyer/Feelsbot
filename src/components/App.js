@@ -81,6 +81,7 @@ const Logo = styled.img`
   padding: ${p => p.theme.space[2]}px;
   display: inline;
   margin: auto 0;
+  transform: scale(-1, 1);
 `;
 
 const LogoText = styled(Subtitle)`
