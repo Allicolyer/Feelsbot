@@ -146,10 +146,14 @@ const NoTweetText = ({
 }) => (
   <div>
     {map && (
-      <HelperText>{`Feelsbot couldn't find any emotional tweets near ${location}. Try searching for a different location.`}</HelperText>
+      <HelperText>{`Feelsbot couldn't find any emotional tweets near ${location}.
+      This may be because there are too few tweets or because Feelsbot only understands English.
+      Try searching for a different location.`}</HelperText>
     )}
     {timeline && (
-      <HelperText>{`Feelsbot couldn't find any emotional tweets by @${screen_name}. Try searching for a different Twitter user.`}</HelperText>
+      <HelperText>{`Feelsbot couldn't find any emotional tweets by @${screen_name}.
+      This may be because there are too few tweets or because Feelsbot only understands English.
+      Try searching for a different Twitter user.`}</HelperText>
     )}
   </div>
 );
