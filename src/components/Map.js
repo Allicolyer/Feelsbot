@@ -39,7 +39,6 @@ class Map extends React.Component {
       this.setState({
         zoom: map.getZoom()
       });
-      console.log(this.state.zoom);
     });
 
     map.addListener("maptypeid_changed", () => {

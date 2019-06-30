@@ -20,7 +20,7 @@ function analyze(text, cb) {
       },
       function(err, response) {
         if (err) {
-          console.log(`my keys!!`);
+          console.log(err);
           reject(err);
         } else {
           let result = response.emotion.document.emotion;
