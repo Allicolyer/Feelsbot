@@ -11,11 +11,7 @@ const GET_TWEETS = gql`
         screen_name
       }
       emotion {
-        joy
-        sadness
-        anger
-        fear
-        disgust
+        category
       }
     }
   }
@@ -31,11 +27,7 @@ const GET_TIMELINE = gql`
         screen_name
       }
       emotion {
-        joy
-        sadness
-        anger
-        fear
-        disgust
+        category
       }
     }
   }

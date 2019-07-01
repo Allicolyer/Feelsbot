@@ -3,11 +3,13 @@ const { importSchema } = require("graphql-import");
 const typeDefs = importSchema("./src/schema.graphql");
 const Query = require("./resolvers/Query");
 const Tweet = require("./resolvers/Tweet");
+const Emotion = require("./resolvers/Emotion");
 const City = require("./resolvers/City");
 
 const resolvers = {
   Query,
   Tweet,
+  Emotion,
   City
 };
 

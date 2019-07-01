@@ -33,7 +33,7 @@ type Emotion {
   fear: Float!
   joy: Float!
   sadness: Float!
-  category: [String]
+  category: String
 }
 
 type User {
