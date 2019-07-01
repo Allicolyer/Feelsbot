@@ -59,21 +59,23 @@ const About = () => (
       <Subtitle> How Feelsbot works </Subtitle>
       <Text>
         Feelsbot uses a machine learning model from IBM to analyze emotions in
-        tweets. Using this algorithm, Feelsbot categorizes tweets into five
-        categories: joy, sadness, anger, fear and disgust. This algorithm only
-        works in English, so Feelsbot can only analyze tweets that are in
-        English. Each tweet receives a confidence level of how strongly it
-        matches one of those categories. Feelsbots categories tweets that have a
-        confidence level higher than 65%. The joy meter is calculated as the
-        percentage joyful tweets versus every other emotion.
-        <Text>
-          Feelsbot uses Twitter's API to fetch the last 100 tweets that are
-          geotagged near a location entered into the map. Often times, there are
-          not many recent geotagged tweets, so Twitter defaults to fetching
-          tweets based on user's profile locations. When Feelsbot analyzes a
-          user's Twitter account, it fetches the last 200 tweets. Twitter
-          profiles need to be public for Feelsbot to work.
-        </Text>
+        tweets. Using this algorithm, Feelsbot put tweets into five categories:
+        joy, sadness, anger, fear and disgust. This algorithm only works in
+        English, so Feelsbot can only analyze tweets that are in English. Each
+        tweet receives a confidence level of how strongly it matches one of
+        those categories. Feelsbots puts tweets that have a confidence level
+        higher than 65% into each category. Once the tweets have been
+        categorized, the joy meter is calculated as the percentage joyful tweets
+        versus every other emotion.
+      </Text>
+      <Text>
+        When using the map, Feelsbot uses Twitter's API to fetch the last 100
+        tweets that are geotagged near the location entered. Often times, there
+        are not many recent geotagged tweets. When this happens Twitter fetches
+        tweets of users whose profile locations are near the location entered
+        into the map. When analyzing tweets by a specific Twitter account,
+        Feelsbot fetches the last 200 tweets by that account . Twitter profiles
+        need to be public for Feelsbot to work.
       </Text>
 
       <FlexDiv>
