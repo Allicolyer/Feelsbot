@@ -158,11 +158,9 @@ class Map extends React.Component {
             </LocationContainer>
             <MilesContainer>
               <Subtitle> Select a Distance</Subtitle>
-              <Select id="miles-input">
+              <Select id="miles-input" defaultValue="2">
                 <option value="1">1 Mile</option>
-                <option value="2" selected="selected">
-                  2 Miles
-                </option>
+                <option value="2">2 Miles</option>
                 <option value="3">3 Miles</option>
                 <option value="4">4 Miles</option>
                 <option value="5">5 Miles</option>

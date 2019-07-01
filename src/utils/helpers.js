@@ -1,3 +1,15 @@
+import { autocomplete } from "./query-calls";
+
+export const wakeUp = async () => {
+  await autocomplete("a").then(value => {
+    if (value.data.autocomplete) {
+      value.data.autocomplete.map(user => {
+        return;
+      })
+    } else return;
+  });
+};
+
 export const tweetSorter = input => {
   console.log(input);
   let rating = {};
@@ -28,7 +40,7 @@ export const percent = input => {
           input.sadness.num +
           input.fear.num +
           input.disgust.num)) *
-        100
+      100
     ) || 0;
   return percentage;
 };
