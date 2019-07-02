@@ -1,13 +1,14 @@
 export const tweetSorter = input => {
+  console.log(input);
   let rating = {};
   let keys = ["joy", "sadness", "fear", "anger", "disgust"];
   //removes any entries that are 0 and records how many there are
   rating.loading = false;
   //resets the total to zero
   rating.total = 0;
-  //creates a new array that sorts each tweet by it's category
+  //creates a new array that sorts each tweet by its category
   keys.forEach(key => {
-    let filter = input.filter(a => a.emotion[key] > 0.6);
+    let filter = input.filter(a => a.emotion.category === key);
     rating[key] = {
       num: filter.length,
       tweets: filter
@@ -27,7 +28,7 @@ export const percent = input => {
           input.sadness.num +
           input.fear.num +
           input.disgust.num)) *
-        100
+      100
     ) || 0;
   return percentage;
 };

@@ -182,3 +182,43 @@ export const RetweetArrows = () => (
     </g>
   </svg>
 );
+
+//footer
+const FooterContainer = styled.div`
+  background: ${p => p.theme.colors.white};
+  width: 100%;
+  height: ${p => p.theme.navHeight}px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+`;
+
+const TimelineFooterContainer = styled(FooterContainer)`
+  position: absolute;
+  bottom: 0px;
+  width: 80%;
+`
+
+
+const FooterSpan = styled(Span)`
+  color: ${p => p.theme.colors.primary};
+`;
+
+export const Wrapper = styled.div`
+  min-height: calc(100vh - ${p => p.theme.navHeight / 2}px);
+`;
+
+export const Footer = ({timeline}) => (
+  <div>
+    {timeline &&
+      <TimelineFooterContainer>
+      <FooterSpan>© 2019 Feelsbot</FooterSpan>
+    </TimelineFooterContainer>
+    }
+    {!timeline &&
+    <FooterContainer>
+      <FooterSpan>© 2019 Feelsbot</FooterSpan>
+    </FooterContainer>
+    }
+  </div>
+);

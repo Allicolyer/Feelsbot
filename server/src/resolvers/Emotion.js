@@ -1,23 +1,24 @@
 const Emotion = {
-    : parent => {
-    let category = [];
-    if (parent.anger > 0.5) {
-      category.push("anger");
-    }
-    if (parent.disgust > 0.5) {
-      category.push("disgust");
-    }
-    if (parent.fear > 0.5) {
-      category.push("fear");
-    }
-    if (parent.joy > 0.5) {
-      category.push("joy");
-    }
-    if (parent.sadness > 0.5) {
-      category.push("sadness");
-    }
-    return category;
-  }
+  category: parent => categorize(parent)
 };
+
+module.exports = Emotion;
+
+const categorize = parent => {
+  let max = Math.max(
+    parent.anger,
+    parent.disgust,
+    parent.fear,
+    parent.joy,
+    parent.sadness
+  );
+  if (max > 0.6) {
+    return getKeyByValue(parent, max);
+  } else return null;
+};
+
+function getKeyByValue(object, value) {
+  return Object.keys(object).find(key => object[key] === value);
+}
 
 module.exports = Emotion;
