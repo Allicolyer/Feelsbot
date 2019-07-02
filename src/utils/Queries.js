@@ -43,12 +43,3 @@ export const AUTOCOMPLETE = gql`
     }
   }
 `;
-
-export const WAKEUP = gql`
-  query {
-    findCity(name: "New York") {
-      name
-    }
-  }
-`;
-

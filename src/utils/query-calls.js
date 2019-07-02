@@ -1,4 +1,4 @@
-import { AUTOCOMPLETE, WAKEUP } from "./Queries";
+import { AUTOCOMPLETE } from "./Queries";
 import { client } from "../index";
 
 export const autocomplete = async text => {
