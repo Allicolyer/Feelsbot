@@ -61,7 +61,7 @@ const About = () => (
       <Text>
         Feelsbot uses a machine learning model from IBM to analyze emotions in
         tweets. Using this algorithm, Feelsbot put tweets into five categories:
-        joy, sadness, anger, fear and disgust. This algorithm only works in
+        joy, sadness, anger, fear, and disgust. This algorithm only works in
         English, so Feelsbot can only analyze tweets that are in English. Each
         tweet receives a confidence level of how strongly it matches one of
         those categories. Feelsbots puts tweets that have a confidence level
