@@ -197,6 +197,9 @@ const TimelineFooterContainer = styled(FooterContainer)`
   position: fixed;
   bottom: 0px;
   width: 80%;
+  @media ${mobile} {
+    display: none;
+  }
 `;
 
 const FooterSpan = styled(Span)`
