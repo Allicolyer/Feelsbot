@@ -53,9 +53,7 @@ class TweetGrid extends React.Component {
     if (this.props.rating.num) {
       return (
         <div>
-          <Subtitle>
-            {this.props.rating.num} {this.props.description}
-          </Subtitle>
+          <Subtitle>{this.props.description}</Subtitle>
           <StackGrid columnWidth={300} gridRef={grid => (this.grid = grid)}>
             {this.props.rating.tweets.map(tweet => (
               <div key={tweet.id_str}>
@@ -80,4 +78,3 @@ class TweetGrid extends React.Component {
 }
 
 export default TweetGrid;
-

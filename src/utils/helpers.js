@@ -1,5 +1,4 @@
 export const tweetSorter = input => {
-  console.log(input);
   let rating = {};
   let keys = ["joy", "sadness", "fear", "anger", "disgust"];
   //removes any entries that are 0 and records how many there are

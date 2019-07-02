@@ -22,7 +22,7 @@ function search({ q, geocode }, cb) {
 function userTimeline({ screen_name }, cb) {
   return new Promise((resolve, reject) => {
     return twitter.getUserTimeline(
-      { screen_name, count: 200 },
+      { screen_name, count: 150 },
       error => reject(error),
       res => resolve(res)
     );

@@ -37,6 +37,7 @@ emotion = async text => {
     const result = await analyze(cleanedText(text));
     return result;
   } catch (err) {
+    console.log(cleanedText(text));
     console.error(err);
     return blank;
   }
@@ -46,7 +47,6 @@ autocomplete = async text => {
   try {
     const result = await searchAutocomplete(text);
     return JSON.parse(result);
-    return result;
   } catch (err) {
     console.error(err);
     return;

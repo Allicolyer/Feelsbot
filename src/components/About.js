@@ -75,7 +75,7 @@ const About = () => (
         are not many recent geotagged tweets. When this happens Twitter fetches
         tweets of users whose profile locations are near the location entered
         into the map. When analyzing tweets by a specific Twitter account,
-        Feelsbot fetches the last 200 tweets by that account . Twitter profiles
+        Feelsbot fetches the last 150 tweets by that account. Twitter profiles
         need to be public for Feelsbot to work.
       </Text>
 
