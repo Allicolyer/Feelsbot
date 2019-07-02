@@ -9,10 +9,6 @@ import {
 } from "./shared";
 
 class TweetGrid extends React.Component {
-  constructor(props) {
-    super(props);
-  }
-
   updateGrid = () => {
     this.grid && this.grid.updateLayout();
   };

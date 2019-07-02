@@ -3,7 +3,7 @@ import styled from "styled-components";
 import { Query } from "react-apollo";
 import { GET_TWEETS, GET_TIMELINE } from "../utils/Queries";
 import MoodMeter from "./MoodMeter";
-import { Subtitle, Text, Title } from "./shared";
+import { Text, Title } from "./shared";
 import { tweetSorter, percent, assignMood } from "../utils/helpers";
 import happyBot from "../assets/happyBot.svg";
 import neutralBot from "../assets/neutralBot.svg";

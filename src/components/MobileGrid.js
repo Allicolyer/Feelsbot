@@ -2,7 +2,6 @@ import React from "react";
 import styled from "styled-components";
 import { TwitterTweetEmbed } from "react-twitter-embed";
 import {
-  Text,
   Subtitle,
   RetweetContainer,
   RetweetText,

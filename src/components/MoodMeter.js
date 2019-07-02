@@ -6,11 +6,11 @@ import { Subtitle, mobile } from "./shared";
 let color;
 
 const MoodMeter = ({ percent, mood, loading }) => {
-  if (mood == "happy") {
+  if (mood === "happy") {
     color = theme.metercolors.happy;
-  } else if (mood == "neutral") {
+  } else if (mood === "neutral") {
     color = theme.metercolors.neutral;
-  } else if (mood == "sad") {
+  } else if (mood === "sad") {
     color = theme.metercolors.sad;
   } else {
     color = theme.colors.primary;

@@ -27,14 +27,14 @@ export const percent = input => {
           input.sadness.num +
           input.fear.num +
           input.disgust.num)) *
-      100
+        100
     ) || 0;
   return percentage;
 };
 
 export const assignMood = input => {
   let mood;
-  if (input == "-") {
+  if (input === "-") {
     mood = "loading";
   } else if (input < 50) {
     mood = "sad";
