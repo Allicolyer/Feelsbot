@@ -194,7 +194,7 @@ const FooterContainer = styled.div`
 `;
 
 const TimelineFooterContainer = styled(FooterContainer)`
-  position: absolute;
+  position: fixed;
   bottom: 0px;
   width: 80%;
 `;
