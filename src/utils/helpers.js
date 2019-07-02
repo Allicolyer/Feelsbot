@@ -1,15 +1,3 @@
-import { autocomplete } from "./query-calls";
-
-export const wakeUp = async () => {
-  await autocomplete("a").then(value => {
-    if (value.data.autocomplete) {
-      value.data.autocomplete.map(user => {
-        return;
-      })
-    } else return;
-  });
-};
-
 export const tweetSorter = input => {
   console.log(input);
   let rating = {};

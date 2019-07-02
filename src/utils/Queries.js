@@ -1,6 +1,6 @@
 import gql from "graphql-tag";
 
-const GET_TWEETS = gql`
+export const GET_TWEETS = gql`
   query($lat: Float!, $lng: Float!, $m: Int!) {
     tweets: tweets(lat: $lat, lng: $lng, m: $m) {
       id_str
@@ -17,7 +17,7 @@ const GET_TWEETS = gql`
   }
 `;
 
-const GET_TIMELINE = gql`
+export const GET_TIMELINE = gql`
   query($screen_name: String!) {
     tweets: user(screen_name: $screen_name) {
       id_str
@@ -33,7 +33,7 @@ const GET_TIMELINE = gql`
   }
 `;
 
-const AUTOCOMPLETE = gql`
+export const AUTOCOMPLETE = gql`
   query($text: String!) {
     autocomplete(text: $text) {
       name
@@ -44,4 +44,11 @@ const AUTOCOMPLETE = gql`
   }
 `;
 
-export { GET_TWEETS, GET_TIMELINE, AUTOCOMPLETE };
+export const WAKEUP = gql`
+  query {
+    findCity(name: "New York") {
+      name
+    }
+  }
+`;
+
