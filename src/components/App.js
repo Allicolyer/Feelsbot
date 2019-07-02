@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React from "react";
 import "../styles/App.css";
 import styled from "styled-components";
 import Home from "./Home";
@@ -7,14 +7,7 @@ import Timeline from "./Timeline";
 import { Router } from "@reach/router";
 import logo from "../assets/logo.svg";
 import MobileNav from "./MobileNav";
-import {
-  Subtitle,
-  Span,
-  Layout,
-  mobile,
-  ShowOnMobile,
-  HideOnMobile
-} from "./shared";
+import { Subtitle, Layout, mobile, ShowOnMobile, HideOnMobile } from "./shared";
 
 const App = () => (
   <Layout>
@@ -35,8 +28,8 @@ const Navigation = () => (
     </LogoContainer>
     <NavLinks>
       <HideOnMobile>
-        <NavLink href="/">Map</NavLink>
-        <NavLink href="user">Twitter User</NavLink>
+        <NavLink href="/">Location Search</NavLink>
+        <NavLink href="user">User Search</NavLink>
         <NavLink href="about">About</NavLink>
       </HideOnMobile>
       <ShowOnMobile>

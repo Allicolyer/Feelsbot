@@ -3,7 +3,7 @@ import { Async } from "react-select";
 import { autocomplete } from "../utils/query-calls";
 import styled from "styled-components";
 import { theme } from "../styles/theme";
-import { Span, Subtitle, mobile, Footer, Wrapper } from "./shared";
+import { Span, Subtitle, mobile, Footer } from "./shared";
 import Tweets from "./Tweets";
 
 export default class Select extends Component {
@@ -70,7 +70,7 @@ export default class Select extends Component {
             <Tweets screen_name={this.state.screen_name} timeline />
           )}
         </div>
-      </div >
+      </div>
     );
   }
 }

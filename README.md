@@ -1,68 +1,38 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# Feelsbot
 
-## Available Scripts
+Feelsbot assess how humans are feeling by reading their tweets.
 
-In the project directory, you can run:
+### How Feelsbot works
 
-### `npm start`
+Feelsbot uses a machine learning model from IBM to analyze emotions in
+tweets. Using this algorithm, Feelsbot put tweets into five categories:
+joy, sadness, anger, fear and disgust. This algorithm only works in
+English, so Feelsbot can only analyze tweets that are in English. Each
+tweet receives a confidence level of how strongly it matches one of
+those categories. Feelsbots puts tweets that have a confidence level
+higher than 65% into each category. Once the tweets have been
+categorized, the joy meter is calculated as the percentage joyful tweets
+versus every other emotion.
 
-Runs the app in the development mode.<br>
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+When using the map, Feelsbot uses Twitter's API to fetch the last 100
+tweets that are geotagged near the location entered. Often times, there
+are not many recent geotagged tweets. When this happens Twitter fetches
+tweets of users whose profile locations are near the location entered
+into the map. When analyzing tweets by a specific Twitter account,
+Feelsbot fetches the last 150 tweets by that account. Twitter profiles
+need to be public for Feelsbot to work.
 
-The page will reload if you make edits.<br>
-You will also see any lint errors in the console.
+### What we can learn from Feelsbot
 
-### `npm test`
+The way Feelsbot categorizes tweets can tell us a lot about the nuances
+of human language that are hard for a machine to pick up on. Did
+Feelsbot surprise you in any way? If you want to explore more with
+natural language processing, check out IBM's [demo](https://natural-language-understanding-demo.ng.bluemix.net/) of their machine learning model.
 
-Launches the test runner in the interactive watch mode.<br>
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### Contributors
 
-### `npm run build`
+1.  Feelbot was created by [Allison Colyer](http://www.alli.science)
+2.  Robot drawings were created by[Ruby Ríos.](https://www.rubyrios.com)
+3.  Big thanks to [Novvum](https://www.novvum.io/) for supporting the development of Feelsbot.
 
-Builds the app for production to the `build` folder.<br>
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.<br>
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (Webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
-
-### Analyzing the Bundle Size
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
-
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `npm run build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+If you liked this AI experiment, please share it with your friends. Feel free to add me on [Twitter](https://www.twitter.com/allicolyer) or reach out with any issues.

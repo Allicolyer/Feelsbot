@@ -183,7 +183,7 @@ export const RetweetArrows = () => (
   </svg>
 );
 
-//footer
+//footer is done this way because of complications with the tweet grid
 const FooterContainer = styled.div`
   background: ${p => p.theme.colors.white};
   width: 100%;
@@ -197,8 +197,7 @@ const TimelineFooterContainer = styled(FooterContainer)`
   position: absolute;
   bottom: 0px;
   width: 80%;
-`
-
+`;
 
 const FooterSpan = styled(Span)`
   color: ${p => p.theme.colors.primary};
@@ -208,17 +207,16 @@ export const Wrapper = styled.div`
   min-height: calc(100vh - ${p => p.theme.navHeight / 2}px);
 `;
 
-export const Footer = ({timeline}) => (
+export const Footer = ({ timeline }) => (
   <div>
-    {timeline &&
+    {timeline ? (
       <TimelineFooterContainer>
-      <FooterSpan>© 2019 Feelsbot</FooterSpan>
-    </TimelineFooterContainer>
-    }
-    {!timeline &&
-    <FooterContainer>
-      <FooterSpan>© 2019 Feelsbot</FooterSpan>
-    </FooterContainer>
-    }
+        <FooterSpan>© 2019 Feelsbot</FooterSpan>
+      </TimelineFooterContainer>
+    ) : (
+      <FooterContainer>
+        <FooterSpan>© 2019 Feelsbot</FooterSpan>
+      </FooterContainer>
+    )}
   </div>
 );
