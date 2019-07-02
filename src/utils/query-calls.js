@@ -10,9 +10,7 @@ export const autocomplete = async text => {
 };
 
 export const wakeUp = async () => {
-  const res = await client.query({
+  return await client.query({
     query: WAKEUP
   });
-  console.log(res)
-  return res;
-};
+}

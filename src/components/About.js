@@ -11,7 +11,8 @@ import {
   Space,
   Subtitle,
   mobile,
-  tablet
+  tablet,
+  Footer
 } from "./shared";
 
 const Image = styled.img`
@@ -140,6 +141,7 @@ const About = () => (
         or reach out with any issues.
       </Text>
     </LeftContent>
+    <Footer />
   </div>
 );
 

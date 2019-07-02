@@ -3,7 +3,7 @@ import { Async } from "react-select";
 import { autocomplete } from "../utils/query-calls";
 import styled from "styled-components";
 import { theme } from "../styles/theme";
-import { Span, Subtitle, mobile } from "./shared";
+import { Span, Subtitle, mobile, Footer, Wrapper } from "./shared";
 import Tweets from "./Tweets";
 
 export default class Select extends Component {
@@ -64,12 +64,13 @@ export default class Select extends Component {
             isClearable
           />
         </SelectContainer>
+        {!this.state.render && <Footer timeline />}
         <div ref={this.myRef}>
           {this.state.render && (
             <Tweets screen_name={this.state.screen_name} timeline />
           )}
         </div>
-      </div>
+      </div >
     );
   }
 }
