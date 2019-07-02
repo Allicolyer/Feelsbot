@@ -106,7 +106,7 @@ const About = () => (
           <Avatar src="https://avatars1.githubusercontent.com/u/11083917?s=460&v=4" />
           <Text>
             Feelsbot was created by{" "}
-            <Link href="http://www.alli.science" target="_blank">
+            <Link href="https://twitter.com/allicolyer" target="_blank">
               Allison Colyer.
             </Link>
           </Text>
@@ -138,7 +138,7 @@ const About = () => (
         <Link href="https://www.twitter.com/allicolyer" target="_blank">
           Twitter
         </Link>{" "}
-        or reach out with any issues.
+        or contact me with any issues.
       </Text>
     </LeftContent>
     <Footer />

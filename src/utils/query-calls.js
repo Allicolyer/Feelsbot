@@ -8,11 +8,3 @@ export const autocomplete = async text => {
   });
   return res;
 };
-
-export const wakeUp = async () => {
-  const res = await client.query({
-    query: AUTOCOMPLETE,
-    variables: { text: "a" }
-  });
-  return res;
-}

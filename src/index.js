@@ -7,13 +7,10 @@ import ApolloClient from "apollo-boost";
 import { ApolloProvider } from "react-apollo";
 import { theme } from "./styles/theme";
 import { ThemeProvider } from "styled-components";
-import { wakeUp } from "./utils/query-calls"
 
 export const client = new ApolloClient({
   uri: process.env.REACT_APP_SERVER_URI
 });
-
-wakeUp()
 
 ReactDOM.render(
   <ApolloProvider client={client}>

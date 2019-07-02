@@ -31,7 +31,7 @@ natural language processing, check out IBM's [demo](https://natural-language-und
 
 ### Contributors
 
-1.  Feelbot was created by [Allison Colyer](http://www.alli.science)
+1.  Feelbot was created by [Allison Colyer](https://twitter.com/allicolyer)
 2.  Robot drawings were created by[Ruby Ríos.](https://www.rubyrios.com)
 3.  Big thanks to [Novvum](https://www.novvum.io/) for supporting the development of Feelsbot.
 

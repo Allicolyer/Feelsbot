@@ -196,7 +196,7 @@ const FooterContainer = styled.div`
 const TimelineFooterContainer = styled(FooterContainer)`
   position: fixed;
   bottom: 0px;
-  width: 80%;
+  left: 0px;
   @media ${mobile} {
     display: none;
   }
