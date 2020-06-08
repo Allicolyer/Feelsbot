@@ -13,7 +13,7 @@ const Timeline = () => (
     <Subtitle>
       Search for a Twitter user and I'll assess that user's tweets.
     </Subtitle>
-    <HelperText> Hint: Only public Twitter profiles will work. </HelperText>
+    <HelperText>Only public Twitter profiles will work. </HelperText>
     <Select />
   </Content>
 );
