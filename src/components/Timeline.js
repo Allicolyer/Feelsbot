@@ -1,6 +1,5 @@
 import React from "react";
 import styled from "styled-components";
-
 import Select from "./Select";
 import { Title, Text, Content, Space, Subtitle } from "./shared";
 

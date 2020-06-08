@@ -1,38 +1,26 @@
-import React, { Component } from "react";
+import React, { useState } from "react";
 import HamburgerMenu from "react-hamburger-menu";
 import styled from "styled-components";
 import { Link } from "./shared";
 
-class MobileNav extends Component {
-  constructor() {
-    super();
-    this.state = {
-      open: false
-    };
-  }
-  handleClick() {
-    this.setState({
-      open: !this.state.open
-    });
-  }
+function MobileNav() {
+  const [open, toggleNav] = useState(false);
 
-  render() {
-    return (
-      <div>
-        <HamburgerMenu
-          isOpen={this.state.open}
-          menuClicked={this.handleClick.bind(this)}
-          width={26}
-          height={18}
-          strokeWidth={2}
-          rotate={0}
-          color="white"
-          animationDuration={0.5}
-        />
-        {this.state.open && <Menu />}
-      </div>
-    );
-  }
+  return (
+    <div>
+      <HamburgerMenu
+        isOpen={open}
+        menuClicked={() => toggleNav(!open)}
+        width={26}
+        height={18}
+        strokeWidth={2}
+        rotate={0}
+        color="white"
+        animationDuration={0.5}
+      />
+      {open && <Menu />}
+    </div>
+  );
 }
 
 const Menu = () => (
@@ -46,13 +34,13 @@ const Menu = () => (
 
 //Offsets the menu so it appears to be centered vertically
 const Offset = styled.div`
-  height: ${p => 2 * p.theme.navHeight}px;
+  height: ${(p) => 2 * p.theme.navHeight}px;
 `;
 
 const NavLink = styled(Link)`
-  color: ${p => p.theme.colors.white};
+  color: ${(p) => p.theme.colors.white};
   font-size: 2em;
-  padding: ${p => p.theme.space[4]}px;
+  padding: ${(p) => p.theme.space[4]}px;
   font-weight: bold;
 `;
 
@@ -65,11 +53,11 @@ width: 100%;
 height: 100vh
 text-size: 3em;
 position: absolute
-top: ${p => p.theme.navHeight}px;
+top: ${(p) => p.theme.navHeight}px;
 left: 0
-background: ${p => p.theme.colors.primary};
+background: ${(p) => p.theme.colors.primary};
 opacity: 0.80;
-z-index: ${p => p.theme.mobileStepper};
+z-index: ${(p) => p.theme.mobileStepper};
 `;
 
 export default MobileNav;
