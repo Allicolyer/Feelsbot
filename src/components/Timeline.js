@@ -1,6 +1,5 @@
 import React from "react";
 import styled from "styled-components";
-
 import Select from "./Select";
 import { Title, Text, Content, Space, Subtitle } from "./shared";
 
@@ -13,7 +12,7 @@ const Timeline = () => (
     <Subtitle>
       Search for a Twitter user and I'll assess that user's tweets.
     </Subtitle>
-    <HelperText> Hint: Only public Twitter profiles will work. </HelperText>
+    <HelperText>Only public Twitter profiles will work. </HelperText>
     <Select />
   </Content>
 );
