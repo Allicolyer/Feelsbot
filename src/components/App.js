@@ -31,6 +31,7 @@ const Navigation = () => (
         <NavLink href="/">Location Search</NavLink>
         <NavLink href="user">User Search</NavLink>
         <NavLink href="about">About</NavLink>
+        <NavLink href="https://github.com/Allicolyer/Feelsbot">Github</NavLink>
       </HideOnMobile>
       <ShowOnMobile>
         <MobileNav />
@@ -40,9 +41,9 @@ const Navigation = () => (
 );
 
 const Navbar = styled.div`
-  background: ${p => p.theme.colors.primary};
+  background: ${(p) => p.theme.colors.primary};
   width: 100%;
-  height: ${p => p.theme.navHeight}px;
+  height: ${(p) => p.theme.navHeight}px;
   display: flex;
   justify-content: space-between;
 `;
@@ -51,12 +52,12 @@ const LogoContainer = styled.a`
   text-decoration: none;
   margin: auto 0;
   display: flex;
-  margin: auto ${p => p.theme.space[2]}px;
+  margin: auto ${(p) => p.theme.space[2]}px;
 `;
 
 const Logo = styled.img`
-  height: ${p => p.theme.navHeight * 0.8}px;
-  padding: ${p => p.theme.space[2]}px;
+  height: ${(p) => p.theme.navHeight * 0.8}px;
+  padding: ${(p) => p.theme.space[2]}px;
   display: inline;
   margin: auto 0;
   transform: scale(-1, 1);
@@ -64,22 +65,22 @@ const Logo = styled.img`
 
 const LogoText = styled(Subtitle)`
   margin: auto 0;
-  padding: ${p => p.theme.space[0]}px;
-  color: ${p => p.theme.colors.white};
+  padding: ${(p) => p.theme.space[0]}px;
+  color: ${(p) => p.theme.colors.white};
 `;
 
 const NavLinks = styled.div`
-  margin: auto ${p => p.theme.space[2]}px;
+  margin: auto ${(p) => p.theme.space[2]}px;
 `;
 
 const NavLink = styled.a`
   text-decoration: none;
   font-size: 1em;
-  color: ${p => p.theme.colors.white};
+  color: ${(p) => p.theme.colors.white};
   display: inline;
-  padding: ${p => p.theme.space[3]}px;
+  padding: ${(p) => p.theme.space[3]}px;
   @media ${mobile} {
-    padding: ${p => p.theme.space[1]}px;
+    padding: ${(p) => p.theme.space[1]}px;
   }
 `;
 
