@@ -191,18 +191,6 @@ const FooterContainer = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-`;
-
-const TimelineFooterContainer = styled(FooterContainer)`
-  position: fixed;
-  bottom: 0px;
-  left: 0px;
-  @media ${mobile} {
-    display: none;
-  }
-`;
-
-const FooterSpan = styled(Span)`
   color: ${(p) => p.theme.colors.primary};
 `;
 
@@ -212,13 +200,9 @@ export const Wrapper = styled.div`
 
 export const Footer = ({ timeline }) => (
   <div>
-    {timeline ? (
-      <TimelineFooterContainer>
-        <FooterSpan>© {new Date().getFullYear()} Feelsbot</FooterSpan>
-      </TimelineFooterContainer>
-    ) : (
+    {!timeline && (
       <FooterContainer>
-        <FooterSpan>© {new Date().getFullYear()} Feelsbot</FooterSpan>
+        <span>© {new Date().getFullYear()} Feelsbot</span>
       </FooterContainer>
     )}
   </div>
