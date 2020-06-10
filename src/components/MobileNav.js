@@ -28,6 +28,7 @@ const Menu = () => (
     <NavLink href="/">Location Search</NavLink>
     <NavLink href="user">User Search</NavLink>
     <NavLink href="about">About</NavLink>
+    <NavLink href="https://github.com/Allicolyer/Feelsbot">Github</NavLink>
     <Offset />
   </MenuContainer>
 );

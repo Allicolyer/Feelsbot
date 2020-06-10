@@ -12,7 +12,7 @@ import {
   Subtitle,
   mobile,
   tablet,
-  Footer
+  Footer,
 } from "./shared";
 
 const Image = styled.img`
@@ -132,14 +132,6 @@ const About = () => (
           </Text>
         </AuthorDiv>
       </FlexDiv>
-      <Text>
-        If you liked this AI experiment, please share it with your friends. Feel
-        free to add me on{" "}
-        <Link href="https://www.twitter.com/allicolyer" target="_blank">
-          Twitter
-        </Link>{" "}
-        or contact me with any issues.
-      </Text>
     </LeftContent>
     <Footer />
   </div>
