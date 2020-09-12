@@ -1,13 +1,12 @@
 const Twitter = require("twitter-node-client").Twitter;
-var { TWITTER_KEYS } = require("./keys");
 
 const twitter = new Twitter({
-  consumerKey: `${TWITTER_KEYS.consumerKey}`,
-  consumerSecret: `${TWITTER_KEYS.consumerSecret}`,
-  accessToken: `${TWITTER_KEYS.accessToken}`,
-  accessTokenSecret: `${TWITTER_KEYS.accessTokenSecret}`,
-  callBackUrl: `${TWITTER_KEYS.callBackUrl}`
-});
+  consumerKey: process.env.TWITTER_CONSUMER_KEY,
+  consumerSecret: process.env.TWITTER_CONSUMER_SECRET,
+  accessToken: process.env.TWITTER_ACCESS_TOKEN,
+  accessTokenSecret: process.env.TWITTER_ACCESS_TOKEN_SECRET,
+  callBackUrl: ''
+})
 
 function search({ q, geocode }, cb) {
   return new Promise((resolve, reject) => {

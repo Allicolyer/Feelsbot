@@ -27,8 +27,4 @@ sample.json
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
-package-lock.json
-yarn.lock
-server/package-lock.json
-server/yarn.lock
 server/now.json
