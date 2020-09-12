@@ -1,11 +1,10 @@
 var NaturalLanguageUnderstandingV1 = require("watson-developer-cloud/natural-language-understanding/v1.js");
-var { IBM_KEYS } = require("./keys");
 
 var naturalLanguageUnderstanding = new NaturalLanguageUnderstandingV1({
-  version: "2018-11-16",
-  iam_apikey: `${IBM_KEYS.iam_apikey}`,
-  url: `${IBM_KEYS.url}`
-});
+  version: '2018-11-16',
+  iam_apikey: process.env.IBM_API_KEY,
+  url: process.env.IBM_URL
+})
 
 const blank = { joy: 0, sadness: 0, anger: 0, fear: 0, disgust: 0 };
 
