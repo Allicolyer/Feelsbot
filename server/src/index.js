@@ -1,5 +1,5 @@
 //configure dotenv
-require('dotenv').config()
+require("dotenv").config();
 
 const { ApolloServer } = require("apollo-server");
 const { importSchema } = require("graphql-import");
@@ -13,14 +13,14 @@ const resolvers = {
   Query,
   Tweet,
   Emotion,
-  City
+  City,
 };
 
 const server = new ApolloServer({
   typeDefs,
-  resolvers
-})
+  resolvers,
+});
 
-server.listen().then(({ url }) => {
+server.listen({ port: process.env.PORT || 4000 }).then(({ url }) => {
   console.log(`🚀 Server ready at ${url}`);
 });
