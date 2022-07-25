@@ -12,7 +12,7 @@ const categorize = parent => {
     parent.joy,
     parent.sadness
   );
-  if (max > 0.6) {
+  if (max > 0.35) {
     return getKeyByValue(parent, max);
   } else return null;
 };

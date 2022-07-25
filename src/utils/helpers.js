@@ -7,7 +7,14 @@ export const tweetSorter = input => {
   rating.total = 0;
   //creates a new array that sorts each tweet by its category
   keys.forEach(key => {
-    let filter = input.filter(a => a.emotion.category === key);
+
+  let filter = input.filter(a => {
+    if (a.emotion != null) {
+      return a.emotion.category === key
+    } else {
+      return false
+    }
+  });
     rating[key] = {
       num: filter.length,
       tweets: filter
