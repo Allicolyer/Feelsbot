@@ -9,7 +9,7 @@
     "graphql": "^14.1.1",
     "graphql-import": "^0.7.1",
     "graphql-tag": "^2.10.1",
-    "qs": "^6.6.0",
+    "qs": "^6.6.1",
     "react": "^16.8.3",
     "react-apollo": "^2.5.2",
     "react-dom": "^16.8.3",
