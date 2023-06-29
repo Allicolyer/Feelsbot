@@ -1,11 +1,11 @@
 export const tweetSorter = input => {
   let rating = {};
   let keys = ["joy", "sadness", "fear", "anger", "disgust"];
-  //removes any entries that are 0 and records how many there are
+  // removes any entries that are 0 and records how many there are
   rating.loading = false;
-  //resets the total to zero
+  // resets the total to zero
   rating.total = 0;
-  //creates a new array that sorts each tweet by its category
+  // creates a new array that sorts each tweet by its category
   keys.forEach(key => {
 
   let filter = input.filter(a => {
