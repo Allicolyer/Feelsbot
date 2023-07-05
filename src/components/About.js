@@ -121,7 +121,7 @@ const About = () => (
           </Text>
         </AuthorDiv>
         <AuthorDiv>
-          <Avatar src="https://pbs.twimg.com/profile_images/1159597589408256000/Vf0OwHOf.png" />
+          <Avatar src="https://pbs.twimg.com/profile_images/1668795641462689793/Rva68oqK_400x400.jpg" />
           <Text>
             {" "}
             Big thanks to{" "}
