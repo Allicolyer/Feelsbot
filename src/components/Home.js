@@ -8,7 +8,7 @@ const Home = () => (
       <Space />
       <Title>Hi I'm FeelsBot </Title>
       <Text>I assess how humans are feeling by reading their tweets.</Text>
-      <Text>I no longer have access to Twitter's API so I am on vacation for now.</Text>
+      <Text>I can't read feelings without Twitter's API - all functionality is currently pause.</Text>
     </Content>
     <Map />
   </div>

@@ -28,7 +28,7 @@ const Tweets = ({ map, lat, lng, m, timeline, screen_name, location }) => {
         if (error)
           return (
             <Text>
-              FeelsBot no longer has access to Twitter's API.
+              Error: FeelsBot no longer has access to Twitter's API.
             </Text>
           );
         let tweets = [];
