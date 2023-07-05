@@ -110,6 +110,6 @@ Although Feelsbot is not perfect, it’s more accurate than you might expect! I 
   <tr>
     <td align="center"><a href="https://github.com/allicolyer"><img src="https://avatars1.githubusercontent.com/u/11083917?s=460&v=4" width="200px;" alt="Picture of Allison Colyer"/><br /><b>Alli Colyer</b></a></td>
     <td align="center"><a href="https://www.rubyrios.com"><img src="https://roobeedotorg.files.wordpress.com/2019/10/ruby.png?w=400" width="200px;" alt="Picture of Ruby Rios"/><br /><b>Ruby Ríos</b></a></td>
-    <td align="center"><a href="https://www.novvum.io"><img src="https://pbs.twimg.com/profile_images/1159597589408256000/Vf0OwHOf.png" width="200px;" alt="Novvum Logo"/><br /><b>Novvum</b></a></td>
+    <td align="center"><a href="https://www.novvum.io"><img src="https://pbs.twimg.com/profile_images/1668795641462689793/Rva68oqK_400x400.jpg" width="200px;" alt="Novvum Logo"/><br /><b>Novvum</b></a></td>
   </tr>
 </table>

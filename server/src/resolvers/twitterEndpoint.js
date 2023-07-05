@@ -5,8 +5,21 @@ const twitter = new Twitter({
   consumerSecret: process.env.TWITTER_CONSUMER_SECRET,
   accessToken: process.env.TWITTER_ACCESS_TOKEN,
   accessTokenSecret: process.env.TWITTER_ACCESS_TOKEN_SECRET,
-  callBackUrl: ''
+  callBackUrl: '',
 })
+// Use the new twitter base URL for Twitter's new API
+// twitter.baseUrl = 'https://api.twitter.com/2'
+// Twitter has changed its end points for search, you'll have to use the new one
+// function search ({ q, geocode }, cb) {
+//   return new Promise((resolve, reject) => {
+//     return twitter.getCustomApiCall(
+//       '/tweets/search/recent',
+//       { q, geocode, count: 100, lang: 'en' },
+//       error => reject(error),
+//       res => resolve(res)
+//     )
+//   })
+// }
 
 function search({ q, geocode }, cb) {
   return new Promise((resolve, reject) => {
@@ -17,6 +30,7 @@ function search({ q, geocode }, cb) {
     );
   });
 }
+
 
 function userTimeline({ screen_name }, cb) {
   return new Promise((resolve, reject) => {
